@@ -21,6 +21,13 @@
   "scripts": {
     "test": "grunt test"
   },
+  "dependencies": {
+    "command-node": "*",
+    "request": "*",
+    "express": "4.11.2",
+    "body-parser": "1.11.0",
+    "logops": "*"
+  },
   "devDependencies": {
     "should": "*",
     "grunt-contrib-jshint": "~0.6.4",

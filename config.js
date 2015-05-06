@@ -1,34 +1,35 @@
 /*
- * Copyright 2013 Telefonica Investigación y Desarrollo, S.A.U
+ * Copyright 2014 Telefonica Investigación y Desarrollo, S.A.U
  *
- * This file is part of sigfox-iotagent
+ * This file is part of fiware-iotagent-lib
  *
- * sigfox-iotagent is free software: you can redistribute it and/or
+ * fiware-iotagent-lib is free software: you can redistribute it and/or
  * modify it under the terms of the GNU Affero General Public License as
  * published by the Free Software Foundation, either version 3 of the License,
  * or (at your option) any later version.
  *
- * sigfox-iotagent is distributed in the hope that it will be useful,
+ * fiware-iotagent-lib is distributed in the hope that it will be useful,
  * but WITHOUT ANY WARRANTY; without even the implied warranty of
  * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
  * See the GNU Affero General Public License for more details.
  *
  * You should have received a copy of the GNU Affero General Public
- * License along with sigfox-iotagent.
+ * License along with fiware-iotagent-lib.
  * If not, seehttp://www.gnu.org/licenses/.
  *
  * For those usages not covered by the GNU Affero General Public License
  * please contact with::[contacto@tid.es]
  */
 
-'use strict';
-
-
-/**
- * The exported functions and properties for sigfox-iotagent
- * @return {String}
- *   The condition of the module.
- */
-exports.awesome = function() {
-  return 'awesome';
+var config = {
+    logLevel: 'DEBUG',
+    contextBroker: {
+        host: '192.168.56.101',
+        port: '1026'
+    },
+    server: {
+        port: 4041
+    }
 };
+
+module.exports = config;

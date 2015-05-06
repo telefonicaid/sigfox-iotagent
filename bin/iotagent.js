@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 /*
  * Copyright 2015 Telefonica Investigación y Desarrollo, S.A.U
  *
@@ -22,42 +24,28 @@
  */
 'use strict';
 
-var conversions = {
-    uint: 'readUIntBE'
-}
+var iotAgent = require('../lib/sigfoxIotagent'),
+    context = {
+        op: 'IoTAgentSIGFOX.Executable'
+    },
+    logger = require('logops');
 
-function createParser(key) {
-    var rawFields = key.replace(/\s+/g, ' ').split(' '),
-        fields = rawFields.reduce(function(previousValue, currentValue) {
-            var field = currentValue.split('::'),
-                size = field[1].split(':');
+function start() {
+    var config;
 
-            previousValue.push({
-                name: field[0],
-                type: size[0],
-                size: size[1]/8
-            });
+    if (process.argv.length === 3) {
+        config = require('../' + process.argv[2]);
+    } else {
+        config = require('../config');
+    }
 
-            return previousValue;
-        }, []);
-
-    return function parse(data, callback) {
-        var buf = new Buffer(data, 'hex'),
-            offset = 0,
-            fieldIndex = 0,
-            data = {};
-
-        while (offset < buf.length) {
-            var field = fields[fieldIndex];
-
-            data[field.name] = buf[conversions[field.type]](offset, field.size);
-
-            fieldIndex++;
-            offset += field.size;
+    iotAgent.start(config, function (error) {
+        if (error) {
+            logger.error(context, 'Error starting Agent: [%s] Exiting process', error);
+        } else {
+            logger.info(context, 'Sigfox IoT Agent started');
         }
-
-        callback(null, data);
-    };
+    });
 }
 
-exports.createParser = createParser;
+start();
