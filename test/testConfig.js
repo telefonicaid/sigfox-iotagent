@@ -22,14 +22,19 @@
  */
 
 var config = {
-    logLevel: 'DEBUG',
+    logLevel: 'FATAL',
     contextBroker: {
         host: '192.168.56.101',
         port: '1026'
     },
     server: {
         port: 4041
-    }
+    },
+    sigfox: {
+        port: 17428
+    },
+    types: [],
+    providerUrl: 'http://192.168.56.1:4041'
 };
 
 module.exports = config;

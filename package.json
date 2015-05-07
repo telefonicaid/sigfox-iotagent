@@ -24,12 +24,15 @@
   "dependencies": {
     "command-node": "*",
     "request": "*",
+    "async": "*",
+    "iotagent-node-lib": "https://github.com/telefonicaid/iotagent-node-lib/tarball/develop",
     "express": "4.11.2",
     "body-parser": "1.11.0",
     "logops": "*"
   },
   "devDependencies": {
     "should": "*",
+    "nock": "*",
     "grunt-contrib-jshint": "~0.6.4",
     "grunt-contrib-watch": "~0.5.3",
     "grunt-gjslint": "~0.1.0",
@@ -47,7 +50,8 @@
     "proxyquire": "0.5.1",
     "grunt-mkdir": "~0.1.1",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-githooks": "~0.3.1"
+    "grunt-githooks": "~0.3.1",
+    "mongodb": "1.4.20"
   },
   "keywords": []
 }

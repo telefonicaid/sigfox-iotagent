@@ -150,7 +150,7 @@ module.exports = function(grunt) {
 
         dox: {
             options: {
-                title: 'fiware-iotagent-lib documentation'
+                title: 'sigfox-iotagent documentation'
             },
             files: {
                 src: ['<%= jshint.lib.src %>'],

@@ -1,0 +1,57 @@
+{
+  "contextElements": [
+    {
+      "type": "SIGFOX",
+      "isPattern": "false",
+      "id": "sigApp1",
+      "attributes": [
+        {
+          "name": "time",
+          "type": "Timestamp",
+          "value": "1430909015"
+        },
+        {
+          "name": "statin",
+          "type": "String",
+          "value": "0A5F"
+        },
+        {
+          "name": "longitude",
+          "type": "Number",
+          "value": "-4"
+        },
+        {
+          "name": "latitude",
+          "type": "Number",
+          "value": "41"
+        },
+        {
+          "name": "counter",
+          "type": "Integer",
+          "value": "2"
+        },
+        {
+          "name": "param1",
+          "type": "Integer",
+          "value": "0"
+        },
+        {
+          "name": "param2",
+          "type": "Integer",
+          "value": "0"
+        },
+        {
+          "name": "tempDegreesCelsius",
+          "type": "Integer",
+          "value": "35"
+        },
+        {
+          "name": "voltage",
+          "type": "Integer",
+          "value": "3183"
+        }
+      ]
+    }
+  ],
+  "updateAction": "APPEND"
+}
