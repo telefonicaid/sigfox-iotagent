@@ -1,5 +1,5 @@
 {
-  "name": "sigApp1",
+  "name": "sigApp2",
   "service" : "dumbMordor",
   "service_path": "/deserts",
   "entity_name": "TheFirstLight",

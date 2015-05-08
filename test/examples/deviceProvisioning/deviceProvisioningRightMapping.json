@@ -1,8 +1,8 @@
 {
-  "name": "sigApp1",
+  "name": "sigApp2",
   "service" : "dumbMordor",
   "service_path": "/deserts",
-  "entity_name": "sigApp1",
+  "entity_name": "sigApp2",
   "entity_type": "SIGFOX",
   "timezone": "America/Santiago",
   "attributes": [],

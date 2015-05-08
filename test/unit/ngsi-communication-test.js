@@ -54,6 +54,7 @@ describe('Context Broker communication', function() {
         iotAgent.start(config, function() {
             async.series([
                 apply(mongoUtils.cleanDbs, config.contextBroker.host),
+                mappings.clean,
                 apply(mappings.add,
                     'SIGFOX',
                     'counter::uint:32  param1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16'),

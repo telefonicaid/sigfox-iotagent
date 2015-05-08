@@ -22,6 +22,7 @@
  */
 'use strict';
 
+
 var MongoClient = require('mongodb').MongoClient,
     async = require('async');
 
@@ -39,7 +40,6 @@ function cleanDb(host, name, callback) {
 
 function cleanDbs(host, callback) {
     var operations = [
-            async.apply(cleanDb, 'localhost', 'lwtm2m'),
             async.apply(cleanDb, 'localhost', 'iotagent'),
             async.apply(cleanDb, host, 'orion'),
             async.apply(cleanDb, host, 'iotagent')

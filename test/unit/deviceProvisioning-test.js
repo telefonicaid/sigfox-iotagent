@@ -40,7 +40,7 @@ var iotAgent = require('../../lib/iotagentCore'),
         '/deserts'
     );
 
-describe.only('Device and configuration provisioning', function() {
+describe('Device and configuration provisioning', function() {
     beforeEach(function(done) {
         iotAgent.start(config, function() {
             async.series([
@@ -72,7 +72,7 @@ describe.only('Device and configuration provisioning', function() {
                 url: 'http://localhost:17428/update',
                 method: 'GET',
                 qs: {
-                    id: 'sigApp1',
+                    id: 'sigApp2',
                     time: 1430909015,
                     statin: '0A5F',
                     lng: -4,
@@ -90,7 +90,7 @@ describe.only('Device and configuration provisioning', function() {
                     response.statusCode.should.equal(200);
 
                     ngsiClient.query(
-                        'sigApp1',
+                        'sigApp2',
                         'SIGFOX',
                         [],
                         function(error, response, body) {
