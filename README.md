@@ -2,6 +2,7 @@
 
 * [Overview](#overview)
 * [Usage](#usage)
+* [Data Format](#dataformat)
 * [Development Documentation](#development)
 
 ## <a name="overview"/> Overview
@@ -90,6 +91,23 @@ sendMeasure <data>
 	Send a measure to the defined endpoint, with the defined parameters and the data passed to the command
 ```
 The test shell stores a map of the parameters that will be sent as query parameters of the callback. To show the paramaters, use `showParameters`. In order to change any of them, use the `testParameters` command. This parameters will be common for all the requests originating from the test tool. In order to send a measure use `sendMeasure`. Take special care with this command, as it doesn't check whether the format of the data is right or not; in the later case, an error will be risen in the data parsing in the IoT Agent, leading to unpredictable results. The expected `data` format is the one defined in the device provisioning.
+
+## <a name="dataformat"/>  Data format
+Here is an example of the currently supported data formats:
+```
+counter::uint:32  param1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16
+```
+The supported format has to adhere to the following rules:
+* The format is composed of **N** fields, sepparated by spaces.
+* Each field is composed of two parts, sepparated by the pattern `::`. The first part will be taken to be the name of the attribute, the second one the definition of the value type.
+* The definition of the value type is composed of two parts, sepparated by a colon `:`. The first part indicates the type of data (e.g.: integer, float, etc.). The one supported type currently is `uint` (unsigned integer). The second part indicates the size in bytes of the data.
+
+Given this rules and the format example given, the following piece of data, `000000020000000000230c6f` would have the following values (expressed in decimal base):
+* counter: 2
+* param1: 0
+* param2: 0
+* tempDegreesCelsius: 35
+* voltage: 3183
 
 ## <a name="development"/>  Development documentation
 ### Project build
