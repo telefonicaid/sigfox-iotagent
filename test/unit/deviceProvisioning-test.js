@@ -27,7 +27,6 @@ var iotAgent = require('../../lib/iotagentCore'),
     mappings = require('../../lib/mappings'),
     request = require('request'),
     ngsiTestUtils = require('../tools/ngsiUtils'),
-    iotAgentLib = require('iotagent-node-lib'),
     mongoUtils = require('../tools/mongoDBUtils'),
     utils = require('../tools/utils'),
     async = require('async'),
@@ -103,12 +102,9 @@ describe.only('Device and configuration provisioning', function() {
 
                             attributes = body.contextResponses[0].contextElement.attributes;
 
-                            var names = _.pluck(attributes, 'name'),
-                                contained = _.contains(_.pluck(attributes, 'name'), 'theCounter');
-
                             _.contains(_.pluck(attributes, 'name'), 'theCounter').should.equal(true);
                             _.contains(_.pluck(attributes, 'name'), 'theParam1').should.equal(true);
-                            
+
                             done();
                         });
                 });
