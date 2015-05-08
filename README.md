@@ -31,6 +31,66 @@ This basic usage can have a wide range of variations. In the following sections 
 
 NOTE: this first version doesn't support Configuration provisioning, so each device must be provisioned individually. 
 
+### Starting the agent
+In order to start the agent, execute the following command from the root of the project:
+```
+bin/iotagent
+```
+
+### Provisioning the device in the Agent
+To provision the device, use the API provided in [Device Provisioning API](https://github.com/telefonicaid/iotagent-node-lib#-device-provisioning-api) with the following changes:
+* No attributes need to be defined in this version. All the Sigfox parameters and data fields will be mapped to their correspondent attributes in the NGSI Request. This behavior will change in the near future to adhere to the common IoT Agent provisioning style.
+* A special internal attribute called `mapping` **must** be provided, containing the structure of the `data` attribute of the device.
+
+The following code fragment shows the body of a device provisioning for a sigfox device. End to end examples of this provisioning can be found in the `/test` folder.
+```
+{
+  "name": "sigApp2",
+  "service" : "dumbMordor",
+  "service_path": "/deserts",
+  "entity_name": "sigApp2",
+  "entity_type": "SIGFOX",
+  "timezone": "America/Santiago",
+  "attributes": [],
+  "lazy": [],
+  "static_attributes": [],
+  "commands": [],
+  "internal_attributes": [
+    {
+      "mapping": "theCounter::uint:32  theParam1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16"
+    }
+  ]
+}
+```
+
+### Configuring the Sigfox backend to provide a callback
+For a detailed description of the creation device process in the Sigfox backend, please, refer to the Sigfox documentation. 
+
+In order to create the callback URL, use the port and path values configured in the `config.js` file. The default port in the configuration is the **17428**. The default path for incoming callbacks is `/update`. This version of the Agent only supports 'GET' callbacks.
+
+There is no default data mapping for the device's data. Use the same device mapping you introduced in the provisioning step.
+
+### Sending data from the device
+To aid in testing purposes, a test client is being developed to simulate device callbacks. In order to launch it, use the following command from the root folder:
+```
+bin/sigfox-test.js
+```
+This command launches a test shell with the following commands:
+```
+showParameters  
+
+	Show the current device parameters that will be sent along with the callback
+
+setParameters <name> <value>  
+
+	Set the value for the selected parameter
+
+sendMeasure <data>  
+
+	Send a measure to the defined endpoint, with the defined parameters and the data passed to the command
+```
+The test shell stores a map of the parameters that will be sent as query parameters of the callback. To show the paramaters, use `showParameters`. In order to change any of them, use the `testParameters` command. This parameters will be common for all the requests originating from the test tool. In order to send a measure use `sendMeasure`. Take special care with this command, as it doesn't check whether the format of the data is right or not; in the later case, an error will be risen in the data parsing in the IoT Agent, leading to unpredictable results. The expected `data` format is the one defined in the device provisioning.
+
 ## <a name="development"/>  Development documentation
 ### Project build
 The project is managed using Grunt Task Runner.
