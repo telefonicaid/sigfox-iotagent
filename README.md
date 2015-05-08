@@ -1,8 +1,37 @@
 # sigfox-iotagent
 
-IoT Agent for the Sigfox protocol
+* [Overview](#overview)
+* [Usage](#usage)
+* [Development Documentation](#development)
 
-## Development documentation
+## <a name="overview"/> Overview
+This IoT Agent is designed to be a bridge between the [Sigfox](http://www.sigfox.com/en/) callbacks protocol and the OMA NGSI protocol used by the [Orion Context Broker](https://github.com/telefonicaid/fiware-orion) as well as by other components of the FIWARE ecosystem.
+
+For each device, the Sigfox backend can provide a callback mechanism that can be used to send two kinds of information:
+* Attributes defined by the Sigfox backend itself (including id, timestamp, etc.).
+* A free data format, whose structure can be defined in the device type.
+
+The Agent provides the following features:
+* IoT Agent North Bound functionalities, as defined in the [IoT Agent Node.js library](https://github.com/telefonicaid/iotagent-node-lib).
+* A Sigfox endpoint listening for callbacks from the sigfox backend. Each piece of coming from the backend is considered as a sepparate active attribute (as defined in the IoT Agents specification).
+* A Sigfox data parser that can be used to convert from the data format as defined in the callbacks to a Javascript array.
+* A testing tool to simulate the date coming from the device.
+
+Most of this functionality is just a prototype to this date, so use this software carefully.
+
+## <a name="usage"/>  Usage
+### Basic usage
+The basic usage of this IoT Agent is the same as any other. In order to have the Device working follow this steps:
+* Start the agent
+* Provision the device in the Agent using the [Device Provisioning API](https://github.com/telefonicaid/iotagent-node-lib#-device-provisioning-api)
+* Configure de Sigfox Backend to send a callback to the backend
+* Send data from the device
+
+This basic usage can have a wide range of variations. In the following sections each step will be described in detail. 
+
+NOTE: this first version doesn't support Configuration provisioning, so each device must be provisioned individually. 
+
+## <a name="development"/>  Development documentation
 ### Project build
 The project is managed using Grunt Task Runner.
 
