@@ -26,14 +26,11 @@ var iotAgent = require('../../lib/iotagentCore'),
     mappings = require('../../lib/mappings'),
     request = require('request'),
     ngsiTestUtils = require('../tools/ngsiUtils'),
-    sigfoxParser = require('../../lib/sigfoxParser'),
     iotAgentLib = require('iotagent-node-lib'),
     mongoUtils = require('../tools/mongoDBUtils'),
     async = require('async'),
     apply = async.apply,
     config = require('../testConfig'),
-    logger = require('logops'),
-    utils = require('../tools/utils'),
     should = require('should'),
     ngsiClient = ngsiTestUtils.create(
         config.contextBroker.host,
@@ -61,7 +58,9 @@ describe.only('Context Broker communication', function() {
                     'SIGFOX',
                     'counter::uint:32  param1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16'),
                 apply(iotAgentLib.register, sigfoxDevice)
-            ], done);
+            ], function() {
+                done();
+            });
         });
     });
 
@@ -84,7 +83,7 @@ describe.only('Context Broker communication', function() {
             }
         };
 
-        xit('should answer with a 200 OK', function(done) {
+        it('should answer with a 200 OK', function(done) {
             request(options, function(error, response, body) {
                 should.not.exist(error);
                 response.statusCode.should.equal(200);
@@ -127,7 +126,7 @@ describe.only('Context Broker communication', function() {
                         attributes[8].value.should.equal('3183');
 
                         done();
-                    })
+                    });
             });
         });
     });
