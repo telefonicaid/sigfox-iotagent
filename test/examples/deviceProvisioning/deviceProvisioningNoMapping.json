@@ -1,0 +1,13 @@
+{
+  "name": "sigApp1",
+  "service" : "dumbMordor",
+  "service_path": "/deserts",
+  "entity_name": "TheFirstLight",
+  "entity_type": "SIGFOX",
+  "timezone": "America/Santiago",
+  "attributes": [],
+  "lazy": [],
+  "static_attributes": [],
+  "commands": [],
+  "internal_attributes": []
+}

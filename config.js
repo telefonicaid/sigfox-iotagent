@@ -29,7 +29,12 @@ var config = {
     },
     server: {
         port: 4041
-    }
+    },
+    sigfox: {
+        port: 17428
+    },
+    types: [],
+    providerUrl: 'http://192.168.56.1:4041'
 };
 
 module.exports = config;

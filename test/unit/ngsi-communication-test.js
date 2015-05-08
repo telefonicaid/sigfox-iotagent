@@ -49,7 +49,7 @@ var iotAgent = require('../../lib/iotagentCore'),
     };
 
 
-describe.only('Context Broker communication', function() {
+describe('Context Broker communication', function() {
     beforeEach(function(done) {
         iotAgent.start(config, function() {
             async.series([
