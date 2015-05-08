@@ -26,6 +26,7 @@
 
 var clUtils = require('command-node'),
     request = require('request'),
+    config = require('../config'),
     parameters = {
         id: '8405',
         time: '1430908992',
@@ -43,8 +44,23 @@ function showParameters() {
 }
 
 function sendMeasure(commands) {
-    console.log('Sending measure');
-    clUtils.prompt();
+    var dataOpts = {
+        url: 'http://localhost:' + config.sigfox.port + '/update',
+        method: 'GET',
+        qs: parameters
+    };
+
+    dataOpts.qs.data = commands[0];
+
+    request(dataOpts, function (error, response, body) {
+        if (error) {
+            console.log('\nError sending data to the Sigfox IoT Agent: ' + error);
+        } else {
+            console.log('\nData successfully sent');
+        }
+
+        clUtils.prompt();
+    });
 }
 
 function setParameters(commands) {
