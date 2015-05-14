@@ -68,8 +68,7 @@ describe('Context Broker communication', function() {
     afterEach(function(done) {
         iotAgent.stop(done);
     });
-
-
+    
     describe('When a new sigfox measure arrives to the IoT Agent', function() {
         var options = {
             url: 'http://localhost:17428/update',
@@ -95,7 +94,7 @@ describe('Context Broker communication', function() {
         it('should call the Context Broker with the appropriate attributes', function(done) {
             request(options, function(error, response, body) {
                 ngsiClient.query(
-                    'sigApp1',
+                    'sigApp1:SIGFOX',
                     'SIGFOX',
                     [],
                     function(error, response, body) {
@@ -130,5 +129,9 @@ describe('Context Broker communication', function() {
                     });
             });
         });
+    });
+
+    describe('When a new piece of data arrives for a unexistent device', function() {
+        it('should raise a controlled error');
     });
 });
