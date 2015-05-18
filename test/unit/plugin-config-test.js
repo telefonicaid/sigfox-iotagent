@@ -24,99 +24,89 @@
 
 var iotAgent = require('../../lib/iotagentCore'),
     _ = require('underscore'),
-  mappings = require('../../lib/mappings'),
-  request = require('request'),
-  ngsiTestUtils = require('../tools/ngsiUtils'),
+    mappings = require('../../lib/mappings'),
+    request = require('request'),
+    ngsiTestUtils = require('../tools/ngsiUtils'),
     utils = require('../tools/utils'),
-  iotAgentLib = require('iotagent-node-lib'),
-  mongoUtils = require('../tools/mongoDBUtils'),
-  async = require('async'),
-  apply = async.apply,
-  config = require('../testConfig'),
-  should = require('should'),
-  ngsiClient = ngsiTestUtils.create(
-    config.contextBroker.host,
-    config.contextBroker.port,
-    'dumbMordor',
-    '/deserts'
-  ),
-  sigfoxDevice = {
-    id: 'sigApp1',
-    type: 'SIGFOX',
-    commands: [],
-    lazy: [],
-    active: [],
-    service: 'dumbMordor',
-    subservice: '/deserts'
-  };
+    mongoUtils = require('../tools/mongoDBUtils'),
+    async = require('async'),
+    apply = async.apply,
+    config = require('../testConfig'),
+    should = require('should'),
+    ngsiClient = ngsiTestUtils.create(
+        config.contextBroker.host,
+        config.contextBroker.port,
+        'dumbMordor',
+        '/deserts'
+    );
 
 describe('Plugin configuration test', function() {
-  beforeEach(function(done) {
-    iotAgent.start(config, function() {
-      async.series([
-        apply(mongoUtils.cleanDbs, config.contextBroker.host),
-        mappings.clean
-      ], function() {
-        done();
-      });
-    });
-  });
-
-  afterEach(function(done) {
-    iotAgent.stop(done);
-  });
-
-  describe('When an external plugin is configured for the mapping', function() {
-    var provisioningOpts = {
-        url: 'http://localhost:' + config.server.port + '/iot/devices',
-        method: 'POST',
-        json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningPluginMapping.json'),
-        headers: {
-          'fiware-service': 'dumbMordor',
-          'fiware-servicepath': '/deserts'
-        }
-      },
-      dataOpts = {
-        url: 'http://localhost:17428/update',
-        method: 'GET',
-        qs: {
-          id: 'sigApp3',
-          time: 1430909015,
-          statin: '0A5F',
-          lng: -4,
-          lat: 41,
-          data: '{"campo1": "valor1", "campo2":64}'
-        }
-      };
-
-    it('should use the plugin to parse the device responses', function(done) {
-      request(provisioningOpts, function(error, response, body) {
-        should.not.exist(error);
-
-        request(dataOpts, function(error, response, body) {
-          should.not.exist(error);
-          response.statusCode.should.equal(200);
-
-          ngsiClient.query(
-            'sigApp3',
-            'SIGFOX',
-            [],
-            function(error, response, body) {
-              var attributes;
-
-              should.not.exist(error);
-              should.exist(body);
-              should.not.exist(body.errorCode);
-
-              attributes = body.contextResponses[0].contextElement.attributes;
-
-              _.contains(_.pluck(attributes, 'name'), 'campo1').should.equal(true);
-              _.contains(_.pluck(attributes, 'name'), 'campo2').should.equal(true);
-
-              done();
+    beforeEach(function(done) {
+        iotAgent.start(config, function() {
+            async.series([
+                apply(mongoUtils.cleanDbs, config.contextBroker.host),
+                mappings.clean
+            ], function() {
+                done();
             });
         });
-      });
     });
-  });
+
+    afterEach(function(done) {
+        iotAgent.stop(done);
+    });
+
+    describe('When an external plugin is configured for the mapping', function() {
+        var provisioningOpts = {
+                url: 'http://localhost:' + config.server.port + '/iot/devices',
+                method: 'POST',
+                json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningPluginMapping.json'),
+                headers: {
+                    'fiware-service': 'dumbMordor',
+                    'fiware-servicepath': '/deserts'
+                }
+            },
+            dataOpts = {
+                url: 'http://localhost:17428/update',
+                method: 'GET',
+                qs: {
+                    id: 'sigApp3',
+                    time: 1430909015,
+                    statin: '0A5F',
+                    lng: -4,
+                    lat: 41,
+                    data: '{"campo1": "valor1", "campo2":64}'
+                }
+            };
+
+        it('should use the plugin to parse the device responses', function(done) {
+            request(provisioningOpts, function(error, response, body) {
+                should.not.exist(error);
+
+                request(dataOpts, function(error, response, body) {
+                    should.not.exist(error);
+                    response.statusCode.should.equal(200);
+
+                    ngsiClient.query(
+                        'sigApp3',
+                        'SIGFOX',
+                        [],
+                        function(error, response, body) {
+                            var attributes;
+
+                            should.not.exist(error);
+                            should.exist(body);
+                            should.not.exist(body.errorCode);
+
+                            attributes = body.contextResponses[0].contextElement.attributes;
+
+                            _.contains(_.pluck(attributes, 'name'), 'campo1').should.equal(true);
+                            _.contains(_.pluck(attributes, 'name'), 'campo2').should.equal(true);
+
+                            done();
+                        });
+                });
+            });
+        });
+    });
 });
