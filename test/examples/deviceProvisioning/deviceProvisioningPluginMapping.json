@@ -1,0 +1,17 @@
+{
+  "name": "sigApp3",
+  "service" : "dumbMordor",
+  "service_path": "/deserts",
+  "entity_name": "sigApp3",
+  "entity_type": "SIGFOX",
+  "timezone": "America/Santiago",
+  "attributes": [],
+  "lazy": [],
+  "static_attributes": [],
+  "commands": [],
+  "internal_attributes": [
+    {
+      "plugin": "../test/examples/plugins/jsonPlugin"
+    }
+  ]
+}
