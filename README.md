@@ -64,6 +64,52 @@ The following code fragment shows the body of a device provisioning for a sigfox
 }
 ```
 
+### Provisioning with a custom plugin
+If the default mapping mechanism is not powerful enough to fit your needs, custom plugins can be developed for data parsing.
+Parse plugins are standard node.js modules, and will be required with a `require()` instruction, so there are two ways of
+providing the module:
+
+* Registering the module in the NPM Registry and installing it in the IoT Agent.
+* Copying the module file in the IoT Agent folder and referring to the file using a relative path.
+
+In both cases, the plugin must be configured in the device provisioning request, by using the `plugin` internal attribute.
+This attribute replace the mandatory `mapping` attribute. In case both exists, the `mapping` attribute takes precedence.
+
+The module may contain any node.js code, but it **must** export a function called `parse()` with the following signature:
+```
+function parse(data, callback);
+```
+This function will be invoked any time a new piece of data comes to the IoT Agent for a device configured with the plugin.
+The `data` parameter, in that case, will contain the measure payload in string format. The `callback()` must be invoked
+once the parsing process has finished with one of the following results:
+* If the parse was successfull, two parameters **must** be passed to the callback: a first `null` value, indicating there
+was no error; and a single object parameter, having one attribute for each of the values in the payload. Each one of this
+attributes will be mapped to an entity attribute in the Context Entity.
+* If there was any error parsing, a new error object should be created, and passed as the first parameter to the callback.
+This error object should contain, at least, a `name` parameter indicating the error name and a `code` parameter suggesting
+a code to return to the caller.
+
+The following example shows a provisioning of a device with a plugin. This example can be seen working in the tests section.
+```
+{
+  "name": "sigApp3",
+  "service" : "dumbMordor",
+  "service_path": "/deserts",
+  "entity_name": "sigApp3",
+  "entity_type": "SIGFOX",
+  "timezone": "America/Santiago",
+  "attributes": [],
+  "lazy": [],
+  "static_attributes": [],
+  "commands": [],
+  "internal_attributes": [
+    {
+      "plugin": "../test/examples/plugins/jsonPlugin"
+    }
+  ]
+}
+```
+
 ### Configuring the Sigfox backend to provide a callback
 For a detailed description of the creation device process in the Sigfox backend, please, refer to the Sigfox documentation. 
 

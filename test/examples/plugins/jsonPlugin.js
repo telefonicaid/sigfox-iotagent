@@ -20,24 +20,16 @@
  * For those usages not covered by the GNU Affero General Public License
  * please contact with::[daniel.moranjimenez at telefonica.com]
  */
-
 'use strict';
 
-module.exports = {
-    MandatoryFieldsNotFound: function() {
-        this.name = 'MANDATORY_FIELDS_NOT_FOUND';
-        this.message = 'Some of the mandatory fields for the request were not found';
-        this.code = 400;
-    },
-    DataMappingNotFound: function(type) {
-        this.name = 'DATA_MAPPING_NOT_FOUND';
-        this.message = 'No data mapping was found for type [' + type + ']';
-        this.code = 400;
-    },
-    ErrorLoadingPlugin: function(plugin) {
-        this.name = 'ERROR_LOADING_PLUGIN';
-        this.message = 'The plugin [' + plugin + '] could not be found or loaded';
-        this.code = 400;
-    }
+function parse(data, callback) {
+    try {
+        var result = JSON.parse(data);
 
-};
+        callback(null, result);
+    } catch (error) {
+        callback(error);
+    }
+}
+
+exports.parse = parse;
