@@ -1,17 +1,57 @@
 {
-  "name": "sigApp2",
-  "service" : "dumbMordor",
-  "service_path": "/deserts",
-  "entity_name": "sigApp2",
-  "entity_type": "SIGFOX",
-  "timezone": "America/Santiago",
-  "attributes": [],
-  "lazy": [],
-  "static_attributes": [],
-  "commands": [],
-  "internal_attributes": [
+  "devices": [
     {
-      "mapping": "theCounter::uint:32  theParam1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16"
+      "device_id": "sigApp2",
+      "protocol": "SIGFOX",
+      "entity_name": "sigApp2",
+      "entity_type": "SIGFOX",
+      "timezone": "America/Santiago",
+      "attributes": [
+        {
+          "name": "time",
+          "type": "String"
+        },
+        {
+          "name": "statin",
+          "type": "String"
+        },
+        {
+          "name": "lng",
+          "type": "String"
+        },
+        {
+          "name": "lat",
+          "type": "String"
+        },
+        {
+          "name": "theCounter",
+          "type": "Integer"
+        },
+        {
+          "name": "theParam1",
+          "type": "Integer"
+        },
+        {
+          "name": "param2",
+          "type": "Integer"
+        },
+        {
+          "name": "tempDegreesCelsius",
+          "type": "Integer"
+        },
+        {
+          "name": "voltage",
+          "type": "Integer"
+        }
+      ],
+      "lazy": [],
+      "static_attributes": [],
+      "commands": [],
+      "internal_attributes": [
+        {
+          "mapping": "theCounter::uint:32  theParam1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16"
+        }
+      ]
     }
   ]
 }

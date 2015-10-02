@@ -46,7 +46,7 @@ describe('Device and configuration provisioning', function() {
             async.series([
                 apply(mongoUtils.cleanDbs, config.contextBroker.host),
                 mappings.clean
-            ], function() {
+            ], function(error) {
                 done();
             });
         });
