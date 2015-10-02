@@ -1,17 +1,48 @@
 {
-  "name": "sigApp3",
-  "service" : "dumbMordor",
-  "service_path": "/deserts",
-  "entity_name": "sigApp3",
-  "entity_type": "SIGFOX",
-  "timezone": "America/Santiago",
-  "attributes": [],
-  "lazy": [],
-  "static_attributes": [],
-  "commands": [],
-  "internal_attributes": [
+  "devices": [
     {
-      "plugin": "../test/examples/plugins/jsonPlugin"
+      "device_id": "sigApp3",
+      "protocol": "SIGFOX",
+      "service" : "dumbMordor",
+      "service_path": "/deserts",
+      "entity_name": "sigApp3",
+      "entity_type": "SIGFOX",
+      "timezone": "America/Santiago",
+      "attributes": [
+        {
+          "name": "time",
+          "type": "String"
+        },
+        {
+          "name": "statin",
+          "type": "String"
+        },
+        {
+          "name": "lng",
+          "type": "String"
+        },
+        {
+          "name": "lat",
+          "type": "String"
+        },
+        {
+          "name": "campo1",
+          "type": "Integer"
+        },
+        {
+          "name": "campo2",
+          "type": "Integer"
+        }
+      ],
+      "lazy": [],
+      "static_attributes": [],
+      "commands": [],
+      "internal_attributes": [
+        {
+          "plugin": "../test/examples/plugins/jsonPlugin"
+        }
+      ]
     }
   ]
 }
+

@@ -43,7 +43,44 @@ var iotAgent = require('../../lib/iotagentCore'),
         type: 'SIGFOX',
         commands: [],
         lazy: [],
-        active: [],
+        active: [
+            {
+                'name': 'time',
+                'type': 'String'
+            },
+            {
+                'name': 'statin',
+                'type': 'String'
+            },
+            {
+                'name': 'lng',
+                'type': 'String'
+            },
+            {
+                'name': 'lat',
+                'type': 'String'
+            },
+            {
+                'name': 'counter',
+                'type': 'Integer'
+            },
+            {
+                'name': 'param1',
+                'type': 'Integer'
+            },
+            {
+                'name': 'param2',
+                'type': 'Integer'
+            },
+            {
+                'name': 'tempDegreesCelsius',
+                'type': 'Integer'
+            },
+            {
+                'name': 'voltage',
+                'type': 'Integer'
+            }
+        ],
         service: 'dumbMordor',
         subservice: '/deserts'
     };
