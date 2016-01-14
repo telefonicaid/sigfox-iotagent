@@ -131,7 +131,7 @@ describe('Context Broker communication', function() {
         it('should call the Context Broker with the appropriate attributes', function(done) {
             request(options, function(error, response, body) {
                 ngsiClient.query(
-                    'sigApp1:SIGFOX',
+                    'SIGFOX:sigApp1',
                     'SIGFOX',
                     [],
                     function(error, response, body) {
