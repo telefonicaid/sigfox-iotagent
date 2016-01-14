@@ -42,7 +42,7 @@ var iotAgent = require('../../lib/iotagentCore'),
 
 describe('Device and configuration provisioning', function() {
     beforeEach(function(done) {
-        iotAgent.start(config, function() {
+        iotAgent.start(config, function(error) {
             async.series([
                 apply(mongoUtils.cleanDbs, config.contextBroker.host),
                 mappings.clean
