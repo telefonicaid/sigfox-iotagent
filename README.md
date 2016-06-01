@@ -31,14 +31,14 @@ git clone https://github.com/telefonicaid/sigfox-iotagent.git
 
 ### Using Docker
 
-If you are using Docker, you can download the latest Sigfox IoTAgent module from Docker Hub, in order to try it. 
+If you are using Docker, you can download the latest Sigfox IoTAgent module from Docker Hub, in order to try it.
 Do not use this installation mode for production purposes.
 
-The Docker module has the prerequisite of having a Orion Context Broker that must be linked on start 
-for the module to work. There is currently just one simple configuration offered for the IOTA, with in-memory transient 
+The Docker module has the prerequisite of having a Orion Context Broker that must be linked on start
+for the module to work. There is currently just one simple configuration offered for the IOTA, with in-memory transient
 storage (in the future, more configurations will be available).
 
-If there is a docker container running with the Context Broker and name orion, the following command will start a 
+If there is a docker container running with the Context Broker and name orion, the following command will start a
 Thinking Things IoT Agent:
 ```
 docker run -t -i --link orion:orion -p 4041:4041 -p 17428:17428 fiware/sigfox-iotagent
@@ -52,9 +52,9 @@ The basic usage of this IoT Agent is the same as any other. In order to have the
 * Configure de Sigfox Backend to send a callback to the backend
 * Send data from the device
 
-This basic usage can have a wide range of variations. In the following sections each step will be described in detail. 
+This basic usage can have a wide range of variations. In the following sections each step will be described in detail.
 
-NOTE: this first version doesn't support Configuration provisioning, so each device must be provisioned individually. 
+NOTE: this first version doesn't support Configuration provisioning, so each device must be provisioned individually.
 
 ### Starting the agent
 In order to start the agent, execute the following command from the root of the project:
@@ -77,6 +77,29 @@ The following code fragment shows the body of a device provisioning for a sigfox
   "entity_type": "SIGFOX",
   "timezone": "America/Santiago",
   "attributes": [],
+  "lazy": [],
+  "static_attributes": [],
+  "commands": [],
+  "internal_attributes": [
+    {
+      "mapping": "theCounter::uint:32  theParam1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16"
+    }
+  ]
+}
+```
+
+### Provisioning the device in the Agent with specific attributes
+If you want to define the received parameters with the next structure Entity -> Attribute -> Metadata you should setup one or more attributes, all other parameters will be metadata of defined attributes
+
+```
+{
+  "name": "sigApp2",
+  "service" : "dumbMordor",
+  "service_path": "/deserts",
+  "entity_name": "sigApp2",
+  "entity_type": "SIGFOX",
+  "timezone": "America/Santiago",
+  "attributes": [{ "name": "parameter_name", "type": "anything" }],
   "lazy": [],
   "static_attributes": [],
   "commands": [],
@@ -135,7 +158,7 @@ The following example shows a provisioning of a device with a plugin. This examp
 ```
 
 ### Configuring the Sigfox backend to provide a callback
-For a detailed description of the creation device process in the Sigfox backend, please, refer to the Sigfox documentation. 
+For a detailed description of the creation device process in the Sigfox backend, please, refer to the Sigfox documentation.
 
 In order to create the callback URL, use the port and path values configured in the `config.js` file. The default port in the configuration is the **17428**. The default path for incoming callbacks is `/update`. This version of the Agent only supports 'GET' callbacks.
 
@@ -289,7 +312,7 @@ grunt contributors
 
 Initialize your environment with git hooks.
 ```bash
-grunt init-dev-env 
+grunt init-dev-env
 ```
 
 We strongly suggest you to make an automatic execution of this task for every developer simply by adding the following
@@ -300,7 +323,7 @@ lines to your `package.json`
      "postinstall": "grunt init-dev-env"
   }
 }
-``` 
+```
 
 
 ### Site generation
@@ -323,4 +346,3 @@ grunt site
 This command will only work after the developer has executed init-dev-env (that's the goal that will create the detached site).
 
 This command will also launch the coverage, doc and complexity task (see in the above sections).
-
