@@ -22,14 +22,14 @@
     "test": "grunt test"
   },
   "dependencies": {
-    "underscore": "*",
-    "command-node": "*",
-    "request": "*",
-    "async": "*",
-    "iotagent-node-lib": "https://github.com/telefonicaid/iotagent-node-lib/tarball/develop",
+    "underscore": "1.8.3",
+    "command-node": "0.1.1",
+    "request": "2.64.0",
+    "async": "1.4.2",
+    "iotagent-node-lib": "0.9.3",
     "express": "4.11.2",
     "body-parser": "1.11.0",
-    "logops": "*"
+    "logops": "0.5.0"
   },
   "devDependencies": {
     "should": "*",

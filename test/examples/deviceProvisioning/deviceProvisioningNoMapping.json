@@ -1,13 +1,18 @@
 {
-  "name": "sigApp2",
-  "service" : "dumbMordor",
-  "service_path": "/deserts",
-  "entity_name": "TheFirstLight",
-  "entity_type": "SIGFOX",
-  "timezone": "America/Santiago",
-  "attributes": [],
-  "lazy": [],
-  "static_attributes": [],
-  "commands": [],
-  "internal_attributes": []
+  "device": [
+    {
+      "device_id": "sigApp2",
+      "protocol": "SIGFOX",
+      "service" : "dumbMordor",
+      "service_path": "/deserts",
+      "entity_name": "TheFirstLight",
+      "entity_type": "SIGFOX",
+      "timezone": "America/Santiago",
+      "attributes": [],
+      "lazy": [],
+      "static_attributes": [],
+      "commands": [],
+      "internal_attributes": []
+    }
+  ]
 }
