@@ -43,7 +43,44 @@ var iotAgent = require('../../lib/iotagentCore'),
         type: 'SIGFOX',
         commands: [],
         lazy: [],
-        active: [],
+        active: [
+            {
+                'name': 'time',
+                'type': 'String'
+            },
+            {
+                'name': 'statin',
+                'type': 'String'
+            },
+            {
+                'name': 'lng',
+                'type': 'String'
+            },
+            {
+                'name': 'lat',
+                'type': 'String'
+            },
+            {
+                'name': 'counter',
+                'type': 'Integer'
+            },
+            {
+                'name': 'param1',
+                'type': 'Integer'
+            },
+            {
+                'name': 'param2',
+                'type': 'Integer'
+            },
+            {
+                'name': 'tempDegreesCelsius',
+                'type': 'Integer'
+            },
+            {
+                'name': 'voltage',
+                'type': 'Integer'
+            }
+        ],
         service: 'dumbMordor',
         subservice: '/deserts'
     };
@@ -68,7 +105,7 @@ describe('Context Broker communication', function() {
     afterEach(function(done) {
         iotAgent.stop(done);
     });
-    
+
     describe('When a new sigfox measure arrives to the IoT Agent', function() {
         var options = {
             url: 'http://localhost:17428/update',
@@ -94,7 +131,7 @@ describe('Context Broker communication', function() {
         it('should call the Context Broker with the appropriate attributes', function(done) {
             request(options, function(error, response, body) {
                 ngsiClient.query(
-                    'sigApp1:SIGFOX',
+                    'SIGFOX:sigApp1',
                     'SIGFOX',
                     [],
                     function(error, response, body) {
@@ -132,6 +169,25 @@ describe('Context Broker communication', function() {
     });
 
     describe('When a new piece of data arrives for a unexistent device', function() {
-        it('should raise a controlled error');
+        var options = {
+            url: 'http://localhost:17428/update',
+            method: 'GET',
+            qs: {
+                id: 'unexistentApp',
+                time: 1430909015,
+                statin: '0A5F',
+                lng: -4,
+                lat: 41,
+                data: '000000020000000000230c6f'
+            }
+        };
+
+        it('should raise a controlled error', function(done) {
+            request(options, function(error, response, body) {
+                should.not.exist(error);
+                response.statusCode.should.equal(404);
+                done();
+            });
+        });
     });
 });

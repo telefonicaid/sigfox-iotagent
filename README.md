@@ -1,6 +1,7 @@
 # sigfox-iotagent
 
 * [Overview](#overview)
+* [Installatin] (#installation)
 * [Usage](#usage)
 * [Data Format](#dataformat)
 * [Development Documentation](#development)
@@ -19,6 +20,29 @@ The Agent provides the following features:
 * A testing tool to simulate the date coming from the device.
 
 Most of this functionality is just a prototype to this date, so use this software carefully.
+
+## <a name="installation"/> Installation
+### Using Github
+In order to use the IoT Agent, you can just clone the Github repository and use the default configuration. You can use the
+following command:
+```
+git clone https://github.com/telefonicaid/sigfox-iotagent.git
+```
+
+### Using Docker
+
+If you are using Docker, you can download the latest Sigfox IoTAgent module from Docker Hub, in order to try it. 
+Do not use this installation mode for production purposes.
+
+The Docker module has the prerequisite of having a Orion Context Broker that must be linked on start 
+for the module to work. There is currently just one simple configuration offered for the IOTA, with in-memory transient 
+storage (in the future, more configurations will be available).
+
+If there is a docker container running with the Context Broker and name orion, the following command will start a 
+Thinking Things IoT Agent:
+```
+docker run -t -i --link orion:orion -p 4041:4041 -p 17428:17428 fiware/sigfox-iotagent
+```
 
 ## <a name="usage"/>  Usage
 ### Basic usage
@@ -59,6 +83,52 @@ The following code fragment shows the body of a device provisioning for a sigfox
   "internal_attributes": [
     {
       "mapping": "theCounter::uint:32  theParam1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16"
+    }
+  ]
+}
+```
+
+### Provisioning with a custom plugin
+If the default mapping mechanism is not powerful enough to fit your needs, custom plugins can be developed for data parsing.
+Parse plugins are standard node.js modules, and will be required with a `require()` instruction, so there are two ways of
+providing the module:
+
+* Registering the module in the NPM Registry and installing it in the IoT Agent.
+* Copying the module file in the IoT Agent folder and referring to the file using a relative path.
+
+In both cases, the plugin must be configured in the device provisioning request, by using the `plugin` internal attribute.
+This attribute replace the mandatory `mapping` attribute. In case both exists, the `mapping` attribute takes precedence.
+
+The module may contain any node.js code, but it **must** export a function called `parse()` with the following signature:
+```
+function parse(data, callback);
+```
+This function will be invoked any time a new piece of data comes to the IoT Agent for a device configured with the plugin.
+The `data` parameter, in that case, will contain the measure payload in string format. The `callback()` must be invoked
+once the parsing process has finished with one of the following results:
+* If the parse was successfull, two parameters **must** be passed to the callback: a first `null` value, indicating there
+was no error; and a single object parameter, having one attribute for each of the values in the payload. Each one of this
+attributes will be mapped to an entity attribute in the Context Entity.
+* If there was any error parsing, a new error object should be created, and passed as the first parameter to the callback.
+This error object should contain, at least, a `name` parameter indicating the error name and a `code` parameter suggesting
+a code to return to the caller.
+
+The following example shows a provisioning of a device with a plugin. This example can be seen working in the tests section.
+```
+{
+  "name": "sigApp3",
+  "service" : "dumbMordor",
+  "service_path": "/deserts",
+  "entity_name": "sigApp3",
+  "entity_type": "SIGFOX",
+  "timezone": "America/Santiago",
+  "attributes": [],
+  "lazy": [],
+  "static_attributes": [],
+  "commands": [],
+  "internal_attributes": [
+    {
+      "plugin": "../test/examples/plugins/jsonPlugin"
     }
   ]
 }
@@ -122,7 +192,7 @@ The following sections show the available options in detail.
 
 
 ### Testing
-[Mocha](http://visionmedia.github.io/mocha/) Test Runner + [Chai](http://chaijs.com/) Assertion Library + [Sinon](http://sinonjs.org/) Spies, stubs.
+[Mocha](http://mochajs.org/) Test Runner + [Chai](http://chaijs.com/) Assertion Library + [Sinon](http://sinonjs.org/) Spies, stubs.
 
 The test environment is preconfigured to run [BDD](http://chaijs.com/api/bdd/) testing style with
 `chai.expect` and `chai.should()` available globally while executing tests, as well as the [Sinon-Chai](http://chaijs.com/plugins/sinon-chai) plugin.

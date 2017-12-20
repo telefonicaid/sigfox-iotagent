@@ -24,7 +24,7 @@
 var config = {
     logLevel: 'DEBUG',
     contextBroker: {
-        host: '192.168.56.101',
+        host: 'orion',
         port: '1026'
     },
     server: {

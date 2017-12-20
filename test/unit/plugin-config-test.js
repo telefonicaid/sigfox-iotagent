@@ -27,8 +27,8 @@ var iotAgent = require('../../lib/iotagentCore'),
     mappings = require('../../lib/mappings'),
     request = require('request'),
     ngsiTestUtils = require('../tools/ngsiUtils'),
-    mongoUtils = require('../tools/mongoDBUtils'),
     utils = require('../tools/utils'),
+    mongoUtils = require('../tools/mongoDBUtils'),
     async = require('async'),
     apply = async.apply,
     config = require('../testConfig'),
@@ -40,13 +40,13 @@ var iotAgent = require('../../lib/iotagentCore'),
         '/deserts'
     );
 
-describe('Device and configuration provisioning', function() {
+describe('Plugin configuration test', function() {
     beforeEach(function(done) {
-        iotAgent.start(config, function(error) {
+        iotAgent.start(config, function() {
             async.series([
                 apply(mongoUtils.cleanDbs, config.contextBroker.host),
                 mappings.clean
-            ], function(error) {
+            ], function() {
                 done();
             });
         });
@@ -55,14 +55,12 @@ describe('Device and configuration provisioning', function() {
     afterEach(function(done) {
         iotAgent.stop(done);
     });
-    describe('When a new Device provisioning arrives to the IoT Agent without internal mapping', function() {
-        it('should fail with a 400 error');
-    });
-    describe('When a new Device provisioning arrives to the IoT Agent with a right mapping', function() {
+
+    describe('When an external plugin is configured for the mapping', function() {
         var provisioningOpts = {
                 url: 'http://localhost:' + config.server.port + '/iot/devices',
                 method: 'POST',
-                json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningRightMapping.json'),
+                json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningPluginMapping.json'),
                 headers: {
                     'fiware-service': 'dumbMordor',
                     'fiware-servicepath': '/deserts'
@@ -72,16 +70,16 @@ describe('Device and configuration provisioning', function() {
                 url: 'http://localhost:17428/update',
                 method: 'GET',
                 qs: {
-                    id: 'sigApp2',
+                    id: 'sigApp3',
                     time: 1430909015,
                     statin: '0A5F',
                     lng: -4,
                     lat: 41,
-                    data: '000000020000000000230c6f'
+                    data: '{"campo1": "valor1", "campo2":64}'
                 }
             };
 
-        it('should use the provided provisioning', function(done) {
+        it('should use the plugin to parse the device responses', function(done) {
             request(provisioningOpts, function(error, response, body) {
                 should.not.exist(error);
 
@@ -90,7 +88,7 @@ describe('Device and configuration provisioning', function() {
                     response.statusCode.should.equal(200);
 
                     ngsiClient.query(
-                        'sigApp2',
+                        'sigApp3',
                         'SIGFOX',
                         [],
                         function(error, response, body) {
@@ -102,19 +100,13 @@ describe('Device and configuration provisioning', function() {
 
                             attributes = body.contextResponses[0].contextElement.attributes;
 
-                            _.contains(_.pluck(attributes, 'name'), 'theCounter').should.equal(true);
-                            _.contains(_.pluck(attributes, 'name'), 'theParam1').should.equal(true);
+                            _.contains(_.pluck(attributes, 'name'), 'campo1').should.equal(true);
+                            _.contains(_.pluck(attributes, 'name'), 'campo2').should.equal(true);
 
                             done();
                         });
                 });
             });
         });
-    });
-    describe('When a new Sigfox configuration arrives to the IoT Agent without internal mapping', function() {
-        it('should fail with a 400 error');
-    });
-    describe('When a new Sigfox configuration arrives to the IoT Agent with a right mapping', function() {
-        it('should add the new mapping to the mappings module');
     });
 });

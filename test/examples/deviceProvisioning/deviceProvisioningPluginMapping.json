@@ -1,9 +1,11 @@
 {
   "devices": [
     {
-      "device_id": "sigApp2",
+      "device_id": "sigApp3",
       "protocol": "SIGFOX",
-      "entity_name": "sigApp2",
+      "service" : "dumbMordor",
+      "service_path": "/deserts",
+      "entity_name": "sigApp3",
       "entity_type": "SIGFOX",
       "timezone": "America/Santiago",
       "attributes": [
@@ -24,23 +26,11 @@
           "type": "String"
         },
         {
-          "name": "theCounter",
+          "name": "campo1",
           "type": "Integer"
         },
         {
-          "name": "theParam1",
-          "type": "Integer"
-        },
-        {
-          "name": "param2",
-          "type": "Integer"
-        },
-        {
-          "name": "tempDegreesCelsius",
-          "type": "Integer"
-        },
-        {
-          "name": "voltage",
+          "name": "campo2",
           "type": "Integer"
         }
       ],
@@ -49,9 +39,10 @@
       "commands": [],
       "internal_attributes": [
         {
-          "mapping": "theCounter::uint:32  theParam1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16"
+          "plugin": "../test/examples/plugins/jsonPlugin"
         }
       ]
     }
   ]
 }
+
