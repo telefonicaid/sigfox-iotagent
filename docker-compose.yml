@@ -1,0 +1,7 @@
+version: '2'
+services:
+  sigfox:
+    build: .
+    ports:
+      - "4041:4041"
+      - "17428:17428"
