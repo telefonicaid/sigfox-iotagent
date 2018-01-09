@@ -1,7 +1,7 @@
 # sigfox-iotagent
 
 * [Overview](#overview)
-* [Installatin] (#installation)
+* [Installation](#installation)
 * [Usage](#usage)
 * [Data Format](#dataformat)
 * [Development Documentation](#development)
