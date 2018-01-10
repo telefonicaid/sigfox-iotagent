@@ -34,8 +34,8 @@ var iotAgent = require('../../lib/iotagentCore'),
     config = require('../testConfig'),
     should = require('should'),
     ngsiClient = ngsiTestUtils.create(
-        config.contextBroker.host,
-        config.contextBroker.port,
+        config.iota.contextBroker.host,
+        config.iota.contextBroker.port,
         'dumbMordor',
         '/deserts'
     );
@@ -44,7 +44,7 @@ describe('Plugin configuration test', function() {
     beforeEach(function(done) {
         iotAgent.start(config, function() {
             async.series([
-                apply(mongoUtils.cleanDbs, config.contextBroker.host),
+                apply(mongoUtils.cleanDbs, config.iota.contextBroker.host),
                 mappings.clean
             ], function() {
                 done();
@@ -58,7 +58,7 @@ describe('Plugin configuration test', function() {
 
     describe('When an external plugin is configured for the mapping', function() {
         var provisioningOpts = {
-                url: 'http://localhost:' + config.server.port + '/iot/devices',
+                url: 'http://localhost:' + config.iota.server.port + '/iot/devices',
                 method: 'POST',
                 json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningPluginMapping.json'),
                 headers: {

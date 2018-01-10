@@ -34,8 +34,8 @@ var iotAgent = require('../../lib/iotagentCore'),
     config = require('../testConfig'),
     should = require('should'),
     ngsiClient = ngsiTestUtils.create(
-        config.contextBroker.host,
-        config.contextBroker.port,
+        config.iota.contextBroker.host,
+        config.iota.contextBroker.port,
         'dumbMordor',
         '/deserts'
     );
@@ -44,7 +44,7 @@ describe('Device and configuration provisioning', function() {
     beforeEach(function(done) {
         iotAgent.start(config, function(error) {
             async.series([
-                apply(mongoUtils.cleanDbs, config.contextBroker.host),
+                apply(mongoUtils.cleanDbs, config.iota.contextBroker.host),
                 mappings.clean
             ], function(error) {
                 done();
@@ -60,7 +60,7 @@ describe('Device and configuration provisioning', function() {
     });
     describe('When a new Device provisioning arrives to the IoT Agent with a right mapping', function() {
         var provisioningOpts = {
-                url: 'http://localhost:' + config.server.port + '/iot/devices',
+                url: 'http://localhost:' + config.iota.server.port + '/iot/devices',
                 method: 'POST',
                 json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningRightMapping.json'),
                 headers: {
