@@ -78,5 +78,5 @@ RUN yum update -y && \
   # Don't need old log files inside docker images
   rm -f /var/log/*log
 
-ENTRYPOINT bin/iotagent-sigfox config.js
+ENTRYPOINT bin/iotagent config.js
 
