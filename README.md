@@ -137,7 +137,7 @@ The following example shows a provisioning of a device with a plugin. This examp
 ### Configuring the Sigfox backend to provide a callback
 For a detailed description of the creation device process in the Sigfox backend, please, refer to the Sigfox documentation. 
 
-In order to create the callback URL, use the port and path values configured in the `config.js` file. The default port in the configuration is the **17428**. The default path for incoming callbacks is `/update`. This version of the Agent only supports 'GET' callbacks.
+In order to create the callback URL, use the port value configured in the `config.js` file (in particular `config.sigfox.port` parameter). The default port in the configuration is the **17428**. The default path for incoming callbacks is not configurable and is hardwired to `/update`. This version of the Agent only supports 'GET' callbacks.
 
 There is no default data mapping for the device's data. Use the same device mapping you introduced in the provisioning step.
 

@@ -41,7 +41,8 @@ function start() {
 
     iotAgent.start(config, function (error) {
         if (error) {
-            logger.error(context, 'Error starting Agent: [%s] Exiting process', error);
+            logger.error(context, 'Error starting Sigfox IoT Agent: [%s] Exiting process',
+                         JSON.stringify(error));
         } else {
             logger.info(context, 'Sigfox IoT Agent started');
         }

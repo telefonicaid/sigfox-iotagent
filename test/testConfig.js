@@ -21,20 +21,34 @@
  * please contact with::[daniel.moranjimenez at telefonica.com]
  */
 
-var config = {
+var config = {};
+
+
+config.sigfox = {
+    port: 17428
+};
+
+config.iota = {
     logLevel: 'FATAL',
     contextBroker: {
-        host: '192.168.56.101',
+        host: '192.168.1.101',
         port: '1026'
     },
     server: {
         port: 4041
     },
-    sigfox: {
-        port: 17428
+    deviceRegistry: {
+        type: 'memory'
     },
-    types: [],
-    providerUrl: 'http://192.168.56.1:4041'
+    types: {},
+    service: 'howtoService',
+    subservice: '/howto',
+    providerUrl: 'http://localhost:4041',
+    deviceRegistrationDuration: 'P1M',
+    defaultType: 'Thing',
+    defaultResource: '/iot/sigfox'
 };
+
+config.defaultKey = '1234';
 
 module.exports = config;
