@@ -33,8 +33,8 @@ var iotAgent = require('../../lib/iotagentCore'),
     config = require('../testConfig'),
     should = require('should'),
     ngsiClient = ngsiTestUtils.create(
-        config.contextBroker.host,
-        config.contextBroker.port,
+        config.iota.contextBroker.host,
+        config.iota.contextBroker.port,
         'dumbMordor',
         '/deserts'
     ),
@@ -90,7 +90,7 @@ describe('Context Broker communication', function() {
     beforeEach(function(done) {
         iotAgent.start(config, function() {
             async.series([
-                apply(mongoUtils.cleanDbs, config.contextBroker.host),
+                apply(mongoUtils.cleanDbs, config.iota.contextBroker.host),
                 mappings.clean,
                 apply(mappings.add,
                     'SIGFOX',
