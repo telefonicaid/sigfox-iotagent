@@ -64,7 +64,7 @@ RUN yum update -y && \
   # We use /bin/cp instead of cp to avoid any alias substitution, which in some cases has been problematic
   /bin/cp -f /usr/lib/locale/locale-archive /usr/lib/locale/locale-archive.tmpl && \
   build-locale-archive && \
-  find /opt/iotaul -name '.[^.]*' 2>/dev/null | xargs -r rm -rf && \
+  find /opt/iotasigofx -name '.[^.]*' 2>/dev/null | xargs -r rm -rf && \
   # Clean npm cache
   npm cache clean && \
   # Don't need unused files inside docker images
@@ -78,5 +78,5 @@ RUN yum update -y && \
   # Don't need old log files inside docker images
   rm -f /var/log/*log
 
-ENTRYPOINT bin/iotagent config.js
+ENTRYPOINT bin/iotagent-sigfox config.js
 
