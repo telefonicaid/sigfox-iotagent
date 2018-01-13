@@ -31,8 +31,8 @@ config.sigfox = {
 config.iota = {
     logLevel: 'FATAL',
     contextBroker: {
-        host: '192.168.1.101',
-        port: '1026'
+        host: 'localhost',
+        port: '10026'
     },
     server: {
         port: 4041
@@ -41,8 +41,8 @@ config.iota = {
         type: 'memory'
     },
     types: {},
-    service: 'howtoService',
-    subservice: '/howto',
+    service: 'dumbMordor',
+    subservice: '/deserts',
     providerUrl: 'http://localhost:4041',
     deviceRegistrationDuration: 'P1M',
     defaultType: 'Thing',

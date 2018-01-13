@@ -93,8 +93,8 @@ describe('Context Broker communication', function() {
                 apply(mongoUtils.cleanDbs, config.iota.contextBroker.host),
                 mappings.clean,
                 apply(mappings.add,
-                    'SIGFOX',
-                    'counter::uint:32  param1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16'),
+                   'SIGFOX',
+                   'counter::uint:32  param1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16'),
                 apply(iotAgentLib.register, sigfoxDevice)
             ], function() {
                 done();
@@ -130,8 +130,11 @@ describe('Context Broker communication', function() {
 
         it('should call the Context Broker with the appropriate attributes', function(done) {
             request(options, function(error, response, body) {
+                should.not.exist(error);
+                response.statusCode.should.equal(200);
+                done();
                 ngsiClient.query(
-                    'SIGFOX:sigApp1',
+                    'sigApp1',
                     'SIGFOX',
                     [],
                     function(error, response, body) {
