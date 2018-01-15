@@ -19,7 +19,7 @@ install:
 
 before_install:
  - docker pull telefonicaiot/fiware-orion
- - docker run -d -p 10026:1026 -l orion telefonicaiot/fiware-orion -dbhost mongodb
+ - docker run -d -p 10026:1026 -l orion telefonicaiot/fiware-orion -dbhost 127.0.0.1
  - npm install -g grunt-cli
 
 
