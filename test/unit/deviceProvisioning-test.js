@@ -56,7 +56,24 @@ describe('Device and configuration provisioning', function() {
         iotAgent.stop(done);
     });
     describe('When a new Device provisioning arrives to the IoT Agent without internal mapping', function() {
-        it('should fail with a 400 error');
+        var provisioningOpts = {
+                url: 'http://localhost:' + config.iota.server.port + '/iot/devices',
+                method: 'POST',
+                json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningNoMapping.json'),
+                headers: {
+                    'fiware-service': 'dumbMordor',
+                    'fiware-servicepath': '/deserts'
+                }
+        };
+
+        it('should fail with a 400 error', function(done) {
+            request(provisioningOpts, function(error, response, body) {
+                console.log('BODY: ' + body);
+                should.not.exist(error);
+                response.statusCode.should.equal(400);
+                done();
+            });
+        });
     });
     describe('When a new Device provisioning arrives to the IoT Agent with a right mapping', function() {
         var provisioningOpts = {

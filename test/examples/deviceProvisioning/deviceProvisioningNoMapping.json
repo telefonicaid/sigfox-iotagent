@@ -1,11 +1,11 @@
 {
-  "device": [
+  "devices": [
     {
-      "device_id": "sigApp2",
+      "device_id": "sigApp5",
       "protocol": "SIGFOX",
       "service" : "dumbMordor",
       "service_path": "/deserts",
-      "entity_name": "TheFirstLight",
+      "entity_name": "TheLastLight",
       "entity_type": "SIGFOX",
       "timezone": "America/Santiago",
       "attributes": [],
