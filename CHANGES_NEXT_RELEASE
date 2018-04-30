@@ -3,3 +3,4 @@
 - Update iotagent node library to allow use env variables
 - Add Travis conf
 - Check existence of mappings in internalAttributes for device provisioning [#22]
+- Remove mongodb dependence from packages.json (already in iota-node-lib)

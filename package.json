@@ -29,8 +29,7 @@
     "iotagent-node-lib": "git://github.com/telefonicaid/iotagent-node-lib.git#master",
     "express": "4.11.2",
     "body-parser": "1.15.0",
-    "logops": "1.0.0-alpha.7",
-    "mongodb": "2.2.19"
+    "logops": "1.0.0-alpha.7"
   },
   "devDependencies": {
     "should": "8.4.0",
@@ -53,8 +52,7 @@
     "proxyquire": "0.5.1",
     "grunt-mkdir": "~0.1.1",
     "grunt-contrib-clean": "~0.5.0",
-    "grunt-githooks": "~0.3.1",
-    "mongodb": "2.2.19"
+    "grunt-githooks": "~0.3.1"
   },
   "keywords": []
 }
