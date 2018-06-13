@@ -1,7 +1,7 @@
 {
   "name": "sigfox-iotagent",
   "description": "IoT Agent for the Sigfox protocol",
-  "version": "0.1.0",
+  "version": "1.0.0",
   "homepage": "https://github.com/dmoranj/sigfox-iotagent",
   "author": {
     "name": "Daniel Moran",
@@ -26,7 +26,7 @@
     "command-node": "0.1.1",
     "request": "^2.69.0",
     "async": "1.4.2",
-    "iotagent-node-lib": "git://github.com/telefonicaid/iotagent-node-lib.git#master",
+    "iotagent-node-lib": "2.6.x",
     "express": "4.11.2",
     "body-parser": "1.15.0",
     "logops": "1.0.0-alpha.7"
