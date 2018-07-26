@@ -27,7 +27,7 @@
     "request": "2.81.0",
     "async": "1.5.2",
     "iotagent-node-lib": "git://github.com/telefonicaid/iotagent-node-lib.git#master",
-    "express": "4.11.2",
+    "express": "~4.11.2",
     "body-parser": "1.15.0",
     "logops": "1.0.0-alpha.7"
   },
