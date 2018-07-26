@@ -24,10 +24,10 @@
   "dependencies": {
     "underscore": "1.8.3",
     "command-node": "0.1.1",
-    "request": "~2.69.0",
-    "async": "1.4.2",
+    "request": "2.81.0",
+    "async": "1.5.2",
     "iotagent-node-lib": "git://github.com/telefonicaid/iotagent-node-lib.git#master",
-    "express": "4.11.2",
+    "express": "~4.11.2",
     "body-parser": "1.15.0",
     "logops": "1.0.0-alpha.7"
   },
