@@ -1,7 +1,7 @@
 #!/bin/bash
 # Copyright 2016 Telefonica Investigacion y Desarrollo, S.A.U
 #
-# This file is part of the iotagent-ul.
+# This file is part of the iotagent-sigfox
 #
 # the iotagent-sigfox is free software: you can redistribute it and/or
 # modify it under the terms of the GNU Affero General Public License as
