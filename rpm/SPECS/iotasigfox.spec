@@ -191,11 +191,11 @@ fi
 
 %changelog
 
-Initial release (1.0.0)
-    Update Dockerfile to Centos7 and Node 4.8.4
-    Add plugin system (#2).
-    Update iotagent node library to allow use env variables
-    Add Travis conf
-    Check existence of mappings in internalAttributes for device provisioning (#22)
-    Remove mongodb dependence from packages.json (already in iota-node-lib)
+* Initial release (1.0.0)
+- Update Dockerfile to Centos7 and Node 4.8.4
+- Add plugin system (#2).
+- Update iotagent node library to allow use env variables
+- Add Travis conf
+- Check existence of mappings in internalAttributes for device provisioning (#22)
+-  Remove mongodb dependence from packages.json (already in iota-node-lib)
 
