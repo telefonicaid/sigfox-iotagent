@@ -190,12 +190,11 @@ fi
 %{_install_dir}
 
 %changelog
-
-* Initial release (1.0.0)
+* Wed Jun 13 2018 Alvaro Vega Garcia <<alvaro.vegagarcia@telefonica.com>> 1.0.0-1
 - Update Dockerfile to Centos7 and Node 4.8.4
 - Add plugin system (#2).
 - Update iotagent node library to allow use env variables
 - Add Travis conf
 - Check existence of mappings in internalAttributes for device provisioning (#22)
--  Remove mongodb dependence from packages.json (already in iota-node-lib)
+- Remove mongodb dependence from packages.json (already in iota-node-lib)
 
