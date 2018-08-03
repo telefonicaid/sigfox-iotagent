@@ -1,3 +1,3 @@
-Add rpm stuff (spec file) (#6)
+Add rpm stuff (spec file, service scripts) (#6)
 Using precise dependencies (~=) in packages.json
 Upgrade deps versions: request -> 2.81.0,  async -> 1.5.2,  express -> ~4.11.2
