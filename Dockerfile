@@ -29,7 +29,7 @@ WORKDIR /opt/iotasigfox
 RUN \
   apt-get update && \
   apt-get install -y git && \
-  npm install -g grunt-cli && \
+  npm install pm2@3.2.2 -g && \
   echo "INFO: npm install --production..." && \
   cd /opt/iotasigfox && npm install --production && \
   # Clean apt cache
@@ -37,5 +37,8 @@ RUN \
   apt-get remove -y git && \
   apt-get -y autoremove
 
-ENTRYPOINT bin/iotagent-sigfox config.js
+USER node
+ENV NODE_ENV=production
 
+ENTRYPOINT ["pm2-runtime", "bin/iotagent-sigfox"]
+CMD ["-- ", "config.js"]
