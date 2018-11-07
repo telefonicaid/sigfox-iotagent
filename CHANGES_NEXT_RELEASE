@@ -1,3 +1,4 @@
+Set Nodejs 8.12.0 as minimum version in packages.json
 Add: use nodejs 8 in Dockerfile
 Add: use PM2 in Dockerfile
 Add rpm stuff (spec file, service scripts) (#6)
