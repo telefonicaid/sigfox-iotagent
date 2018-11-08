@@ -34,7 +34,7 @@
     "iotagent-node-lib": "git://github.com/telefonicaid/iotagent-node-lib.git#master",
     "express": "~4.11.2",
     "body-parser": "1.15.0",
-    "logops": "1.0.0-alpha.7"
+    "logops": "2.1.0"
   },
   "devDependencies": {
     "jshint": "~2.9.6",
