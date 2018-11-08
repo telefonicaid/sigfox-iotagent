@@ -8,4 +8,6 @@ UPgrade dev deps versions: mocha -> 5.2.0, istanbul -> 0.4.5, nock -> 10.0.2
 Remove: old unused development dependencies
   * grunt and grunt related module
   * closure-linter-wrapper
-
+  * chai
+  * sinon
+  * sinon-chai
