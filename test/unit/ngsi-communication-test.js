@@ -25,19 +25,12 @@
 var iotAgent = require('../../lib/iotagentCore'),
     mappings = require('../../lib/mappings'),
     request = require('request'),
-    ngsiTestUtils = require('../tools/ngsiUtils'),
     iotAgentLib = require('iotagent-node-lib'),
     mongoUtils = require('../tools/mongoDBUtils'),
     async = require('async'),
     apply = async.apply,
     config = require('../testConfig'),
     should = require('should'),
-    ngsiClient = ngsiTestUtils.create(
-        config.iota.contextBroker.host,
-        config.iota.contextBroker.port,
-        'dumbMordor',
-        '/deserts'
-    ),
     sigfoxDevice = {
         id: 'sigApp1',
         type: 'SIGFOX',
