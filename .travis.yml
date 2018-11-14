@@ -17,8 +17,9 @@ install:
  - npm install
 
 before_install:
- - npm run lint
  - docker pull telefonicaiot/fiware-orion
  - docker run --name mongodb -d mongo:3.4
  - docker run --name orion -d --link mongodb:mongodb -p 10026:1026 telefonicaiot/fiware-orion -dbhost mongodb
 
+before_script:
+ - npm run lint
