@@ -190,6 +190,24 @@ fi
 %{_install_dir}
 
 %changelog
+* Wed Dec 19 2018 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.1.0-1
+- Set Nodejs 8.12.0 as minimum version in packages.json (effectively removing Nodev4 and Nodev6 as supported versions)
+- Add: npm scripts to execute tests, coverage, watch and clean
+- Add: rpm stuff (spec file, service scripts) (#6)
+- Add: use NodeJS 8 in Dockerfile
+- Add: use PM2 in Dockerfile
+- Upgrade: iotagent-node-lib dependence from 2.6.x to 2.8.1
+- Upgrade: request dependence from ^2.69.0 to 2.88.0
+- Upgrade: async dependence from 1.4.2 to 1.5.2
+- Upgrade: express dependence from 4.11.2 to 4.16.4
+- Upgrade: logops dependence from 1.0.0-alpha.7 to 2.1.0
+- Upgrade: body-parser dependence from 1.15.0 to 1.18.3
+- Upgrade: mocha development dependence from ~1.13.0 to 5.2.0
+- Upgrade: istanbul development dependence from ~0.1.34 to 0.4.5
+- Upgrade: nock development dependence from 7.0.2 to 10.0.2
+- Ensure precise dependencies (~=) are used in packages.json
+- Remove: old unused development dependencies (closure-linter-wrapper, chai, sinon, sinon-chai, grunt and grunt related module
+
 * Wed Jun 13 2018 Alvaro Vega Garcia <<alvaro.vegagarcia@telefonica.com>> 1.0.0-1
 - Update Dockerfile to Centos7 and Node 4.8.4
 - Add plugin system (#2).
