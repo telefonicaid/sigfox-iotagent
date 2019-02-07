@@ -1,196 +1,82 @@
-# sigfox-iotagent
+# FIWARE IoT Agent for Sigfox
 
-* [Overview](#overview)
-* [Installation](#installation)
-* [Usage](#usage)
-* [Data Format](#dataformat)
-* [Development Documentation](#development)
+[![FIWARE IoT Agents](https://nexus.lab.fiware.org/static/badges/chapters/iot-agents.svg)](https://www.fiware.org/developers/catalogue/)
+[![License: APGL](https://img.shields.io/github/license/telefonicaid/iotagent-json.svg)](https://opensource.org/licenses/AGPL-3.0)
+[![Docker badge](https://img.shields.io/docker/pulls/fiware/sigfox-iotagent.svg)](https://hub.docker.com/r/fiware/sigfox-iotagent/)
+[![Support badge](https://nexus.lab.fiware.org/repository/raw/public/badges/stackoverflow/iot-agents.svg)](https://stackoverflow.com/questions/tagged/fiware+iot)
+<br/> ![Status](https://nexus.lab.fiware.org/repository/raw/public/badges/statuses/incubating.svg)
 
-## <a name="overview"/> Overview
-This IoT Agent is designed to be a bridge between the [Sigfox](http://www.sigfox.com/en/) callbacks protocol and the OMA NGSI protocol used by the [Orion Context Broker](https://github.com/telefonicaid/fiware-orion) as well as by other components of the FIWARE ecosystem.
+An Internet of Things Agent for the [Sigfox](http://www.sigfox.com/en/) callbacks protocol and the
+[NGSI](https://swagger.lab.fiware.org/?url=https://raw.githubusercontent.com/Fiware/specifications/master/OpenAPI/ngsiv2/ngsiv2-openapi.json)
+interface of a context broker.
+
+It is based on the [IoT Agent Node.js Library](https://github.com/telefonicaid/iotagent-node-lib). Further general
+information about the FIWARE IoT Agents framework, its architecture and the common interaction model can be found in the
+library's GitHub repository.
+
+This project is part of [FIWARE](https://www.fiware.org/). For more information check the FIWARE Catalogue entry for the
+[IoT Agents](https://github.com/Fiware/catalogue/tree/master/iot-agents).
+
+| :whale: [Docker Hub](https://hub.docker.com/r/fiware/sigfox-iotagent) | :dart: [Roadmap](https://github.com/telefonicaid/sigfox-iotagent/blob/master/doc/roadmap.md) |
+| --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+
+
+## Contents
+
+-   [Background](#background)
+-   [Install](#install)
+-   [Usage](#usage)
+-   [API](#api)
+-   [Testing](#testing)
+-   [License](#license)
+
+## Background
+
+This IoT Agent is designed to be a bridge between the [Sigfox](http://www.sigfox.com/en/) callbacks protocol and the OMA
+NGSI protocol used by the [Orion Context Broker](https://github.com/telefonicaid/fiware-orion) as well as by other
+components of the FIWARE ecosystem.
 
 For each device, the Sigfox backend can provide a callback mechanism that can be used to send two kinds of information:
-* Attributes defined by the Sigfox backend itself (including id, timestamp, etc.).
-* A free data format, whose structure can be defined in the device type.
+
+-   Attributes defined by the Sigfox backend itself (including id, timestamp, etc.).
+-   A free data format, whose structure can be defined in the device type.
 
 The Agent provides the following features:
-* IoT Agent North Bound functionalities, as defined in the [IoT Agent Node.js library](https://github.com/telefonicaid/iotagent-node-lib).
-* A Sigfox endpoint listening for callbacks from the sigfox backend. Each piece of coming from the backend is considered as a sepparate active attribute (as defined in the IoT Agents specification).
-* A Sigfox data parser that can be used to convert from the data format as defined in the callbacks to a Javascript array.
-* A testing tool to simulate the date coming from the device.
+
+-   IoT Agent North Bound functionalities, as defined in the
+    [IoT Agent Node.js library](https://github.com/telefonicaid/iotagent-node-lib).
+-   A Sigfox endpoint listening for callbacks from the sigfox backend. Each piece of coming from the backend is
+    considered as a sepparate active attribute (as defined in the IoT Agents specification).
+-   A Sigfox data parser that can be used to convert from the data format as defined in the callbacks to a Javascript
+    array.
+-   A testing tool to simulate the date coming from the device.
 
 Most of this functionality is just a prototype to this date, so use this software carefully.
 
-## <a name="installation"/> Installation
-### Using Github
-In order to use the IoT Agent, you can just clone the Github repository and use the default configuration. You can use the
-following command:
-```
-git clone https://github.com/telefonicaid/sigfox-iotagent.git
-```
+As is the case in any IoT Agent, this one follows the interaction model defined in the
+[Node.js IoT Agent Library](https://github.com/telefonicaid/iotagent-node-lib), that is used for the implementation of
+the Northbound APIs. Information about the IoTAgent's architecture can be found on that global repository. This
+documentation will only address those features and characteristics that are particular to the Sigfox IoTAgent.
 
-### Using Docker
+## Install
 
-If you are using Docker, you can download the latest Sigfox IoTAgent module from Docker Hub, in order to try it. 
-Do not use this installation mode for production purposes.
+Information about how to install the Sigfox IoT Agent can be found at the corresponding section of the
+[Installation & Administration Guide](docs/installationguide.md).
 
-The Docker module has the prerequisite of having a Orion Context Broker that must be linked on start 
-for the module to work. There is currently just one simple configuration offered for the IOTA, with in-memory transient 
-storage (in the future, more configurations will be available).
+A `Dockerfile` is also available for your use - further information can be found [here](docker/README.md)
 
-If there is a docker container running with the Context Broker and name orion, the following command will start a 
-Thinking Things IoT Agent:
-```
-docker run -t -i --link orion:orion -p 4041:4041 -p 17428:17428 fiware/sigfox-iotagent
-```
+## Usage
 
-## <a name="usage"/>  Usage
-### Basic usage
-The basic usage of this IoT Agent is the same as any other. In order to have the Device working follow this steps:
-* Start the agent
-* Provision the device in the Agent using the [Device Provisioning API](https://github.com/telefonicaid/iotagent-node-lib#-device-provisioning-api)
-* Configure de Sigfox Backend to send a callback to the backend
-* Send data from the device
+Information about how to use the IoT Agent can be found in the [User & Programmers Manual](docs/usermanual.md).
 
-This basic usage can have a wide range of variations. In the following sections each step will be described in detail. 
+## API
 
-NOTE: this first version doesn't support Configuration provisioning, so each device must be provisioned individually. 
+Apiary reference for the Configuration API can be found
+[here](http://docs.telefonicaiotiotagents.apiary.io/#reference/configuration-api) More information about IoT Agents and
+their APIs can be found in the IoT Agent Library [documentation](https://iotagent-node-lib.rtfd.io/).
 
-### Starting the agent
-In order to start the agent, execute the following command from the root of the project:
-```
-bin/iotagent
-```
+## Testing
 
-### Provisioning the device in the Agent
-To provision the device, use the API provided in [Device Provisioning API](https://github.com/telefonicaid/iotagent-node-lib#-device-provisioning-api) with the following changes:
-* No attributes need to be defined in this version. All the Sigfox parameters and data fields will be mapped to their correspondent attributes in the NGSI Request. This behavior will change in the near future to adhere to the common IoT Agent provisioning style.
-* A special internal attribute called `mapping` **must** be provided, containing the structure of the `data` attribute of the device.
-
-The following code fragment shows the body of a device provisioning for a sigfox device. End to end examples of this provisioning can be found in the `/test` folder.
-```
-{
-  "name": "sigApp2",
-  "service" : "dumbMordor",
-  "service_path": "/deserts",
-  "entity_name": "sigApp2",
-  "entity_type": "SIGFOX",
-  "timezone": "America/Santiago",
-  "attributes": [],
-  "lazy": [],
-  "static_attributes": [],
-  "commands": [],
-  "internal_attributes": [
-    {
-      "mapping": "theCounter::uint:32  theParam1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16"
-    }
-  ]
-}
-```
-
-### Provisioning with a custom plugin
-If the default mapping mechanism is not powerful enough to fit your needs, custom plugins can be developed for data parsing.
-Parse plugins are standard node.js modules, and will be required with a `require()` instruction, so there are two ways of
-providing the module:
-
-* Registering the module in the NPM Registry and installing it in the IoT Agent.
-* Copying the module file in the IoT Agent folder and referring to the file using a relative path.
-
-In both cases, the plugin must be configured in the device provisioning request, by using the `plugin` internal attribute.
-This attribute replace the mandatory `mapping` attribute. In case both exists, the `mapping` attribute takes precedence.
-
-The module may contain any node.js code, but it **must** export a function called `parse()` with the following signature:
-```
-function parse(data, callback);
-```
-This function will be invoked any time a new piece of data comes to the IoT Agent for a device configured with the plugin.
-The `data` parameter, in that case, will contain the measure payload in string format. The `callback()` must be invoked
-once the parsing process has finished with one of the following results:
-* If the parse was successfull, two parameters **must** be passed to the callback: a first `null` value, indicating there
-was no error; and a single object parameter, having one attribute for each of the values in the payload. Each one of this
-attributes will be mapped to an entity attribute in the Context Entity.
-* If there was any error parsing, a new error object should be created, and passed as the first parameter to the callback.
-This error object should contain, at least, a `name` parameter indicating the error name and a `code` parameter suggesting
-a code to return to the caller.
-
-The following example shows a provisioning of a device with a plugin. This example can be seen working in the tests section.
-```
-{
-  "name": "sigApp3",
-  "service" : "dumbMordor",
-  "service_path": "/deserts",
-  "entity_name": "sigApp3",
-  "entity_type": "SIGFOX",
-  "timezone": "America/Santiago",
-  "attributes": [],
-  "lazy": [],
-  "static_attributes": [],
-  "commands": [],
-  "internal_attributes": [
-    {
-      "plugin": "../test/examples/plugins/jsonPlugin"
-    }
-  ]
-}
-```
-
-### Configuring the Sigfox backend to provide a callback
-For a detailed description of the creation device process in the Sigfox backend, please, refer to the Sigfox documentation. 
-
-In order to create the callback URL, use the port value configured in the `config.js` file (in particular `config.sigfox.port` parameter). The default port in the configuration is the **17428**. The default path for incoming callbacks is not configurable and is hardwired to `/update`. This version of the Agent only supports 'GET' callbacks.
-
-There is no default data mapping for the device's data. Use the same device mapping you introduced in the provisioning step.
-
-### Sending data from the device
-To aid in testing purposes, a test client is being developed to simulate device callbacks. In order to launch it, use the following command from the root folder:
-```
-bin/sigfox-test.js
-```
-This command launches a test shell with the following commands:
-```
-showParameters  
-
-	Show the current device parameters that will be sent along with the callback
-
-setParameters <name> <value>  
-
-	Set the value for the selected parameter
-
-sendMeasure <data>  
-
-	Send a measure to the defined endpoint, with the defined parameters and the data passed to the command
-```
-The test shell stores a map of the parameters that will be sent as query parameters of the callback. To show the paramaters, use `showParameters`. In order to change any of them, use the `testParameters` command. This parameters will be common for all the requests originating from the test tool. In order to send a measure use `sendMeasure`. Take special care with this command, as it doesn't check whether the format of the data is right or not; in the later case, an error will be risen in the data parsing in the IoT Agent, leading to unpredictable results. The expected `data` format is the one defined in the device provisioning.
-
-## <a name="dataformat"/>  Data format
-Here is an example of the currently supported data formats:
-```
-counter::uint:32  param1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16
-```
-The supported format has to adhere to the following rules:
-* The format is composed of **N** fields, sepparated by spaces.
-* Each field is composed of two parts, sepparated by the pattern `::`. The first part will be taken to be the name of the attribute, the second one the definition of the value type.
-* The definition of the value type is composed of two parts, sepparated by a colon `:`. The first part indicates the type of data (e.g.: integer, float, etc.). The one supported type currently is `uint` (unsigned integer). The second part indicates the size in bytes of the data.
-
-Given this rules and the format example given, the following piece of data, `000000020000000000230c6f` would have the following values (expressed in decimal base):
-* counter: 2
-* param1: 0
-* param2: 0
-* tempDegreesCelsius: 35
-* voltage: 3183
-
-## <a name="development"/>  Development documentation
-### Project build
-The project is managed using npm.
-
-For a list of available task, type
-```bash
-npm run
-```
-
-The following sections show the available options in detail.
-
-### Testing
 [Mocha](http://visionmedia.github.io/mocha/) Test Runner + [Should.js](https://shouldjs.github.io/) Assertion Library.
 
 The test environment is preconfigured to run BDD testing style.
@@ -199,52 +85,14 @@ Module mocking during testing can be done with [proxyquire](https://github.com/t
 
 To run tests, type
 
-```bash
+```console
 npm test
 ```
 
-### Coding guidelines
-jshint
+---
 
-Uses provided .jshintrc flag file.
-To check source code style, type
+## License
 
-```bash
-npm run lint
-```
+The IoT Agent for Sigfox is licensed under Affero General Public License (GPL) version 3.
 
-### Continuous testing
-
-Support for continuous testing by modifying a src file or a test.
-For continuous testing, type
-
-```bash
-npm run test:watch
-```
-
-If you want to continuously check also source code style, use instead:
-
-```bash
-npm run watch
-```
-
-### Code Coverage
-Istanbul
-
-Analizes the code coverage of your tests.
-
-To generate an HTML coverage report under `site/coverage/` and to print out a summary, type
-
-```bash
-# Use git-bash on Windows
-npm run test:coverage
-```
-
-### Clean
-
-Removes `node_modules` and `coverage` folders, and  `package-lock.json` file so that a fresh copy of the project is restored.
-
-```bash
-# Use git-bash on Windows
-npm run clean
-```
+© 2019 Telefonica Investigación y Desarrollo, S.A.U
