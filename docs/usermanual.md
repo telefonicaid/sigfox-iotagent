@@ -283,3 +283,10 @@ placement and breakup of long lines etc.) within the codebase.
 # Use git-bash on Windows
 npm run prettier
 ```
+
+To ensure consistent markdown formatting run the following:
+
+```bash
+# Use git-bash on Windows
+npm run prettier:text
+```
