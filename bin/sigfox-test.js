@@ -37,7 +37,7 @@ var clUtils = require('command-node'),
 
 function showParameters() {
     console.log('\nCurrent measure parameters:\n\n');
-    console.log('-------------------------------------------------------')
+    console.log('-------------------------------------------------------');
     console.log(JSON.stringify(parameters, null, 4));
     console.log('\n');
     clUtils.prompt();
@@ -52,7 +52,7 @@ function sendMeasure(commands) {
 
     dataOpts.qs.data = commands[0];
 
-    request(dataOpts, function (error, response, body) {
+    request(dataOpts, function(error, response, body) {
         if (error) {
             console.log('\nError sending data to the Sigfox IoT Agent: ' + error);
         } else {
@@ -70,23 +70,24 @@ function setParameters(commands) {
 }
 
 var commands = {
-    'showParameters': {
+    showParameters: {
         parameters: [],
-        description: '\tShow the current device parameters that will be sent along with the callback',
+        description:
+            '\tShow the current device parameters that will be sent along with the callback',
         handler: showParameters
     },
-    'setParameters': {
+    setParameters: {
         parameters: ['name', 'value'],
         description: '\tSet the value for the selected parameter',
         handler: setParameters
     },
-    'sendMeasure': {
+    sendMeasure: {
         parameters: ['data'],
-        description: '\tSend a measure to the defined endpoint, with the defined parameters and the data passed to ' +
+        description:
+            '\tSend a measure to the defined endpoint, with the defined parameters and the data passed to ' +
             'the command',
         handler: sendMeasure
     }
 };
 
 clUtils.initialize(commands, 'SIGFOX Test> ');
-

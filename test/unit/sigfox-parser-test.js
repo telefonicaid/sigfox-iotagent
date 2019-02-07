@@ -24,7 +24,8 @@
 
 var sigfoxParser = require('../../lib/sigfoxParser'),
     should = require('should'),
-    key = 'counter::uint:32  param1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16';
+    key =
+        'counter::uint:32  param1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16';
 
 describe('Parsing modules', function() {
     describe('A data payload "000000020000000000230c6f" is parsed with the given key', function() {

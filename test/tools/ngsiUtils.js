@@ -104,7 +104,16 @@ function queryEntity(host, port, service, subservice, id, type, attributes, call
  * @param {String} type             Type of the entity to query.
  * @param {Array} attributes        List of attributes to retrieve.
  */
-function discoverContextAvailability(host, port, service, subservice, id, type, attributes, callback) {
+function discoverContextAvailability(
+    host,
+    port,
+    service,
+    subservice,
+    id,
+    type,
+    attributes,
+    callback
+) {
     var options = {
         url: 'http://' + host + ':' + port + '/v1/registry/discoverContextAvailability ',
         method: 'POST',
