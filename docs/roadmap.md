@@ -1,6 +1,6 @@
 # Incubated IoT Agent for Sigfox Roadmap
 
-} This product is an Incubated FIWARE Generic Enabler. If you would like to learn about the overall Roadmap of FIWARE,
+This product is an Incubated FIWARE Generic Enabler. If you would like to learn about the overall Roadmap of FIWARE,
 please check section "Roadmap" on the FIWARE Catalogue.
 
 ## Introduction
