@@ -154,11 +154,11 @@ special care with this command, as it doesn't check whether the format of the da
 an error will be risen in the data parsing in the IoT Agent, leading to unpredictable results. The expected `data`
 format is the one defined in the device provisioning.
 
-## <a name="dataformat"/> Data format
+## Data format
 
 Here is an example of the currently supported data formats:
 
-```
+```text
 counter::uint:32  param1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16
 ```
 
@@ -180,7 +180,7 @@ following values (expressed in decimal base):
 -   tempDegreesCelsius: 35
 -   voltage: 3183
 
-## <a name="development"/> Development documentation
+## Development documentation
 
 ### Project build
 
