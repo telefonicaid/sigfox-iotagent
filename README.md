@@ -80,7 +80,7 @@ their APIs can be found in the IoT Agent Library [documentation](https://iotagen
 
 ## Testing
 
-[Mocha](http://visionmedia.github.io/mocha/) Test Runner + [Should.js](https://shouldjs.github.io/) Assertion Library.
+[Mocha](https://mochajs.org/) Test Runner + [Should.js](https://shouldjs.github.io/) Assertion Library.
 
 The test environment is preconfigured to run BDD testing style.
 

@@ -189,9 +189,8 @@
        "ignoreRedirects": true,
        "ignore": [
           "mailto:*",
-          "https://schema.org/*",
-          "http://schema.org/*",
-          "https://www.tourspain.es/en-us"
+          "https://github.com/telefonicaid/sigfox-iotagent/blob/master/doc/roadmap.md",
+          "https://coveralls.io/**"
       ]
     }
   }

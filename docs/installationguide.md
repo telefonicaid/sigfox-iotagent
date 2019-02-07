@@ -1,6 +1,6 @@
 ## Installation
 
-There are two ways of installing the Sigfox IoT Agent: cloning the Github repository, or using Docker.
+The Sigfox IoT Agent can be installed in two ways: cloning the GitHub repository, or using Docker.
 
 ### Using GitHub
 
