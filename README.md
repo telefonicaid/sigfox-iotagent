@@ -4,7 +4,10 @@
 [![License: APGL](https://img.shields.io/github/license/telefonicaid/iotagent-json.svg)](https://opensource.org/licenses/AGPL-3.0)
 [![Docker badge](https://img.shields.io/docker/pulls/fiware/sigfox-iotagent.svg)](https://hub.docker.com/r/fiware/sigfox-iotagent/)
 [![Support badge](https://nexus.lab.fiware.org/repository/raw/public/badges/stackoverflow/iot-agents.svg)](https://stackoverflow.com/questions/tagged/fiware+iot)
-<br/> ![Status](https://nexus.lab.fiware.org/repository/raw/public/badges/statuses/incubating.svg)
+<br/>
+[![Build badge](https://img.shields.io/travis/telefonicaid/sigfox-iotagent.svg)](https://travis-ci.org/telefonicaid/sigfox-iotagent/)
+[![Coverage Status](https://coveralls.io/repos/github/telefonicaid/sigfox-iotagent/badge.svg?branch=master)](https://coveralls.io/github/telefonicaid/sigfox-iotagent?branch=master)
+![Status](https://nexus.lab.fiware.org/repository/raw/public/badges/statuses/incubating.svg)
 
 An Internet of Things Agent for the [Sigfox](http://www.sigfox.com/en/) callbacks protocol and the
 [NGSI](https://swagger.lab.fiware.org/?url=https://raw.githubusercontent.com/Fiware/specifications/master/OpenAPI/ngsiv2/ngsiv2-openapi.json)

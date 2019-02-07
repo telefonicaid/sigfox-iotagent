@@ -1,17 +1,20 @@
-site_name: IoT Agent for Sigfox 
+site_name: IoT Agent for Sigfox
 site_url: https://fiware-iotagent-sigfox.readthedocs.org
 repo_url: https://github.com/telefonicaid/sigfox-iotagent.git
 site_description: IoT Agent for SigFox Documentation
 docs_dir: docs
 site_dir: html
-markdown_extensions: [toc,fenced_code]
+markdown_extensions: [toc, fenced_code]
 use_directory_urls: false
 theme: readthedocs
-extra_css: ["https://fiware.org/style/fiware_readthedocs.css", "https://fiware.org/style/fiware_readthedocs_iot.css"]
+extra_css:
+  [
+    "https://fiware.org/style/fiware_readthedocs.css",
+    "https://fiware.org/style/fiware_readthedocs_iot.css",
+  ]
 pages:
-  - Home: 'index.md'
-  - 'User & Programmers Manual':
-    - 'API Walkthrough & Development intro': 'usermanual.md'
-  - 'Installation & Administration Manual': 
-    - 'Installation Guide': 'installationguide.md'
-    
+  - Home: "index.md"
+  - "User & Programmers Manual":
+      - "API Walkthrough & Development intro": "usermanual.md"
+  - "Installation & Administration Manual":
+      - "Installation Guide": "installationguide.md"
