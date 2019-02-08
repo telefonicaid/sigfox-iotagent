@@ -68,7 +68,7 @@ RUN if [ "${DOWNLOAD}" = "latest" ] ; \
 	wget --no-check-certificate -O source.zip https://github.com/"${GITHUB_ACCOUNT}"/"${GITHUB_REPOSITORY}"/archive/"${RELEASE}".zip && \
 	unzip source.zip && \
 	rm source.zip && \
-	mv "${GITHUB_REPOSITORY}-${RELEASE}" /opt/iotaul && \
+	mv "${GITHUB_REPOSITORY}-${RELEASE}" /opt/iotasigfox && \
 	# Remove unzip and clean apt cache
 	apt-get clean && \
 	apt-get remove -y unzip && \
