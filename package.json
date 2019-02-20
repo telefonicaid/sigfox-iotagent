@@ -1,18 +1,19 @@
 {
   "name": "sigfox-iotagent",
   "description": "IoT Agent for the Sigfox protocol",
+  "license": "AGPL-3.0-only",
   "version": "1.1.0-next",
-  "homepage": "https://github.com/dmoranj/sigfox-iotagent",
+  "homepage": "https://github.com/telefonicaid/sigfox-iotagent",
   "author": {
     "name": "Daniel Moran",
     "email": "dmj@tid.es"
   },
   "repository": {
     "type": "git",
-    "url": "git@github.com:dmoranj/sigfox-iotagent.git"
+    "url": "git@github.com:telefonicaid/sigfox-iotagent.git"
   },
   "bugs": {
-    "url": "https://github.com/dmoranj/sigfox-iotagent/issues"
+    "url": "https://github.com/telefonicaid/sigfox-iotagent/issues"
   },
   "main": "lib/sigfox-iotagent",
   "engines": {
@@ -20,10 +21,15 @@
   },
   "scripts": {
     "clean": "rm -rf package-lock.json && rm -rf node_modules && rm -rf coverage",
-    "test": "mocha --recursive 'test/**/*.js' --reporter spec --timeout 3000 --ui bdd --exit",
-    "test:watch": "npm run test -- -w ./lib",
     "lint": "jshint lib/ --config .jshintrc && jshint test/ --config test/.jshintrc",
+    "lint:md": "remark 'README.md' docs",
+    "lint:text": "textlint 'README.md' 'docs/*.md' 'docs/**/*.md'",
+    "prettier": "prettier --config .prettierrc.json --write ./**/**/*.js **/*.js *.js",
+    "prettier:text": "prettier 'README.md' 'docs/*.md' 'docs/**/*.md' --no-config --tab-width 4 --print-width 120 --write --prose-wrap always",
+    "test": "mocha --recursive 'test/**/*.js' --reporter spec --timeout 3000 --ui bdd --exit",
     "test:coverage": "istanbul cover _mocha -- --recursive 'test/**/*.js' --reporter spec --exit",
+    "test:coveralls": "npm run test:coverage && cat ./coverage/lcov.info | coveralls && rm -rf ./coverage",
+    "test:watch": "npm run test -- -w ./lib",
     "watch": "watch 'npm test && npm run lint' ./lib ./test"
   },
   "dependencies": {
@@ -37,14 +43,44 @@
     "logops": "2.1.0"
   },
   "devDependencies": {
+    "coveralls": "~3.0.2",
+    "husky": "~1.1.0",
     "jshint": "~2.9.6",
     "should": "8.4.0",
     "nock": "10.0.2",
+    "lint-staged": "~7.3.0",
     "mocha": "5.2.0",
     "istanbul": "0.4.5",
     "proxyquire": "0.5.1",
+    "prettier": "~1.14.2",
+    "remark-cli": "~6.0.1",
+    "remark-preset-lint-recommended": "~3.0.2",
     "mongodb": "2.2.35",
+    "textlint": "~11.0.1",
+    "textlint-rule-common-misspellings": "~1.0.1",
+    "textlint-rule-no-dead-link": "~4.4.1",
+    "textlint-rule-terminology": "~1.1.30",
+    "textlint-rule-write-good": "~1.6.2",
     "watch": "~1.0.2"
   },
-  "keywords": []
+  "keywords": [],
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged"
+    }
+  },
+  "lint-staged": {
+    "*.js": [
+      "prettier --config .prettierrc.json --write",
+      "git add"
+    ],
+    "*.md": [
+      "prettier --no-config --tab-width 4 --print-width 120 --write --prose-wrap always",
+      "git add"
+    ],
+    "*.yml": [
+      "prettier --no-config --write",
+      "git add"
+    ]
+  }
 }

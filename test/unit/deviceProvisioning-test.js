@@ -43,12 +43,12 @@ var iotAgent = require('../../lib/iotagentCore'),
 describe('Device and configuration provisioning', function() {
     beforeEach(function(done) {
         iotAgent.start(config, function(error) {
-            async.series([
-                apply(mongoUtils.cleanDbs, config.iota.contextBroker.host),
-                mappings.clean
-            ], function(error) {
-                done();
-            });
+            async.series(
+                [apply(mongoUtils.cleanDbs, config.iota.contextBroker.host), mappings.clean],
+                function(error) {
+                    done();
+                }
+            );
         });
     });
 
@@ -57,13 +57,15 @@ describe('Device and configuration provisioning', function() {
     });
     describe('When a new Device provisioning arrives to the IoT Agent without internal mapping', function() {
         var provisioningOpts = {
-                url: 'http://localhost:' + config.iota.server.port + '/iot/devices',
-                method: 'POST',
-                json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningNoMapping.json'),
-                headers: {
-                    'fiware-service': 'dumbMordor',
-                    'fiware-servicepath': '/deserts'
-                }
+            url: 'http://localhost:' + config.iota.server.port + '/iot/devices',
+            method: 'POST',
+            json: utils.readExampleFile(
+                './test/examples/deviceProvisioning/deviceProvisioningNoMapping.json'
+            ),
+            headers: {
+                'fiware-service': 'dumbMordor',
+                'fiware-servicepath': '/deserts'
+            }
         };
 
         it('should fail with a 400 error', function(done) {
@@ -79,7 +81,9 @@ describe('Device and configuration provisioning', function() {
         var provisioningOpts = {
                 url: 'http://localhost:' + config.iota.server.port + '/iot/devices',
                 method: 'POST',
-                json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningRightMapping.json'),
+                json: utils.readExampleFile(
+                    './test/examples/deviceProvisioning/deviceProvisioningRightMapping.json'
+                ),
                 headers: {
                     'fiware-service': 'dumbMordor',
                     'fiware-servicepath': '/deserts'
@@ -106,24 +110,20 @@ describe('Device and configuration provisioning', function() {
                     should.not.exist(error);
                     response.statusCode.should.equal(200);
 
-                    ngsiClient.query(
-                        'sigApp2',
-                        'SIGFOX',
-                        [],
-                        function(error, response, body) {
-                            var attributes;
+                    ngsiClient.query('sigApp2', 'SIGFOX', [], function(error, response, body) {
+                        var attributes;
 
-                            should.not.exist(error);
-                            should.exist(body);
-                            should.not.exist(body.errorCode);
+                        should.not.exist(error);
+                        should.exist(body);
+                        should.not.exist(body.errorCode);
 
-                            attributes = body.contextResponses[0].contextElement.attributes;
+                        attributes = body.contextResponses[0].contextElement.attributes;
 
-                            _.contains(_.pluck(attributes, 'name'), 'theCounter').should.equal(true);
-                            _.contains(_.pluck(attributes, 'name'), 'theParam1').should.equal(true);
+                        _.contains(_.pluck(attributes, 'name'), 'theCounter').should.equal(true);
+                        _.contains(_.pluck(attributes, 'name'), 'theParam1').should.equal(true);
 
-                            done();
-                        });
+                        done();
+                    });
                 });
             });
         });

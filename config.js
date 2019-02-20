@@ -33,7 +33,6 @@ config.sigfox = {
     port: 17428
 };
 
-
 config.iota = {
     /**
      * Configures the log level. Appropriate values are: FATAL, ERROR, INFO, WARN and DEBUG.

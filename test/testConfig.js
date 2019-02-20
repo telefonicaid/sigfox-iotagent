@@ -23,7 +23,6 @@
 
 var config = {};
 
-
 config.sigfox = {
     port: 17428
 };
