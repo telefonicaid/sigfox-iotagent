@@ -89,7 +89,7 @@ environment variables such as those shown below:
 -   `IOTA_MONGO_HOST` - The hostname of MongoDB - used for holding device and service information
 -   `IOTA_MONGO_PORT` - The port that MongoDB is listening on
 -   `IOTA_MONGO_DB` - The name of the database used in MongoDB
--   `IOTA_HTTP_PORT` - The port where the IoT Agent listens for IoT device traffic over HTTP
+-   `IOTA_SIGFOX_PORT` - The port where the IoT Agent listens for IoT device traffic
 -   `IOTA_PROVIDER_URL` - URL passed to the Context Broker when commands are registered, used as a forwarding URL
     location when the Context Broker issues a command to a device
 
