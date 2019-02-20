@@ -4,7 +4,7 @@
 [![License: APGL](https://img.shields.io/github/license/telefonicaid/sigfox-iotagent.svg)](https://opensource.org/licenses/AGPL-3.0)
 [![Docker badge](https://img.shields.io/docker/pulls/fiware/sigfox-iotagent.svg)](https://hub.docker.com/r/fiware/sigfox-iotagent/)
 [![Support badge](https://nexus.lab.fiware.org/repository/raw/public/badges/stackoverflow/iot-agents.svg)](https://stackoverflow.com/questions/tagged/fiware+iot)
-<br/>
+<br/> [![Documentation badge](https://img.shields.io/readthedocs/iotagent-sigfox.svg)](https://iotagent-sigfox.rtfd.io)
 [![Build badge](https://img.shields.io/travis/telefonicaid/sigfox-iotagent.svg)](https://travis-ci.org/telefonicaid/sigfox-iotagent/)
 [![Coverage Status](https://coveralls.io/repos/github/telefonicaid/sigfox-iotagent/badge.svg?branch=master)](https://coveralls.io/github/telefonicaid/sigfox-iotagent?branch=master)
 ![Status](https://nexus.lab.fiware.org/repository/raw/public/badges/statuses/incubating.svg)
@@ -20,8 +20,8 @@ library's GitHub repository.
 This project is part of [FIWARE](https://www.fiware.org/). For more information check the FIWARE Catalogue entry for the
 [IoT Agents](https://github.com/Fiware/catalogue/tree/master/iot-agents).
 
-| :whale: [Docker Hub](https://hub.docker.com/r/fiware/sigfox-iotagent) | :dart: [Roadmap](https://github.com/telefonicaid/sigfox-iotagent/blob/master/doc/roadmap.md) |
-| --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| :books: [Documentation](https://iotagent-sigfox.rtfd.io) | :whale: [Docker Hub](https://hub.docker.com/r/fiware/sigfox-iotagent) | :dart: [Roadmap](https://github.com/telefonicaid/sigfox-iotagent/blob/master/doc/roadmap.md) |
+| -------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 
 
 ## Contents
@@ -107,8 +107,8 @@ related with the fact that different people assign different interpretations on 
 used in these licenses. Due to this, some people believe that there is a risk in just _using_ software under GPL or AGPL
 licenses (even without _modifying_ it).
 
-For the avoidance of doubt, the owners of this software licensed under an AGPL 3.0 license  
-wish to make a clarifying public statement as follows:
+For the avoidance of doubt, the owners of this software licensed under an AGPL 3.0 license wish to make a clarifying
+public statement as follows:
 
 > Please note that software derived as a result of modifying the source code of this software in order to fix a bug or
 > incorporate enhancements is considered a derivative work of the product. Software that merely uses or aggregates (i.e.
