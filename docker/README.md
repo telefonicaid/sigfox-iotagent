@@ -39,10 +39,10 @@ services:
             - mongodb
         expose:
             - "4041"
-            - "7896"
+            - "17428"
         ports:
             - "4041:4041"
-            - "7896:7896"
+            - "17428:17428"
         environment:
             - "IOTA_CB_HOST=orion"
             - "IOTA_CB_PORT=1026"
@@ -50,8 +50,8 @@ services:
             - "IOTA_REGISTRY_TYPE=mongodb"
             - "IOTA_MONGO_HOST=mongo-db"
             - "IOTA_MONGO_PORT=27017"
-            - "IOTA_MONGO_DB=iotagent-json"
-            - "IOTA_HTTP_PORT=7896"
+            - "IOTA_MONGO_DB=iotasigfox"
+            - "IOTA_SIGFOX_PORT=17428"
             - "IOTA_PROVIDER_URL=http://iot-agent:4041"
 
     mongodb:
@@ -100,7 +100,7 @@ section of the IoT Agent Library
 [Installation Guide](https://iotagent-node-lib.readthedocs.io/en/latest/installationguide/index.html#configuration).
 
 Further settings for IoT Agent for Sigfox itself - can be found in the IoT Agent for Sigfox
-[Documentation](https://github.com/telefonicaid/iotagent-json/tree/master/docs).
+[Documentation](https://github.com/telefonicaid/sigfox-iotagent/tree/master/docs).
 
 ## How to build your own image
 

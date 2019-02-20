@@ -183,7 +183,8 @@
       "passive": false,
       "tooWordy": false,
       "weasel": false,
-      "so": false
+      "so": false,
+      "thereIs" :false
     },
     "no-dead-link": {
        "ignoreRedirects": true,
