@@ -90,5 +90,8 @@ RUN \
 USER node
 ENV NODE_ENV=production
 
+# Expose Ports - Default to 4041 for NORTH PORT, 17428 for SIGFOX PORT
+EXPOSE ${IOTA_NORTH_PORT:-4041} ${IOTA_SIGFOX_PORT:-17428}
+
 ENTRYPOINT ["pm2-runtime", "bin/iotagent-sigfox"]
 CMD ["-- ", "config.js"]
