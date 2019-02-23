@@ -43,12 +43,9 @@ var iotAgent = require('../../lib/iotagentCore'),
 describe('Plugin configuration test', function() {
     beforeEach(function(done) {
         iotAgent.start(config, function() {
-            async.series(
-                [apply(mongoUtils.cleanDbs, config.iota.contextBroker.host), mappings.clean],
-                function() {
-                    done();
-                }
-            );
+            async.series([apply(mongoUtils.cleanDbs, config.iota.contextBroker.host), mappings.clean], function() {
+                done();
+            });
         });
     });
 
@@ -60,9 +57,7 @@ describe('Plugin configuration test', function() {
         var provisioningOpts = {
                 url: 'http://localhost:' + config.iota.server.port + '/iot/devices',
                 method: 'POST',
-                json: utils.readExampleFile(
-                    './test/examples/deviceProvisioning/deviceProvisioningPluginMapping.json'
-                ),
+                json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningPluginMapping.json'),
                 headers: {
                     'fiware-service': 'dumbMordor',
                     'fiware-servicepath': '/deserts'

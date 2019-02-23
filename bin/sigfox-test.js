@@ -72,8 +72,7 @@ function setParameters(commands) {
 var commands = {
     showParameters: {
         parameters: [],
-        description:
-            '\tShow the current device parameters that will be sent along with the callback',
+        description: '\tShow the current device parameters that will be sent along with the callback',
         handler: showParameters
     },
     setParameters: {

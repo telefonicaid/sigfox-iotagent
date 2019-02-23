@@ -43,12 +43,9 @@ var iotAgent = require('../../lib/iotagentCore'),
 describe('Device and configuration provisioning', function() {
     beforeEach(function(done) {
         iotAgent.start(config, function(error) {
-            async.series(
-                [apply(mongoUtils.cleanDbs, config.iota.contextBroker.host), mappings.clean],
-                function(error) {
-                    done();
-                }
-            );
+            async.series([apply(mongoUtils.cleanDbs, config.iota.contextBroker.host), mappings.clean], function(error) {
+                done();
+            });
         });
     });
 
@@ -59,9 +56,7 @@ describe('Device and configuration provisioning', function() {
         var provisioningOpts = {
             url: 'http://localhost:' + config.iota.server.port + '/iot/devices',
             method: 'POST',
-            json: utils.readExampleFile(
-                './test/examples/deviceProvisioning/deviceProvisioningNoMapping.json'
-            ),
+            json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningNoMapping.json'),
             headers: {
                 'fiware-service': 'dumbMordor',
                 'fiware-servicepath': '/deserts'
@@ -81,9 +76,7 @@ describe('Device and configuration provisioning', function() {
         var provisioningOpts = {
                 url: 'http://localhost:' + config.iota.server.port + '/iot/devices',
                 method: 'POST',
-                json: utils.readExampleFile(
-                    './test/examples/deviceProvisioning/deviceProvisioningRightMapping.json'
-                ),
+                json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningRightMapping.json'),
                 headers: {
                     'fiware-service': 'dumbMordor',
                     'fiware-servicepath': '/deserts'
