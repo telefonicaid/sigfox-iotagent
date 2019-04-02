@@ -102,7 +102,7 @@ section of the IoT Agent Library
 Further settings for IoT Agent for Sigfox itself - can be found in the IoT Agent for Sigfox
 [Documentation](https://github.com/telefonicaid/sigfox-iotagent/tree/master/docs).
 
-## How to build your own image
+## How to build an image
 
 The [Dockerfile](https://github.com/telefonicaid/sigfox-iotagent/blob/master/docker/Dockerfile) associated with this
 image can be used to build an image in several ways:
