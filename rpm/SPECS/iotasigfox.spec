@@ -190,6 +190,10 @@ fi
 %{_install_dir}
 
 %changelog
+* Wed May 22 2019 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.2.0-1
+- Upgrade NodeJS version from 8.15.0 to 8.16.0 in Dockerfile due to security issues
+- Upgrade iotagent-node-lib dependency from 2.8.1 to 2.9.0
+
 * Wed Dec 19 2018 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.1.0-1
 - Set Nodejs 8.12.0 as minimum version in packages.json (effectively removing Nodev4 and Nodev6 as supported versions)
 - Add: npm scripts to execute tests, coverage, watch and clean
