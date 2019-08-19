@@ -161,7 +161,7 @@ docker run --name iotagent -e PM2_ENABLED=true -d fiware/sigfox-iotagent
 
 Use of pm2 is **disabled** by default. It is unnecessary and counterproductive to add an additional process manager if
 your dockerized environment is already configured to restart Node.js processes whenever they exit (e.g. when using
-Kubenetes)
+[Kubernetes](https://kubernetes.io/))
 
 ### Docker Secrets
 
