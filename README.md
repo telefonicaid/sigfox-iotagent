@@ -75,7 +75,7 @@ Information about how to use the IoT Agent can be found in the [User & Programme
 ## API
 
 Apiary reference for the Configuration API can be found
-[here](http://docs.telefonicaiotiotagents.apiary.io/#reference/configuration-api) More information about IoT Agents and
+[here](https://telefonicaiotiotagents.docs.apiary.io/#reference/configuration-api) More information about IoT Agents and
 their APIs can be found in the IoT Agent Library [documentation](https://iotagent-node-lib.rtfd.io/).
 
 ## Testing

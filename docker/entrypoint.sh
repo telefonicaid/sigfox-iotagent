@@ -65,4 +65,12 @@ else
     fi
 fi
 
-pm2-runtime /opt/iotasigfox/bin/iotagent-sigfox
+if [[  -z "$PM2_ENABLED" ]]; then
+    echo "INFO: IoT Agent running standalone"
+    node /opt/iotasigfox/bin/iotagent-sigfox
+else
+    echo "***********************************************"
+    echo "INFO: IoT Agent encapsulated by pm2-runtime see https://pm2.io/doc/en/runtime/integration/docker/"
+    echo "***********************************************"
+    pm2-runtime /opt/iotasigfox/bin/iotagent-sigfox
+fi
