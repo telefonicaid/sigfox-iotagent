@@ -191,8 +191,7 @@
        "ignore": [
           "mailto:*",
           "https://github.com/telefonicaid/sigfox-iotagent/blob/master/doc/roadmap.md",
-          "https://coveralls.io/**",
-          "https://*.rtfd.io"
+          "https://coveralls.io/**"
       ]
     }
   }
