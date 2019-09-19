@@ -48,7 +48,7 @@ services:
             - "IOTA_CB_PORT=1026"
             - "IOTA_NORTH_PORT=4041"
             - "IOTA_REGISTRY_TYPE=mongodb"
-            - "IOTA_MONGO_HOST=mongo-db"
+            - "IOTA_MONGO_HOST=mongodb"
             - "IOTA_MONGO_PORT=27017"
             - "IOTA_MONGO_DB=iotasigfox"
             - "IOTA_SIGFOX_PORT=17428"
@@ -56,7 +56,7 @@ services:
 
     mongodb:
         image: mongo:3.6
-        hostname: mongo-db
+        hostname: mongodb
         container_name: db-mongo
         ports:
             - "27017:27017"
