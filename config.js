@@ -135,34 +135,35 @@ config.iota = {
 
     /**
      * Configuration for the IoT Manager. If the IoT Agent is part of a configuration composed of multiple IoTAgents
-     * coordinated by an IoT Manager, this section defines the information that will be used to connect with that manager.
+     * coordinated by an IoT Manager, this section defines the information that will be used to connect with that
+     * manager.
      */
-    iotManager: {
-        /**
-         * Host where the IoT Manager is located.
-         */
-        host: 'localhost',
+    //iotManager: {
+    /**
+     * Host where the IoT Manager is located.
+     */
+    //   host: 'localhost',
 
-        /**
-         * Port where the IoT Manager is listening.
-         */
-        port: 18082,
+    /**
+     * Port where the IoT Manager is listening.
+     */
+    //   port: 18082,
 
-        /**
-         * Path where the IoT Manager accepts subscriptions.
-         */
-        path: '/iot/protocols',
+    /**
+     * Path where the IoT Manager accepts subscriptions.
+     */
+    //   path: '/iot/protocols',
 
-        /**
-         * Protocol code identifying this IoT Agent.
-         */
-        protocol: 'IoTA-Sigfox',
+    /**
+     * Protocol code identifying this IoT Agent.
+     */
+    //   protocol: 'IoTA-Sigfox',
 
-        /**
-         * Textual description of this IoT Agent.
-         */
-        description: 'Sigfox_IoT_Agent_Node'
-    },
+    /**
+     * Textual description of this IoT Agent.
+     */
+    //   description: 'Sigfox_IoT_Agent_Node'
+    //},
 
     /**
      * Default resource of the IoT Agent. This value must be different for every IoT Agent connecting to the IoT
@@ -251,5 +252,11 @@ config.iota = {
  * Default API Key, to use with device that have been provisioned without a Configuration Group.
  */
 config.defaultKey = 'TEF';
+
+/**
+ * flag indicating whether the node server will be executed in multi-core option (true) or it will be a
+ * single-thread one (false).
+ */
+//config.multiCore = false;
 
 module.exports = config;

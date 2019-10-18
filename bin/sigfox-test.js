@@ -57,6 +57,9 @@ function sendMeasure(commands) {
             console.log('\nError sending data to the Sigfox IoT Agent: ' + error);
         } else {
             console.log('\nData successfully sent');
+
+            // Now, we analyse the response obtained in the call
+            console.log('Response Code [%d]: [%s]', response.statusCode, JSON.parse(body)['message']);
         }
 
         clUtils.prompt();
