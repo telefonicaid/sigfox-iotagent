@@ -135,7 +135,8 @@ config.iota = {
 
     /**
      * Configuration for the IoT Manager. If the IoT Agent is part of a configuration composed of multiple IoTAgents
-     * coordinated by an IoT Manager, this section defines the information that will be used to connect with that manager.
+     * coordinated by an IoT Manager, this section defines the information that will be used to connect with that
+     * manager.
      */
     iotManager: {
         /**
@@ -251,5 +252,11 @@ config.iota = {
  * Default API Key, to use with device that have been provisioned without a Configuration Group.
  */
 config.defaultKey = 'TEF';
+
+/**
+ * flag indicating whether the node server will be executed in multi-core option (true) or it will be a
+ * single-thread one (false).
+ */
+//config.multiCore = false;
 
 module.exports = config;
