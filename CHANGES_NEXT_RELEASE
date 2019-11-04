@@ -1,2 +1,9 @@
-- ADD PM2_ENABLED flag to Docker
-- Upgrade NodeJS version from 8.16.0 to 8.16.1 in Dockerfile due to security issues
+- ADD PM2_ENABLED flag to Docker.
+- Upgrade NodeJS version from 8.16.0 to 8.16.1 in Dockerfile due to security issues.
+- Update sigfox-test.js to show the status of the response after send a message.
+- Improve MandatoryFieldsNotFound function (errors.js) in order to incorporate which mandatory fields is
+not found.
+- Improve in requiredFields function (sigfoxHandlers.js) in order to know the exactly field that it is not
+provided.
+- NOTE: in the "upgrade iotagent-node-lib from X to Y" include a mention to configure multithreading using cluster
+nodejs module (through multiCore config.js parameter or IOTA_MULTI_CORE environment variable).
