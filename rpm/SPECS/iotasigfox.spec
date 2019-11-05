@@ -190,6 +190,14 @@ fi
 %{_install_dir}
 
 %changelog
+* Mon Nov 04 2019 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.3.0-1
+- Add: PM2_ENABLED flag to Docker
+- Fix: improve MandatoryFieldsNotFound function (errors.js) in order to incorporate which mandatory fields is not found.
+- Fix: upgrade sigfox-test.js to show the status of the response after send a message.
+- Fix: Improve in requiredFields function (sigfoxHandlers.js) in order to know the exactly field that it is not provide
+- Upgrade iotagent-node-lib dependency from 2.9.0 to 2.11.0 (including cluster nodejs functionality)
+- Upgrade NodeJS version from 8.16.0 to 8.16.1 in Dockerfile due to security issues
+
 * Wed May 22 2019 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.2.0-1
 - Upgrade NodeJS version from 8.15.0 to 8.16.0 in Dockerfile due to security issues
 - Upgrade iotagent-node-lib dependency from 2.8.1 to 2.9.0
