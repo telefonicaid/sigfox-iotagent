@@ -20,63 +20,64 @@
  * For those usages not covered by the GNU Affero General Public License
  * please contact with::[daniel.moranjimenez at telefonica.com]
  */
-'use strict';
 
-var iotAgent = require('../../lib/iotagentCore'),
-    mappings = require('../../lib/mappings'),
-    request = require('request'),
-    iotAgentLib = require('iotagent-node-lib'),
-    mongoUtils = require('../tools/mongoDBUtils'),
-    async = require('async'),
-    apply = async.apply,
-    config = require('../testConfig'),
-    should = require('should'),
-    sigfoxDevice = {
-        id: 'sigApp1',
-        type: 'SIGFOX',
-        commands: [],
-        lazy: [],
-        active: [
-            {
-                name: 'time',
-                type: 'String'
-            },
-            {
-                name: 'statin',
-                type: 'String'
-            },
-            {
-                name: 'lng',
-                type: 'String'
-            },
-            {
-                name: 'lat',
-                type: 'String'
-            },
-            {
-                name: 'counter',
-                type: 'Integer'
-            },
-            {
-                name: 'param1',
-                type: 'Integer'
-            },
-            {
-                name: 'param2',
-                type: 'Integer'
-            },
-            {
-                name: 'tempDegreesCelsius',
-                type: 'Integer'
-            },
-            {
-                name: 'voltage',
-                type: 'Integer'
-            }
-        ],
-        service: 'dumbMordor',
-        subservice: '/deserts'
-    };
+/* eslint-disable no-unused-vars */
+
+const iotAgent = require('../../lib/iotagentCore');
+const mappings = require('../../lib/mappings');
+const request = require('request');
+const iotAgentLib = require('iotagent-node-lib');
+const mongoUtils = require('../tools/mongoDBUtils');
+const async = require('async');
+const apply = async.apply;
+const config = require('../testConfig');
+const should = require('should');
+const sigfoxDevice = {
+    id: 'sigApp1',
+    type: 'SIGFOX',
+    commands: [],
+    lazy: [],
+    active: [
+        {
+            name: 'time',
+            type: 'String'
+        },
+        {
+            name: 'statin',
+            type: 'String'
+        },
+        {
+            name: 'lng',
+            type: 'String'
+        },
+        {
+            name: 'lat',
+            type: 'String'
+        },
+        {
+            name: 'counter',
+            type: 'Integer'
+        },
+        {
+            name: 'param1',
+            type: 'Integer'
+        },
+        {
+            name: 'param2',
+            type: 'Integer'
+        },
+        {
+            name: 'tempDegreesCelsius',
+            type: 'Integer'
+        },
+        {
+            name: 'voltage',
+            type: 'Integer'
+        }
+    ],
+    service: 'dumbMordor',
+    subservice: '/deserts'
+};
 
 describe('Context Broker communication', function() {
     beforeEach(function(done) {
@@ -104,7 +105,7 @@ describe('Context Broker communication', function() {
     });
 
     describe('When a new sigfox measure arrives to the IoT Agent', function() {
-        var options = {
+        const options = {
             url: 'http://localhost:17428/update',
             method: 'GET',
             qs: {
@@ -170,7 +171,7 @@ describe('Context Broker communication', function() {
     });
 
     describe('When a new piece of data arrives for a unexistent device', function() {
-        var options = {
+        const options = {
             url: 'http://localhost:17428/update',
             method: 'GET',
             qs: {

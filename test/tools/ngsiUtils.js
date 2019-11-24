@@ -20,9 +20,8 @@
  * For those usages not covered by the GNU Affero General Public License
  * please contact with::[daniel.moranjimenez at telefonica.com]
  */
-'use strict';
 
-var request = require('request');
+const request = require('request');
 
 /**
  * Updates the information in a Context Broker entity.
@@ -36,7 +35,7 @@ var request = require('request');
  * @param {Array} attributes        List of attributes to retrieve, along with their types and values.
  */
 function updateEntity(host, port, service, subservice, name, type, attributes, callback) {
-    var options = {
+    const options = {
         url: 'http://' + host + ':' + port + '/v1/updateContext',
         method: 'POST',
         headers: {
@@ -46,10 +45,10 @@ function updateEntity(host, port, service, subservice, name, type, attributes, c
         json: {
             contextElements: [
                 {
-                    type: type,
+                    type,
                     id: name,
                     isPattern: 'false',
-                    attributes: attributes
+                    attributes
                 }
             ],
             updateAction: 'UPDATE'
@@ -71,7 +70,7 @@ function updateEntity(host, port, service, subservice, name, type, attributes, c
  * @param {Array} attributes        List of attributes to retrieve.
  */
 function queryEntity(host, port, service, subservice, id, type, attributes, callback) {
-    var options = {
+    const options = {
         url: 'http://' + host + ':' + port + '/v1/queryContext',
         method: 'POST',
         headers: {
@@ -81,12 +80,12 @@ function queryEntity(host, port, service, subservice, id, type, attributes, call
         json: {
             entities: [
                 {
-                    type: type,
-                    id: id,
+                    type,
+                    id,
                     isPattern: 'false'
                 }
             ],
-            attributes: attributes
+            attributes
         }
     };
 
@@ -105,7 +104,7 @@ function queryEntity(host, port, service, subservice, id, type, attributes, call
  * @param {Array} attributes        List of attributes to retrieve.
  */
 function discoverContextAvailability(host, port, service, subservice, id, type, attributes, callback) {
-    var options = {
+    const options = {
         url: 'http://' + host + ':' + port + '/v1/registry/discoverContextAvailability ',
         method: 'POST',
         headers: {
@@ -115,12 +114,12 @@ function discoverContextAvailability(host, port, service, subservice, id, type, 
         json: {
             entities: [
                 {
-                    type: type,
-                    id: id,
+                    type,
+                    id,
                     isPattern: 'false'
                 }
             ],
-            attributes: attributes
+            attributes
         }
     };
 
