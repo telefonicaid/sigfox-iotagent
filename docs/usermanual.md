@@ -210,7 +210,7 @@ npm test
 
 ### Coding guidelines
 
-eslint
+ESLint
 
 Uses the provided `.eslintrc.json` flag files. To check source code style, type
 
