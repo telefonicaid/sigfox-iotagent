@@ -20,7 +20,7 @@ library's GitHub repository.
 This project is part of [FIWARE](https://www.fiware.org/). For more information check the FIWARE Catalogue entry for the
 [IoT Agents](https://github.com/Fiware/catalogue/tree/master/iot-agents).
 
-| :books: [Documentation](https://iotagent-sigfox.readthedocs.io) | :whale: [Docker Hub](https://hub.docker.com/r/fiware/sigfox-iotagent) | :dart: [Roadmap](https://github.com/telefonicaid/sigfox-iotagent/blob/master/doc/roadmap.md) |
+| :books: [Documentation](https://iotagent-sigfox.readthedocs.io) | :whale: [Docker Hub](https://hub.docker.com/r/fiware/sigfox-iotagent) | :dart: [Roadmap](https://github.com/telefonicaid/sigfox-iotagent/blob/master/docs/roadmap.md) |
 | -------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 
 
