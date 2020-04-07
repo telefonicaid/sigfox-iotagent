@@ -59,7 +59,7 @@ describe('Plugin configuration test', function() {
             }
         };
         const dataOpts = {
-            url: 'http://localhost:17428/update',
+            url: 'http://localhost:' + config.sigfox.port + '/update',
             method: 'GET',
             qs: {
                 id: 'sigApp3',
