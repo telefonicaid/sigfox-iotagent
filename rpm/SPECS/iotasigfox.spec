@@ -190,6 +190,10 @@ fi
 %{_install_dir}
 
 %changelog
+* Wed Apr 08 2020 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.4.0-14
+- Upgrade iotagent-node-lib dependency from 2.11.0 to 2.12.0
+- Upgrade NodeJS version from 8.16.1 to 10.19.0 in Dockerfile due to Node 8 End-of-Life 
+
 * Mon Nov 04 2019 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.3.0-1
 - Add: PM2_ENABLED flag to Docker
 - Fix: improve MandatoryFieldsNotFound function (errors.js) in order to incorporate which mandatory fields is not found.
