@@ -35,7 +35,7 @@ var iotAgent = require('../../lib/iotagentCore'),
     utils = require('../tools/utils'),
     sigfoxDevice = {
         id: 'sigApp1',
-        type: 'SIGFOX',
+        type: 'Device',
         commands: [],
         lazy: [],
         active: [
@@ -84,10 +84,10 @@ describe('Context Broker communication', function() {
     beforeEach(function(done) {
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
             .post(
-                '/v1/updateContext',
+                '/ngsi-ld/v1/entityOperations/upsert/',
                 utils.readExampleFile('./test/examples/ngsi-communication/expectedDeviceRegisterRequest.json')
             )
-            .reply(200, {});
+            .reply(204);
 
         iotAgent.start(config, function() {
             async.series(
@@ -96,7 +96,7 @@ describe('Context Broker communication', function() {
                     mappings.clean,
                     apply(
                         mappings.add,
-                        'SIGFOX',
+                        'Device',
                         'counter::uint:32  param1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16'
                     ),
                     apply(iotAgentLib.register, sigfoxDevice)
@@ -128,10 +128,10 @@ describe('Context Broker communication', function() {
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
             .post(
-                '/v1/updateContext',
+                '/ngsi-ld/v1/entityOperations/upsert/',
                 utils.readExampleFile('./test/examples/ngsi-communication/expectedDeviceUpdateDataRequest.json')
             )
-            .reply(200, {});
+            .reply(204);
 
         it('should answer with a 200 OK', function(done) {
             request(options, function(error, response, body) {

@@ -1,57 +1,43 @@
-{
-  "contextElements": [
-      {
-          "type": "SIGFOX",
-          "isPattern": "false",
-          "id": "SIGFOX:sigApp1",
-          "attributes": [
-              {
-                  "name": "time",
-                  "type": "String",
-                  "value": "1430909015"
-              },
-              {
-                  "name": "statin",
-                  "type": "String",
-                  "value": "0A5F"
-              },
-              {
-                  "name": "lng",
-                  "type": "String",
-                  "value": "-4"
-              },
-              {
-                  "name": "lat",
-                  "type": "String",
-                  "value": "41"
-              },
-              {
-                  "name": "counter",
-                  "type": "Integer",
-                  "value": 2
-              },
-              {
-                  "name": "param1",
-                  "type": "Integer",
-                  "value": 0
-              },
-              {
-                  "name": "param2",
-                  "type": "Integer",
-                  "value": 0
-              },
-              {
-                  "name": "tempDegreesCelsius",
-                  "type": "Integer",
-                  "value": 35
-              },
-              {
-                  "name": "voltage",
-                  "type": "Integer",
-                  "value": 3183
-              }
-          ]
-      }
-  ],
-  "updateAction": "UPDATE"
-}
+[
+    {
+      "@context": "https://schema.lab.fiware.org/ld/context.jsonld",
+      "time": {
+        "type": "Property",
+        "value": "1430909015"
+      },
+      "statin": {
+        "type": "Property",
+        "value": "0A5F"
+      },
+      "lng": {
+        "type": "Property",
+        "value": "-4"
+      },
+      "lat": {
+        "type": "Property",
+        "value": "41"
+      },
+      "counter": {
+        "type": "Property",
+        "value": 2
+      },
+      "param1": {
+        "type": "Property",
+        "value": 0
+      },
+      "param2": {
+        "type": "Property",
+        "value": 0
+      },
+      "tempDegreesCelsius": {
+        "type": "Property",
+        "value": 35
+      },
+      "voltage": {
+        "type": "Property",
+        "value": 3183
+      },
+      "id": "urn:ngsi-ld:Device:sigApp1",
+      "type": "Device"
+    }
+  ]

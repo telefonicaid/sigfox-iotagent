@@ -59,7 +59,6 @@ describe('Device and configuration provisioning', function() {
 
         it('should fail with a 400 error', function(done) {
             request(provisioningOpts, function(error, response, body) {
-                console.log('BODY: ' + body);
                 should.not.exist(error);
                 response.statusCode.should.equal(400);
                 done();
@@ -91,17 +90,17 @@ describe('Device and configuration provisioning', function() {
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
             .post(
-                '/v1/updateContext',
+                '/ngsi-ld/v1/entityOperations/upsert/',
                 utils.readExampleFile('./test/examples/deviceProvisioning/expectedProvisioningRequest.json')
             )
-            .reply(200, {});
+            .reply(204);
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
             .post(
                 '/ngsi-ld/v1/entityOperations/upsert/',
                 utils.readExampleFile('./test/examples/deviceProvisioning/expectedDataUpdateRequest.json')
             )
-            .reply(200, {});
+            .reply(204);
 
         it('should use the provided provisioning', function(done) {
             request(provisioningOpts, function(error, response, body) {

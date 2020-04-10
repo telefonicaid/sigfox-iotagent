@@ -1,42 +1,37 @@
-{
-  "contextElements": [
-      {
-          "type": "SIGFOX",
-          "isPattern": "false",
-          "id": "sigApp3",
-          "attributes": [
-              {
-                  "name": "time",
-                  "type": "String",
-                  "value": " "
-              },
-              {
-                  "name": "statin",
-                  "type": "String",
-                  "value": " "
-              },
-              {
-                  "name": "lng",
-                  "type": "String",
-                  "value": " "
-              },
-              {
-                  "name": "lat",
-                  "type": "String",
-                  "value": " "
-              },
-              {
-                  "name": "campo1",
-                  "type": "Integer",
-                  "value": " "
-              },
-              {
-                  "name": "campo2",
-                  "type": "Integer",
-                  "value": " "
-              }
-          ]
+[
+    {
+      "@context": "https://schema.lab.fiware.org/ld/context.jsonld",
+      "id": "urn:ngsi-ld:Device:sigApp3",
+      "type": "Device",
+      "time": {
+        "type": "Property",
+        "value": " "
+      },
+      "statin": {
+        "type": "Property",
+        "value": " "
+      },
+      "lng": {
+        "type": "Property",
+        "value": " "
+      },
+      "lat": {
+        "type": "Property",
+        "value": " "
+      },
+      "campo1": {
+        "type": "Property",
+        "value": {
+          "@type": "Intangible",
+          "@value": null
+        }
+      },
+      "campo2": {
+        "type": "Property",
+        "value": {
+          "@type": "Intangible",
+          "@value": null
+        }
       }
-  ],
-  "updateAction": "APPEND"
-}
+    }
+  ]

@@ -31,7 +31,9 @@ config.iota = {
     logLevel: 'DEBUG',
     contextBroker: {
         host: 'localhost',
-        port: '10026'
+        port: '10026',
+        ngsiVersion: 'ld',
+        jsonLdContext: 'https://schema.lab.fiware.org/ld/context.jsonld'
     },
     server: {
         port: 4041

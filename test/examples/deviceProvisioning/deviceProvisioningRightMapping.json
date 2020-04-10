@@ -4,7 +4,7 @@
       "device_id": "sigApp2",
       "protocol": "SIGFOX",
       "entity_name": "sigApp2",
-      "entity_type": "SIGFOX",
+      "entity_type": "Device",
       "timezone": "America/Santiago",
       "attributes": [
         {

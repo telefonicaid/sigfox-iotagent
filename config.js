@@ -58,7 +58,13 @@ config.iota = {
         /**
          * Port where the Context Broker is listening.
          */
-        port: '1026'
+        port: '1026',
+
+        /**
+         * Version of NGSI
+         */
+        ngsiVersion: 'ld',
+        jsonLdContext: 'https://schema.lab.fiware.org/ld/context.jsonld'
     },
 
     /**

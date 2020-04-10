@@ -72,17 +72,17 @@ describe('Plugin configuration test', function() {
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
             .post(
-                '/v1/updateContext',
+                '/ngsi-ld/v1/entityOperations/upsert/',
                 utils.readExampleFile('./test/examples/deviceProvisioning/expectedProvisioningPluginRequest.json')
             )
-            .reply(200, {});
+            .reply(204);
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
             .post(
-                '/v1/updateContext',
+                '/ngsi-ld/v1/entityOperations/upsert/',
                 utils.readExampleFile('./test/examples/deviceProvisioning/expectedDataUpdatePluginRequest.json')
             )
-            .reply(200, {});
+            .reply(204);
 
         it('should use the plugin to parse the device responses', function(done) {
             request(provisioningOpts, function(error, response, body) {

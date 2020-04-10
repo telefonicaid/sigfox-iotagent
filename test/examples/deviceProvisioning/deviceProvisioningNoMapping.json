@@ -6,7 +6,7 @@
       "service" : "dumbMordor",
       "service_path": "/deserts",
       "entity_name": "TheLastLight",
-      "entity_type": "SIGFOX",
+      "entity_type": "Device",
       "timezone": "America/Santiago",
       "attributes": [],
       "lazy": [],
