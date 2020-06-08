@@ -43,6 +43,7 @@
     "logops": "2.1.0"
   },
   "devDependencies": {
+    "nock":"14.4.0",
     "coveralls": "~3.0.2",
     "husky": "~1.1.0",
     "jshint": "~2.9.6",

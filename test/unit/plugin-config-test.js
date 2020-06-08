@@ -26,19 +26,13 @@ var iotAgent = require('../../lib/iotagentCore'),
     _ = require('underscore'),
     mappings = require('../../lib/mappings'),
     request = require('request'),
-    ngsiTestUtils = require('../tools/ngsiUtils'),
     utils = require('../tools/utils'),
     mongoUtils = require('../tools/mongoDBUtils'),
     async = require('async'),
     apply = async.apply,
     config = require('../testConfig'),
     should = require('should'),
-    ngsiClient = ngsiTestUtils.create(
-        config.iota.contextBroker.host,
-        config.iota.contextBroker.port,
-        'dumbMordor',
-        '/deserts'
-    );
+    nock = require('nock');
 
 describe('Plugin configuration test', function() {
     beforeEach(function(done) {
@@ -76,6 +70,20 @@ describe('Plugin configuration test', function() {
                 }
             };
 
+        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+            .post(
+                '/v1/updateContext',
+                utils.readExampleFile('./test/examples/deviceProvisioning/expectedProvisioningPluginRequest.json')
+            )
+            .reply(200, {});
+
+        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+            .post(
+                '/v1/updateContext',
+                utils.readExampleFile('./test/examples/deviceProvisioning/expectedDataUpdatePluginRequest.json')
+            )
+            .reply(200, {});
+
         it('should use the plugin to parse the device responses', function(done) {
             request(provisioningOpts, function(error, response, body) {
                 should.not.exist(error);
@@ -84,20 +92,7 @@ describe('Plugin configuration test', function() {
                     should.not.exist(error);
                     response.statusCode.should.equal(200);
 
-                    ngsiClient.query('sigApp3', 'SIGFOX', [], function(error, response, body) {
-                        var attributes;
-
-                        should.not.exist(error);
-                        should.exist(body);
-                        should.not.exist(body.errorCode);
-
-                        attributes = body.contextResponses[0].contextElement.attributes;
-
-                        _.contains(_.pluck(attributes, 'name'), 'campo1').should.equal(true);
-                        _.contains(_.pluck(attributes, 'name'), 'campo2').should.equal(true);
-
-                        done();
-                    });
+                    done();
                 });
             });
         });

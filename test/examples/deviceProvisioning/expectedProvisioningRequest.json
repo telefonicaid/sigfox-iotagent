@@ -1,0 +1,57 @@
+{
+  "contextElements": [
+      {
+          "type": "SIGFOX",
+          "isPattern": "false",
+          "id": "sigApp2",
+          "attributes": [
+              {
+                  "name": "time",
+                  "type": "String",
+                  "value": " "
+              },
+              {
+                  "name": "statin",
+                  "type": "String",
+                  "value": " "
+              },
+              {
+                  "name": "lng",
+                  "type": "String",
+                  "value": " "
+              },
+              {
+                  "name": "lat",
+                  "type": "String",
+                  "value": " "
+              },
+              {
+                  "name": "theCounter",
+                  "type": "Integer",
+                  "value": " "
+              },
+              {
+                  "name": "theParam1",
+                  "type": "Integer",
+                  "value": " "
+              },
+              {
+                  "name": "param2",
+                  "type": "Integer",
+                  "value": " "
+              },
+              {
+                  "name": "tempDegreesCelsius",
+                  "type": "Integer",
+                  "value": " "
+              },
+              {
+                  "name": "voltage",
+                  "type": "Integer",
+                  "value": " "
+              }
+          ]
+      }
+  ],
+  "updateAction": "APPEND"
+}

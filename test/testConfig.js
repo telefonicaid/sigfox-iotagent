@@ -28,7 +28,7 @@ config.sigfox = {
 };
 
 config.iota = {
-    logLevel: 'FATAL',
+    logLevel: 'DEBUG',
     contextBroker: {
         host: 'localhost',
         port: '10026'

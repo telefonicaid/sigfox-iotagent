@@ -22,23 +22,17 @@
  */
 'use strict';
 
-var iotAgent = require('../../lib/iotagentCore'),
+const iotAgent = require('../../lib/iotagentCore'),
     _ = require('underscore'),
     mappings = require('../../lib/mappings'),
     request = require('request'),
-    ngsiTestUtils = require('../tools/ngsiUtils'),
     mongoUtils = require('../tools/mongoDBUtils'),
     utils = require('../tools/utils'),
     async = require('async'),
     apply = async.apply,
     config = require('../testConfig'),
     should = require('should'),
-    ngsiClient = ngsiTestUtils.create(
-        config.iota.contextBroker.host,
-        config.iota.contextBroker.port,
-        'dumbMordor',
-        '/deserts'
-    );
+    nock = require('nock');
 
 describe('Device and configuration provisioning', function() {
     beforeEach(function(done) {
@@ -95,6 +89,20 @@ describe('Device and configuration provisioning', function() {
                 }
             };
 
+        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+            .post(
+                '/v1/updateContext',
+                utils.readExampleFile('./test/examples/deviceProvisioning/expectedProvisioningRequest.json')
+            )
+            .reply(200, {});
+
+        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+            .post(
+                '/ngsi-ld/v1/entityOperations/upsert/',
+                utils.readExampleFile('./test/examples/deviceProvisioning/expectedDataUpdateRequest.json')
+            )
+            .reply(200, {});
+
         it('should use the provided provisioning', function(done) {
             request(provisioningOpts, function(error, response, body) {
                 should.not.exist(error);
@@ -103,20 +111,7 @@ describe('Device and configuration provisioning', function() {
                     should.not.exist(error);
                     response.statusCode.should.equal(200);
 
-                    ngsiClient.query('sigApp2', 'SIGFOX', [], function(error, response, body) {
-                        var attributes;
-
-                        should.not.exist(error);
-                        should.exist(body);
-                        should.not.exist(body.errorCode);
-
-                        attributes = body.contextResponses[0].contextElement.attributes;
-
-                        _.contains(_.pluck(attributes, 'name'), 'theCounter').should.equal(true);
-                        _.contains(_.pluck(attributes, 'name'), 'theParam1').should.equal(true);
-
-                        done();
-                    });
+                    done();
                 });
             });
         });
