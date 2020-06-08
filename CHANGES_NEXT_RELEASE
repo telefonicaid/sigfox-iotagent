@@ -6,4 +6,5 @@
     -  Fix or disable eslint errors
 - Set Nodejs 10 as minimum version in packages.json (effectively removing Nodev8 from supported versions)
 - Allow to configure id field in received callbacks from Sigfox
+- Use nock lib to mock exchanges with a context broker during tests (and avoid depending on a running one)
 
