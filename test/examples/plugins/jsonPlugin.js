@@ -20,11 +20,10 @@
  * For those usages not covered by the GNU Affero General Public License
  * please contact with::[daniel.moranjimenez at telefonica.com]
  */
-'use strict';
 
 function parse(data, callback) {
     try {
-        var result = JSON.parse(data);
+        const result = JSON.parse(data);
 
         callback(null, result);
     } catch (error) {

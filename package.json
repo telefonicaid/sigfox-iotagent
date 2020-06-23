@@ -21,7 +21,7 @@
   },
   "scripts": {
     "clean": "rm -rf package-lock.json && rm -rf node_modules && rm -rf coverage",
-    "lint": "jshint lib/ --config .jshintrc && jshint test/ --config test/.jshintrc",
+    "lint": "eslint lib/ bin/ test/ --cache --fix",
     "lint:md": "remark -f 'README.md' docs",
     "lint:text": "textlint 'README.md' 'docs/*.md' 'docs/**/*.md'",
     "prettier": "prettier --config .prettierrc.json --write ./**/**/*.js **/*.js *.js",
@@ -45,7 +45,9 @@
   "devDependencies": {
     "coveralls": "~3.0.2",
     "husky": "~1.1.0",
-    "jshint": "~2.9.6",
+    "eslint": "~5.16.0",
+    "eslint-config-tamia": "~6.2.1",
+    "eslint-plugin-prettier": "~3.1.0",
     "should": "8.4.0",
     "nock": "10.0.2",
     "lint-staged": "~7.3.0",

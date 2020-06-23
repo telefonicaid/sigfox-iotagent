@@ -20,18 +20,17 @@
  * For those usages not covered by the GNU Affero General Public License
  * please contact with::[daniel.moranjimenez at telefonica.com]
  */
-'use strict';
 
-const sigfoxHandlers = require('../../lib/sigfoxHandlers'),
-    expect = require('chai').expect,
-    http = require('http');
+const sigfoxHandlers = require('../../lib/sigfoxHandlers');
+const expect = require('chai').expect;
+const http = require('http');
 
 describe('Checking mandatory query fields', function() {
     describe('When a query without any fields is requested', function() {
         /* Test */
         it('should return a 400 error message with missing id and data fields', function(done) {
-            const req = new http.IncomingMessage(undefined),
-                res = new http.ServerResponse(req);
+            const req = new http.IncomingMessage(undefined);
+            const res = new http.ServerResponse(req);
             req.query = {};
 
             sigfoxHandlers.requiredFields(req, res, function(data) {
@@ -50,8 +49,8 @@ describe('Checking mandatory query fields', function() {
     describe('When a query with id is requested', function() {
         /* Test */
         it('should return a 400 error message with missing data field', function(done) {
-            const req = new http.IncomingMessage(undefined),
-                res = new http.ServerResponse(req);
+            const req = new http.IncomingMessage(undefined);
+            const res = new http.ServerResponse(req);
             req.query = { id: 'Thing001' };
 
             sigfoxHandlers.requiredFields(req, res, function(data) {
@@ -68,8 +67,8 @@ describe('Checking mandatory query fields', function() {
     describe('When a query with data is requested', function() {
         /* Test */
         it('should return a 400 error message with missing id field', function(done) {
-            const req = new http.IncomingMessage(undefined),
-                res = new http.ServerResponse(req);
+            const req = new http.IncomingMessage(undefined);
+            const res = new http.ServerResponse(req);
             req.query = { data: '000000020000000000230c6f' };
 
             sigfoxHandlers.requiredFields(req, res, function(data) {
@@ -86,8 +85,8 @@ describe('Checking mandatory query fields', function() {
     describe('When a query with id and data fields is requested', function() {
         /* Test */
         it('should return a 400 error message with missing id and data fields', function(done) {
-            const req = new http.IncomingMessage(undefined),
-                res = new http.ServerResponse(req);
+            const req = new http.IncomingMessage(undefined);
+            const res = new http.ServerResponse(req);
             req.query = { id: 'Thing001', data: '000000020000000000230c6f' };
 
             sigfoxHandlers.requiredFields(req, res, function(data) {
@@ -100,8 +99,8 @@ describe('Checking mandatory query fields', function() {
     describe('When a query with any fake field except id or data is requested', function() {
         /* Test */
         it('should return a 400 error message with missing id and data fields', function(done) {
-            const req = new http.IncomingMessage(undefined),
-                res = new http.ServerResponse(req);
+            const req = new http.IncomingMessage(undefined);
+            const res = new http.ServerResponse(req);
             req.query = { fake: 'foo' };
 
             sigfoxHandlers.requiredFields(req, res, function(data) {

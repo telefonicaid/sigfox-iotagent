@@ -20,25 +20,27 @@
  * For those usages not covered by the GNU Affero General Public License
  * please contact with::[daniel.moranjimenez at telefonica.com]
  */
-'use strict';
 
-var iotAgent = require('../../lib/iotagentCore'),
-    _ = require('underscore'),
-    mappings = require('../../lib/mappings'),
-    request = require('request'),
-    ngsiTestUtils = require('../tools/ngsiUtils'),
-    mongoUtils = require('../tools/mongoDBUtils'),
-    utils = require('../tools/utils'),
-    async = require('async'),
-    apply = async.apply,
-    config = require('../testConfig'),
-    should = require('should'),
-    ngsiClient = ngsiTestUtils.create(
-        config.iota.contextBroker.host,
-        config.iota.contextBroker.port,
-        'dumbMordor',
-        '/deserts'
-    );
+/* eslint-disable no-unused-vars */
+/* eslint-disable no-console */
+
+const iotAgent = require('../../lib/iotagentCore');
+const _ = require('underscore');
+const mappings = require('../../lib/mappings');
+const request = require('request');
+const ngsiTestUtils = require('../tools/ngsiUtils');
+const mongoUtils = require('../tools/mongoDBUtils');
+const utils = require('../tools/utils');
+const async = require('async');
+const apply = async.apply;
+const config = require('../testConfig');
+const should = require('should');
+const ngsiClient = ngsiTestUtils.create(
+    config.iota.contextBroker.host,
+    config.iota.contextBroker.port,
+    'dumbMordor',
+    '/deserts'
+);
 
 describe('Device and configuration provisioning', function() {
     beforeEach(function(done) {
@@ -53,7 +55,7 @@ describe('Device and configuration provisioning', function() {
         iotAgent.stop(done);
     });
     describe('When a new Device provisioning arrives to the IoT Agent without internal mapping', function() {
-        var provisioningOpts = {
+        const provisioningOpts = {
             url: 'http://localhost:' + config.iota.server.port + '/iot/devices',
             method: 'POST',
             json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningNoMapping.json'),
@@ -73,27 +75,27 @@ describe('Device and configuration provisioning', function() {
         });
     });
     describe('When a new Device provisioning arrives to the IoT Agent with a right mapping', function() {
-        var provisioningOpts = {
-                url: 'http://localhost:' + config.iota.server.port + '/iot/devices',
-                method: 'POST',
-                json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningRightMapping.json'),
-                headers: {
-                    'fiware-service': 'dumbMordor',
-                    'fiware-servicepath': '/deserts'
-                }
-            },
-            dataOpts = {
-                url: 'http://localhost:17428/update',
-                method: 'GET',
-                qs: {
-                    id: 'sigApp2',
-                    time: 1430909015,
-                    statin: '0A5F',
-                    lng: -4,
-                    lat: 41,
-                    data: '000000020000000000230c6f'
-                }
-            };
+        const provisioningOpts = {
+            url: 'http://localhost:' + config.iota.server.port + '/iot/devices',
+            method: 'POST',
+            json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningRightMapping.json'),
+            headers: {
+                'fiware-service': 'dumbMordor',
+                'fiware-servicepath': '/deserts'
+            }
+        };
+        const dataOpts = {
+            url: 'http://localhost:17428/update',
+            method: 'GET',
+            qs: {
+                id: 'sigApp2',
+                time: 1430909015,
+                statin: '0A5F',
+                lng: -4,
+                lat: 41,
+                data: '000000020000000000230c6f'
+            }
+        };
 
         it('should use the provided provisioning', function(done) {
             request(provisioningOpts, function(error, response, body) {
@@ -104,13 +106,11 @@ describe('Device and configuration provisioning', function() {
                     response.statusCode.should.equal(200);
 
                     ngsiClient.query('sigApp2', 'SIGFOX', [], function(error, response, body) {
-                        var attributes;
-
                         should.not.exist(error);
                         should.exist(body);
                         should.not.exist(body.errorCode);
 
-                        attributes = body.contextResponses[0].contextElement.attributes;
+                        const attributes = body.contextResponses[0].contextElement.attributes;
 
                         _.contains(_.pluck(attributes, 'name'), 'theCounter').should.equal(true);
                         _.contains(_.pluck(attributes, 'name'), 'theParam1').should.equal(true);
