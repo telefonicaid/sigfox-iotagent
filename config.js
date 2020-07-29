@@ -249,6 +249,12 @@ config.iota = {
 };
 
 /**
+ * Name of the field containing the id in the Sigfox callback payload. It can also be overriden by the
+ * IOTA_SIGFOX_ID_FIELD_NAME environment variable.
+ */
+//config.idFieldName = 'id';
+
+/**
  * Default API Key, to use with device that have been provisioned without a Configuration Group.
  */
 config.defaultKey = 'TEF';

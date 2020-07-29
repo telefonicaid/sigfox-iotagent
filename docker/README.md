@@ -52,6 +52,7 @@ services:
             - "IOTA_MONGO_PORT=27017"
             - "IOTA_MONGO_DB=iotasigfox"
             - "IOTA_SIGFOX_PORT=17428"
+            - "IOTA_SIGFOX_ID_FIELD_NAME=id"
             - "IOTA_PROVIDER_URL=http://iot-agent:4041"
 
     mongodb:
@@ -90,6 +91,7 @@ environment variables such as those shown below:
 -   `IOTA_MONGO_PORT` - The port that MongoDB is listening on
 -   `IOTA_MONGO_DB` - The name of the database used in MongoDB
 -   `IOTA_SIGFOX_PORT` - The port where the IoT Agent listens for IoT device traffic
+-   `IOTA_SIGFOX_ID_FIELD_NAME` - The name od the id fields in received Sigfox callbacks (defaults to id)
 -   `IOTA_PROVIDER_URL` - URL passed to the Context Broker when commands are registered, used as a forwarding URL
     location when the Context Broker issues a command to a device
 
@@ -225,10 +227,10 @@ refer to the [Installation Guide](https://iotagent-sigfox.readthedocs.io/en/late
 ### Set-up appropriate Database Indexes
 
 If using Mongo-DB as a data persistence mechanism (i.e. if `IOTA_REGISTRY_TYPE=mongodb`) the device and service group
-details are retrieved from a database. The default name of the IoT Agent database is `iotasigfox`. Database access can be
-optimized by creating appropriate indices.
+details are retrieved from a database. The default name of the IoT Agent database is `iotasigfox`. Database access can
+be optimized by creating appropriate indices.
 
-For example: 
+For example:
 
 ```console
 docker exec  <mongo-db-container-name> mongo --eval '
@@ -236,12 +238,12 @@ docker exec  <mongo-db-container-name> mongo --eval '
 	db = conn.getDB("iotasigfox");
 	db.createCollection("devices");
 	db.devices.createIndex({"_id.service": 1, "_id.id": 1, "_id.type": 1});
-	db.devices.createIndex({"_id.type": 1}); 
+	db.devices.createIndex({"_id.type": 1});
 	db.devices.createIndex({"_id.id": 1});
 	db.createCollection("groups");
 	db.groups.createIndex({"_id.resource": 1, "_id.apikey": 1, "_id.service": 1});
 	db.groups.createIndex({"_id.type": 1});' > /dev/null
 ```
 
-The name of the database can be altered using the `IOTA_MONGO_DB` environment variable. Alter the `conn.getDB()` 
+The name of the database can be altered using the `IOTA_MONGO_DB` environment variable. Alter the `conn.getDB()`
 statement above if an alternative database is being used.
