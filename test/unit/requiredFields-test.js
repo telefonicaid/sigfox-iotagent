@@ -24,6 +24,7 @@
 const sigfoxHandlers = require('../../lib/sigfoxHandlers');
 const expect = require('chai').expect;
 const http = require('http');
+const proxyquire = require('proxyquire');
 
 describe('Checking mandatory query fields', function() {
     describe('When a query without any fields is requested', function() {
@@ -110,6 +111,42 @@ describe('Checking mandatory query fields', function() {
 
                 expect(data.message).to.equal(
                     'Some of the mandatory fields for the request were not found: ["id","data"]'
+                );
+                done();
+            });
+        });
+    });
+
+    describe('When a iotagent is deployed with an id field name equal to device', function() {
+        var configStub = {};
+        configStub.getConfig = function() {
+            return { idFieldName: 'device' };
+        };
+        var sigfoxHandlers = proxyquire('../../lib/sigfoxHandlers', { './configService': configStub });
+
+        it('should validate required fields with device in the query', function(done) {
+            const req = new http.IncomingMessage(undefined),
+                res = new http.ServerResponse(req);
+            req.query = { device: 'device', data: '000000020000000000230c6f' };
+
+            sigfoxHandlers.requiredFields(req, res, function(data) {
+                expect(data).to.equal(undefined);
+                done();
+            });
+        });
+
+        it('should reject required fields without device in the query', function(done) {
+            const req = new http.IncomingMessage(undefined),
+                res = new http.ServerResponse(req);
+            req.query = { id: 'device', data: '000000020000000000230c6f' };
+
+            sigfoxHandlers.requiredFields(req, res, function(data) {
+                expect(data.code).to.equal(400);
+
+                expect(data.name).to.equal('MANDATORY_FIELDS_NOT_FOUND');
+
+                expect(data.message).to.equal(
+                    'Some of the mandatory fields for the request were not found: ["device"]'
                 );
                 done();
             });
