@@ -1,0 +1,42 @@
+{
+  "contextElements": [
+      {
+          "type": "SIGFOX",
+          "isPattern": "false",
+          "id": "sigApp3",
+          "attributes": [
+              {
+                  "name": "time",
+                  "type": "String",
+                  "value": " "
+              },
+              {
+                  "name": "statin",
+                  "type": "String",
+                  "value": " "
+              },
+              {
+                  "name": "lng",
+                  "type": "String",
+                  "value": " "
+              },
+              {
+                  "name": "lat",
+                  "type": "String",
+                  "value": " "
+              },
+              {
+                  "name": "campo1",
+                  "type": "Integer",
+                  "value": " "
+              },
+              {
+                  "name": "campo2",
+                  "type": "Integer",
+                  "value": " "
+              }
+          ]
+      }
+  ],
+  "updateAction": "APPEND"
+}
