@@ -27,8 +27,10 @@ const async = require('async');
 function cleanDb(host, name, callback) {
     const url = 'mongodb://' + host + ':27017/' + name;
 
+    /* eslint-disable-next-line no-unused-vars */
     MongoClient.connect(url, { useNewUrlParser: true }, function (err, db) {
         if (db && db.db()) {
+            /* eslint-disable-next-line no-unused-vars */
             db.db().dropDatabase(function (err, result) {
                 db.close();
                 callback();
