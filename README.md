@@ -4,8 +4,8 @@
 [![License: APGL](https://img.shields.io/github/license/telefonicaid/sigfox-iotagent.svg)](https://opensource.org/licenses/AGPL-3.0)
 [![Docker badge](https://img.shields.io/docker/pulls/fiware/sigfox-iotagent.svg)](https://hub.docker.com/r/fiware/sigfox-iotagent/)
 [![Support badge](https://nexus.lab.fiware.org/repository/raw/public/badges/stackoverflow/iot-agents.svg)](https://stackoverflow.com/questions/tagged/fiware+iot)
-<br/> [![Documentation badge](https://img.shields.io/readthedocs/iotagent-sigfox.svg)](https://iotagent-sigfox.rtfd.io)
-[![Build badge](https://img.shields.io/travis/telefonicaid/sigfox-iotagent.svg)](https://travis-ci.org/telefonicaid/sigfox-iotagent/)
+<br/> [![Documentation badge](https://img.shields.io/readthedocs/iotagent-sigfox.svg)](https://iotagent-sigfox.readthedocs.io)
+[![CI](https://github.com/telefonicaid/sigfox-iotagent/workflows/CI/badge.svg)](https://github.com/telefonicaid/sigfox-iotagent/actions?query=workflow%3ACI)
 [![Coverage Status](https://coveralls.io/repos/github/telefonicaid/sigfox-iotagent/badge.svg?branch=master)](https://coveralls.io/github/telefonicaid/sigfox-iotagent?branch=master)
 ![Status](https://nexus.lab.fiware.org/repository/raw/public/badges/statuses/incubating.svg)
 
@@ -20,7 +20,7 @@ library's GitHub repository.
 This project is part of [FIWARE](https://www.fiware.org/). For more information check the FIWARE Catalogue entry for the
 [IoT Agents](https://github.com/Fiware/catalogue/tree/master/iot-agents).
 
-| :books: [Documentation](https://iotagent-sigfox.rtfd.io) | :whale: [Docker Hub](https://hub.docker.com/r/fiware/sigfox-iotagent) | :dart: [Roadmap](https://github.com/telefonicaid/sigfox-iotagent/blob/master/doc/roadmap.md) |
+| :books: [Documentation](https://iotagent-sigfox.readthedocs.io) | :whale: [Docker Hub](https://hub.docker.com/r/fiware/sigfox-iotagent) | :dart: [Roadmap](https://github.com/telefonicaid/sigfox-iotagent/blob/master/docs/roadmap.md) |
 | -------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
 
 
@@ -75,8 +75,8 @@ Information about how to use the IoT Agent can be found in the [User & Programme
 ## API
 
 Apiary reference for the Configuration API can be found
-[here](http://docs.telefonicaiotiotagents.apiary.io/#reference/configuration-api) More information about IoT Agents and
-their APIs can be found in the IoT Agent Library [documentation](https://iotagent-node-lib.rtfd.io/).
+[here](https://telefonicaiotiotagents.docs.apiary.io/#reference/configuration-api) More information about IoT Agents and
+their APIs can be found in the IoT Agent Library [documentation](https://iotagent-node-lib.readthedocs.io/).
 
 ## Testing
 

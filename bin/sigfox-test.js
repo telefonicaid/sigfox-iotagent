@@ -22,18 +22,19 @@
  * For those usages not covered by the GNU Affero General Public License
  * please contact with::[daniel.moranjimenez at telefonica.com]
  */
-'use strict';
 
-var clUtils = require('command-node'),
-    request = require('request'),
-    config = require('../config'),
-    parameters = {
-        id: '8405',
-        time: '1430908992',
-        statin: '0817',
-        lng: -4,
-        lat: 41
-    };
+/* eslint-disable no-console */
+
+const clUtils = require('command-node');
+const request = require('request');
+const config = require('../config');
+const parameters = {
+    id: '8405',
+    time: '1430908992',
+    statin: '0817',
+    lng: -4,
+    lat: 41
+};
 
 function showParameters() {
     console.log('\nCurrent measure parameters:\n\n');
@@ -44,7 +45,7 @@ function showParameters() {
 }
 
 function sendMeasure(commands) {
-    var dataOpts = {
+    const dataOpts = {
         url: 'http://localhost:' + config.sigfox.port + '/update',
         method: 'GET',
         qs: parameters
@@ -57,6 +58,9 @@ function sendMeasure(commands) {
             console.log('\nError sending data to the Sigfox IoT Agent: ' + error);
         } else {
             console.log('\nData successfully sent');
+
+            // Now, we analyse the response obtained in the call
+            console.log('Response Code [%d]: [%s]', response.statusCode, JSON.parse(body).message);
         }
 
         clUtils.prompt();
@@ -69,7 +73,7 @@ function setParameters(commands) {
     clUtils.prompt();
 }
 
-var commands = {
+const commands = {
     showParameters: {
         parameters: [],
         description: '\tShow the current device parameters that will be sent along with the callback',

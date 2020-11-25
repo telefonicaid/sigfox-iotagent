@@ -20,13 +20,12 @@
  * For those usages not covered by the GNU Affero General Public License
  * please contact with::[contacto@tid.es]
  */
-'use strict';
 
-var MongoClient = require('mongodb').MongoClient,
-    async = require('async');
+const MongoClient = require('mongodb').MongoClient;
+const async = require('async');
 
 function cleanDb(host, name, callback) {
-    var url = 'mongodb://' + host + ':27017/' + name;
+    const url = 'mongodb://' + host + ':27017/' + name;
 
     MongoClient.connect(
         url,
@@ -41,14 +40,14 @@ function cleanDb(host, name, callback) {
 }
 
 function cleanDbs(host, callback) {
-    var operations = [
-            async.apply(cleanDb, 'localhost', 'iotagent'),
-            async.apply(cleanDb, host, 'orion'),
-            async.apply(cleanDb, host, 'iotagent')
-        ],
-        remoteDatabases = ['smartgondor', 'dumbmordor'];
+    const operations = [
+        async.apply(cleanDb, 'localhost', 'iotagent'),
+        async.apply(cleanDb, host, 'orion'),
+        async.apply(cleanDb, host, 'iotagent')
+    ];
+    const remoteDatabases = ['smartgondor', 'dumbmordor'];
 
-    for (var i in remoteDatabases) {
+    for (const i in remoteDatabases) {
         operations.push(async.apply(cleanDb, host, 'orion-' + remoteDatabases[i]));
     }
 

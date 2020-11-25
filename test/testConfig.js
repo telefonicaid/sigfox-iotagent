@@ -21,7 +21,7 @@
  * please contact with::[daniel.moranjimenez at telefonica.com]
  */
 
-var config = {};
+const config = {};
 
 config.sigfox = {
     port: 17428

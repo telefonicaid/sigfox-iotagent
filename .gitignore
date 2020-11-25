@@ -2,6 +2,7 @@
 /.idea/
 /doc/
 /coverage/
+/.nyc_output/
 /site
 /report/
 /.c9revisions/
@@ -13,3 +14,4 @@
 .metadata
 npm-debug.log
 package-lock.json
+.eslintcache

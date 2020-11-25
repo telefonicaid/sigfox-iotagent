@@ -72,8 +72,71 @@ config.iota = {
     },
 
     /**
+     * Configuration for secured access to instances of the Context Broker secured with a PEP Proxy.
+     * For the authentication mechanism to work, the authentication attribute in the configuration has to be fully
+     * configured, and the authentication.enabled subattribute should have the value `true`.
+     *
+     * The Username and password should be considered as sensitive data and should not be stored in plaintext.
+     * Either encrypt the config and decrypt when initializing the instance or use environment variables secured by
+     * docker secrets.
+     */
+    //authentication: {
+    //enabled: false,
+    /**
+     * Type of the Identity Manager which is used when authenticating the IoT Agent.
+     * Either 'oauth2' or 'keystone'
+     */
+    //type: 'keystone',
+    /**
+     * Name of the additional header passed to retrieve the identity of the IoT Agent
+     */
+    //header: 'Authorization',
+    /**
+     * Hostname of the Identity Manager.
+     */
+    //host: 'localhost',
+    /**
+     * Port of the Identity Manager.
+     */
+    //port: '5000',
+    /**
+     * URL of the Identity Manager - a combination of the above
+     */
+    //url: 'localhost:5000',
+    /**
+     * KEYSTONE ONLY: Username for the IoT Agent
+     *  - Note this should not be stored in plaintext.
+     */
+    //user: 'IOTA_AUTH_USER',
+    /**
+     * KEYSTONE ONLY: Password for the IoT Agent
+     *    - Note this should not be stored in plaintext.
+     */
+    //password: 'IOTA_AUTH_PASSWORD',
+    /**
+     * OAUTH2 ONLY: URL path for retrieving the token
+     */
+    //tokenPath: '/oauth2/token',
+    /**
+     * OAUTH2 ONLY: Flag to indicate whether or not the token needs to be periodically refreshed.
+     */
+    //permanentToken: true,
+    /**
+     * OAUTH2 ONLY: ClientId for the IoT Agent
+     *    - Note this should not be stored in plaintext.
+     */
+    //clientId: 'IOTA_AUTH_CLIENT_ID',
+    /**
+     * OAUTH2 ONLY: ClientSecret for the IoT Agent
+     *    - Note this should not be stored in plaintext.
+     */
+    //clientSecret: 'IOTA_AUTH_CLIENT_SECRET'
+    //},
+
+    /**
      * Configuration for the IoT Manager. If the IoT Agent is part of a configuration composed of multiple IoTAgents
-     * coordinated by an IoT Manager, this section defines the information that will be used to connect with that manager.
+     * coordinated by an IoT Manager, this section defines the information that will be used to connect with that
+     * manager.
      */
     iotManager: {
         /**
@@ -186,8 +249,20 @@ config.iota = {
 };
 
 /**
+ * Name of the field containing the id in the Sigfox callback payload. It can also be overriden by the
+ * IOTA_SIGFOX_ID_FIELD_NAME environment variable.
+ */
+//config.idFieldName = 'id';
+
+/**
  * Default API Key, to use with device that have been provisioned without a Configuration Group.
  */
 config.defaultKey = 'TEF';
+
+/**
+ * flag indicating whether the node server will be executed in multi-core option (true) or it will be a
+ * single-thread one (false).
+ */
+//config.multiCore = false;
 
 module.exports = config;

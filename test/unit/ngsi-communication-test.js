@@ -20,66 +20,76 @@
  * For those usages not covered by the GNU Affero General Public License
  * please contact with::[daniel.moranjimenez at telefonica.com]
  */
-'use strict';
 
-var iotAgent = require('../../lib/iotagentCore'),
-    mappings = require('../../lib/mappings'),
-    request = require('request'),
-    iotAgentLib = require('iotagent-node-lib'),
-    mongoUtils = require('../tools/mongoDBUtils'),
-    async = require('async'),
-    apply = async.apply,
-    config = require('../testConfig'),
-    should = require('should'),
-    sigfoxDevice = {
-        id: 'sigApp1',
-        type: 'SIGFOX',
-        commands: [],
-        lazy: [],
-        active: [
-            {
-                name: 'time',
-                type: 'String'
-            },
-            {
-                name: 'statin',
-                type: 'String'
-            },
-            {
-                name: 'lng',
-                type: 'String'
-            },
-            {
-                name: 'lat',
-                type: 'String'
-            },
-            {
-                name: 'counter',
-                type: 'Integer'
-            },
-            {
-                name: 'param1',
-                type: 'Integer'
-            },
-            {
-                name: 'param2',
-                type: 'Integer'
-            },
-            {
-                name: 'tempDegreesCelsius',
-                type: 'Integer'
-            },
-            {
-                name: 'voltage',
-                type: 'Integer'
-            }
-        ],
-        service: 'dumbMordor',
-        subservice: '/deserts'
-    };
+/* eslint-disable no-unused-vars */
+
+const iotAgent = require('../../lib/iotagentCore');
+const mappings = require('../../lib/mappings');
+const request = require('request');
+const iotAgentLib = require('iotagent-node-lib');
+const mongoUtils = require('../tools/mongoDBUtils');
+const async = require('async');
+const apply = async.apply;
+const config = require('../testConfig');
+const should = require('should');
+const nock = require('nock');
+const utils = require('../tools/utils');
+const sigfoxDevice = {
+    id: 'sigApp1',
+    type: 'SIGFOX',
+    commands: [],
+    lazy: [],
+    active: [
+        {
+            name: 'time',
+            type: 'String'
+        },
+        {
+            name: 'statin',
+            type: 'String'
+        },
+        {
+            name: 'lng',
+            type: 'String'
+        },
+        {
+            name: 'lat',
+            type: 'String'
+        },
+        {
+            name: 'counter',
+            type: 'Integer'
+        },
+        {
+            name: 'param1',
+            type: 'Integer'
+        },
+        {
+            name: 'param2',
+            type: 'Integer'
+        },
+        {
+            name: 'tempDegreesCelsius',
+            type: 'Integer'
+        },
+        {
+            name: 'voltage',
+            type: 'Integer'
+        }
+    ],
+    service: 'dumbMordor',
+    subservice: '/deserts'
+};
 
 describe('Context Broker communication', function() {
     beforeEach(function(done) {
+        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+            .post(
+                '/v1/updateContext',
+                utils.readExampleFile('./test/examples/ngsi-communication/expectedDeviceRegisterRequest.json')
+            )
+            .reply(200, {});
+
         iotAgent.start(config, function() {
             async.series(
                 [
@@ -104,7 +114,7 @@ describe('Context Broker communication', function() {
     });
 
     describe('When a new sigfox measure arrives to the IoT Agent', function() {
-        var options = {
+        const options = {
             url: 'http://localhost:17428/update',
             method: 'GET',
             qs: {
@@ -116,6 +126,13 @@ describe('Context Broker communication', function() {
                 data: '000000020000000000230c6f'
             }
         };
+
+        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+            .post(
+                '/v1/updateContext',
+                utils.readExampleFile('./test/examples/ngsi-communication/expectedDeviceUpdateDataRequest.json')
+            )
+            .reply(200, {});
 
         it('should answer with a 200 OK', function(done) {
             request(options, function(error, response, body) {
@@ -170,7 +187,7 @@ describe('Context Broker communication', function() {
     });
 
     describe('When a new piece of data arrives for a unexistent device', function() {
-        var options = {
+        const options = {
             url: 'http://localhost:17428/update',
             method: 'GET',
             qs: {

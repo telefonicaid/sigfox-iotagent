@@ -190,7 +190,23 @@ fi
 %{_install_dir}
 
 %changelog
-* Wed Dec 19 2018 Fermin Galan <fermin.galanmarquez@telefonica.com>> 1.1.0-1
+* Wed Apr 08 2020 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.4.0-14
+- Upgrade iotagent-node-lib dependency from 2.11.0 to 2.12.0
+- Upgrade NodeJS version from 8.16.1 to 10.19.0 in Dockerfile due to Node 8 End-of-Life 
+
+* Mon Nov 04 2019 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.3.0-1
+- Add: PM2_ENABLED flag to Docker
+- Fix: improve MandatoryFieldsNotFound function (errors.js) in order to incorporate which mandatory fields is not found.
+- Fix: upgrade sigfox-test.js to show the status of the response after send a message.
+- Fix: Improve in requiredFields function (sigfoxHandlers.js) in order to know the exactly field that it is not provide
+- Upgrade iotagent-node-lib dependency from 2.9.0 to 2.11.0 (including cluster nodejs functionality)
+- Upgrade NodeJS version from 8.16.0 to 8.16.1 in Dockerfile due to security issues
+
+* Wed May 22 2019 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.2.0-1
+- Upgrade NodeJS version from 8.15.0 to 8.16.0 in Dockerfile due to security issues
+- Upgrade iotagent-node-lib dependency from 2.8.1 to 2.9.0
+
+* Wed Dec 19 2018 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.1.0-1
 - Set Nodejs 8.12.0 as minimum version in packages.json (effectively removing Nodev4 and Nodev6 as supported versions)
 - Add: npm scripts to execute tests, coverage, watch and clean
 - Add: rpm stuff (spec file, service scripts) (#6)
@@ -208,7 +224,7 @@ fi
 - Ensure precise dependencies (~=) are used in packages.json
 - Remove: old unused development dependencies (closure-linter-wrapper, chai, sinon, sinon-chai, grunt and grunt related module
 
-* Wed Jun 13 2018 Alvaro Vega Garcia <<alvaro.vegagarcia@telefonica.com>> 1.0.0-1
+* Wed Jun 13 2018 Alvaro Vega Garcia <alvaro.vegagarcia@telefonica.com> 1.0.0-1
 - Update Dockerfile to Centos7 and Node 4.8.4
 - Add plugin system (#2).
 - Update iotagent node library to allow use env variables

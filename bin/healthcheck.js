@@ -1,5 +1,7 @@
+#!/usr/bin/env node
+
 /*
- * Copyright 2015 Telefonica Investigación y Desarrollo, S.A.U
+ * Copyright 2020 Telefonica Investigación y Desarrollo, S.A.U
  *
  * This file is part of sigfox-iotagent
  *
@@ -21,31 +23,33 @@
  * please contact with::[daniel.moranjimenez at telefonica.com]
  */
 
-const errors = require('./errors');
-let mappings = {};
-/* eslint-disable no-unused-vars */
-const context = {
-    op: 'IoTAgentSIGFOX.mappigns'
+const http = require('http');
+const port = process.env.IOTA_NORTH_PORT || '4041';
+const path = process.env.HEALTHCHECK_PATH || '/iot/about';
+const httpCode = process.env.HEALTHCHECK_CODE || 200;
+
+const options = {
+    host: 'localhost',
+    port,
+    timeout: 2000,
+    method: 'GET',
+    path
 };
 
-function getMapping(type, callback) {
-    if (mappings[type]) {
-        callback(null, mappings[type]);
+const request = http.request(options, (result) => {
+    // eslint-disable-next-line no-console
+    console.info(`Performed health check, result ${result.statusCode}`);
+    if (result.statusCode === httpCode) {
+        process.exit(0);
     } else {
-        callback(new errors.DataMappingNotFound(type));
+        process.exit(1);
     }
-}
+});
 
-function addMapping(type, mapping, callback) {
-    mappings[type] = mapping;
-    callback(null);
-}
+request.on('error', (err) => {
+    // eslint-disable-next-line no-console
+    console.error(`An error occurred while performing health check, error: ${err}`);
+    process.exit(1);
+});
 
-function clean(callback) {
-    mappings = {};
-    callback();
-}
-
-exports.get = getMapping;
-exports.add = addMapping;
-exports.clean = clean;
+request.end();
