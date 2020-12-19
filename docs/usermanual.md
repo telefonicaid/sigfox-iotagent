@@ -19,7 +19,7 @@ NOTE: this first version doesn't support Configuration provisioning, so each dev
 In order to start the agent, execute the following command from the root of the project:
 
 ```bash
-bin/iotagent
+bin/iotagent-sigfox
 ```
 
 ### Provisioning the device in the Agent
@@ -186,7 +186,7 @@ following values (expressed in decimal base):
 
 The project is managed using npm.
 
-For a list of available task, type
+For a list of available tasks, type
 
 ```bash
 npm run
