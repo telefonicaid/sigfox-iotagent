@@ -1,57 +1,57 @@
 {
   "contextElements": [
-      {
-          "type": "SIGFOX",
-          "isPattern": "false",
-          "id": "SIGFOX:sigApp1",
-          "attributes": [
-              {
-                  "name": "time",
-                  "type": "String",
-                  "value": " "
-              },
-              {
-                  "name": "statin",
-                  "type": "String",
-                  "value": " "
-              },
-              {
-                  "name": "lng",
-                  "type": "String",
-                  "value": " "
-              },
-              {
-                  "name": "lat",
-                  "type": "String",
-                  "value": " "
-              },
-              {
-                  "name": "counter",
-                  "type": "Integer",
-                  "value": " "
-              },
-              {
-                  "name": "param1",
-                  "type": "Integer",
-                  "value": " "
-              },
-              {
-                  "name": "param2",
-                  "type": "Integer",
-                  "value": " "
-              },
-              {
-                  "name": "tempDegreesCelsius",
-                  "type": "Integer",
-                  "value": " "
-              },
-              {
-                  "name": "voltage",
-                  "type": "Integer",
-                  "value": " "
-              }
-          ]
-      }
+    {
+      "type": "SIGFOX",
+      "isPattern": "false",
+      "id": "SIGFOX:sigApp1",
+      "attributes": [
+        {
+          "name": "time",
+          "type": "String",
+          "value": null
+        },
+        {
+          "name": "statin",
+          "type": "String",
+          "value": null
+        },
+        {
+          "name": "lng",
+          "type": "String",
+          "value": null
+        },
+        {
+          "name": "lat",
+          "type": "String",
+          "value": null
+        },
+        {
+          "name": "counter",
+          "type": "Integer",
+          "value": null
+        },
+        {
+          "name": "param1",
+          "type": "Integer",
+          "value": null
+        },
+        {
+          "name": "param2",
+          "type": "Integer",
+          "value": null
+        },
+        {
+          "name": "tempDegreesCelsius",
+          "type": "Integer",
+          "value": null
+        },
+        {
+          "name": "voltage",
+          "type": "Integer",
+          "value": null
+        }
+      ]
+    }
   ],
   "updateAction": "APPEND"
 }
