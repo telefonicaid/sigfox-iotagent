@@ -115,7 +115,7 @@ describe('Context Broker communication', function() {
 
     describe('When a new sigfox measure arrives to the IoT Agent', function() {
         const options = {
-            url: 'http://localhost:17428/update',
+            url: 'http://localhost:' + config.sigfox.port + '/update',
             method: 'GET',
             qs: {
                 id: 'sigApp1',
@@ -188,7 +188,7 @@ describe('Context Broker communication', function() {
 
     describe('When a new piece of data arrives for a unexistent device', function() {
         const options = {
-            url: 'http://localhost:17428/update',
+            url: 'http://localhost:' + config.sigfox.port + '/update',
             method: 'GET',
             qs: {
                 id: 'unexistentApp',
