@@ -11,8 +11,8 @@ order given. The development team will be doing their best to follow the propose
 in mind that plans to work on a given feature or task may be revised. All information is provided as a general
 guidelines only, and this section may be revised to provide newer information at any time.
 
-At the present moment, this compoment is in manteinance mode. Evolution will be driven by customer needs.
-Thus, there is no explicit description of short/medium/long term roadmap items, although you can have
-a look to the current list of issues [here](https://github.com/telefonicaid/sigfox-iotagent/issues).
+At the present moment, this compoment is in mantainance mode. Evolution will be driven by customer needs. Thus, there is
+no explicit description of short/medium/long term roadmap items, although you can have a look to the current list of
+issues [here](https://github.com/telefonicaid/sigfox-iotagent/issues).
 
 Please feel free to contact us if you wish to get involved in the implementation or influence the roadmap.

@@ -16,8 +16,8 @@ The Agent provides the following features:
 
 -   IoT Agent North Bound functionalities, as defined in the
     [IoT Agent Node.js library](https://github.com/telefonicaid/iotagent-node-lib).
--   A Sigfox endpoint listening for callbacks from the sigfox backend. Each piece of coming from the backend is
-    considered as a sepparate active attribute (as defined in the IoT Agents specification).
+-   A Sigfox endpoint listening for callbacks from the sigfox backend. Each piece of information coming from the backend
+    is considered as a separate active attribute (as defined in the IoT Agents specification).
 -   A Sigfox data parser that can be used to convert from the data format as defined in the callbacks to a JavaScript
     array.
 -   A testing tool to simulate the date coming from the device.
