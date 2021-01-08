@@ -8,47 +8,47 @@
               {
                   "name": "time",
                   "type": "String",
-                  "value": " "
+                  "value": null
               },
               {
                   "name": "statin",
                   "type": "String",
-                  "value": " "
+                  "value": null
               },
               {
                   "name": "lng",
                   "type": "String",
-                  "value": " "
+                  "value": null
               },
               {
                   "name": "lat",
                   "type": "String",
-                  "value": " "
+                  "value": null
               },
               {
                   "name": "theCounter",
                   "type": "Integer",
-                  "value": " "
+                  "value": null
               },
               {
                   "name": "theParam1",
                   "type": "Integer",
-                  "value": " "
+                  "value": null
               },
               {
                   "name": "param2",
                   "type": "Integer",
-                  "value": " "
+                  "value": null
               },
               {
                   "name": "tempDegreesCelsius",
                   "type": "Integer",
-                  "value": " "
+                  "value": null
               },
               {
                   "name": "voltage",
                   "type": "Integer",
-                  "value": " "
+                  "value": null
               }
           ]
       }
