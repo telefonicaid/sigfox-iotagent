@@ -61,7 +61,7 @@ services:
         container_name: db-mongo
         ports:
             - "27017:27017"
-        command: --bind_ip_all --smallfiles
+        command: --bind_ip_all
         volumes:
             - mongodb:/data
 
