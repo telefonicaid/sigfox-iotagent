@@ -138,32 +138,32 @@ config.iota = {
      * coordinated by an IoT Manager, this section defines the information that will be used to connect with that
      * manager.
      */
-    iotManager: {
+    //iotManager: {
         /**
          * Host where the IoT Manager is located.
          */
-        host: 'localhost',
+        //host: 'localhost',
 
         /**
          * Port where the IoT Manager is listening.
          */
-        port: 18082,
+        //port: 18082,
 
         /**
          * Path where the IoT Manager accepts subscriptions.
          */
-        path: '/iot/protocols',
+        //path: '/iot/protocols',
 
         /**
          * Protocol code identifying this IoT Agent.
          */
-        protocol: 'IoTA-Sigfox',
+        //protocol: 'IoTA-Sigfox',
 
         /**
          * Textual description of this IoT Agent.
          */
-        description: 'Sigfox_IoT_Agent_Node'
-    },
+        //description: 'Sigfox_IoT_Agent_Node'
+    //},
 
     /**
      * Default resource of the IoT Agent. This value must be different for every IoT Agent connecting to the IoT
