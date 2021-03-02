@@ -2,7 +2,7 @@
   "name": "sigfox-iotagent",
   "description": "IoT Agent for the Sigfox protocol",
   "license": "AGPL-3.0-only",
-  "version": "1.4.5",
+  "version": "1.5.0",
   "homepage": "https://github.com/telefonicaid/sigfox-iotagent",
   "author": {
     "name": "Daniel Moran",
