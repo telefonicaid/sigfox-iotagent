@@ -190,6 +190,19 @@ fi
 %{_install_dir}
 
 %changelog
+* Tue Mar 02 2021 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.5.0-1
+- Upgrade iotagent-node-lib dependency from 2.12.0 to 2.15.0
+- Update Docker security practices (Add HEALTHCHECK, Use Anonymous User, Use two-stage build)
+- Overall update of dev package dependencies
+- Update codebase to use ES6
+    -  Remove JSHint and jshint overrides
+    -  Add esLint using standard tamia presets
+    -  Replace var with let/const
+    -  Fix or disable eslint errors
+- Set Nodejs 10 as minimum version in packages.json (effectively removing Nodev8 from supported versions)
+- Allow to configure id field in received callbacks from Sigfox
+- Use nock lib to mock exchanges with a context broker during tests (and avoid depending on a running one)
+
 * Wed Apr 08 2020 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.4.0-14
 - Upgrade iotagent-node-lib dependency from 2.11.0 to 2.12.0
 - Upgrade NodeJS version from 8.16.1 to 10.19.0 in Dockerfile due to Node 8 End-of-Life 
@@ -231,4 +244,3 @@ fi
 - Add Travis conf
 - Check existence of mappings in internalAttributes for device provisioning (#22)
 - Remove mongodb dependence from packages.json (already in iota-node-lib)
-
