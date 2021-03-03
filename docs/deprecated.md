@@ -38,7 +38,7 @@ The following table provides information about the last sigfox-iotagent version 
 | **Removed feature**   | **Last sigfox-iotagent version supporting feature** | **That version release date** |
 | --------------------- | ----------------------------------------------- | ----------------------------- |
 | NGSIv1 API            | Not yet defined                                 | Not yet defined               |
-| Support to Node.js v4 | 1.0.0                                           | June 13th, 2018                   |
-| Support to Node.js v6 | 1.0.0                                           | June 13th, 2018                   |
-| Support to Node.js v8 | 1.4.0                                           | April 8th, 2020                     |
-| Support to Node.js v10 | Not defined but it will completed before May 2021 | Not yet defined               |
+| Support to Node.js v4 | 1.0.0                                           | June 13th, 2018               |
+| Support to Node.js v6 | 1.0.0                                           | June 13th, 2018               |
+| Support to Node.js v8 | 1.4.0                                           | April 8th, 2020               |
+| Support to Node.js v10 | 1.5.0                                          | March 3rd, 2021               |
