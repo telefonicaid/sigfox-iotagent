@@ -193,8 +193,8 @@ fi
 * Tue Mar 02 2021 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.5.0-1
 - Upgrade iotagent-node-lib dependency from 2.12.0 to 2.15.0
 - Update Docker security practices (Add HEALTHCHECK, Use Anonymous User, Use two-stage build)
--  Overall update of dev package dependencies
--  Update codebase to use ES6
+- Overall update of dev package dependencies
+- Update codebase to use ES6
     -  Remove JSHint and jshint overrides
     -  Add esLint using standard tamia presets
     -  Replace var with let/const
@@ -244,4 +244,3 @@ fi
 - Add Travis conf
 - Check existence of mappings in internalAttributes for device provisioning (#22)
 - Remove mongodb dependence from packages.json (already in iota-node-lib)
-
