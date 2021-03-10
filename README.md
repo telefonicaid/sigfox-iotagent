@@ -8,6 +8,7 @@
 [![CI](https://github.com/telefonicaid/sigfox-iotagent/workflows/CI/badge.svg)](https://github.com/telefonicaid/sigfox-iotagent/actions?query=workflow%3ACI)
 [![Coverage Status](https://coveralls.io/repos/github/telefonicaid/sigfox-iotagent/badge.svg?branch=master)](https://coveralls.io/github/telefonicaid/sigfox-iotagent?branch=master)
 ![Status](https://nexus.lab.fiware.org/repository/raw/public/badges/statuses/incubating.svg)
+[![CII Best Practices](https://bestpractices.coreinfrastructure.org/projects/4698/badge)](https://bestpractices.coreinfrastructure.org/projects/4698)
 
 An Internet of Things Agent for the [Sigfox](http://www.sigfox.com/en/) callbacks protocol and the
 [NGSI](https://swagger.lab.fiware.org/?url=https://raw.githubusercontent.com/Fiware/specifications/master/OpenAPI/ngsiv2/ngsiv2-openapi.json)
