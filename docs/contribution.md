@@ -76,18 +76,18 @@ In order to start contributing:
 2.  Clone your just forked repository:
 
 ```bash
-git clone https://github.com/your-github-username/iotagent-json.git
+git clone https://github.com/your-github-username/sigfox-iotagent.git
 ```
 
-3.  Add the main iotagent-json repository as a remote to your forked repository (use any name for your remote
-    repository, it does not have to be iotagent-json, although we will use it in the next steps):
+3.  Add the main sigfox-iotagent repository as a remote to your forked repository (use any name for your remote
+    repository, it does not have to be sigfox-iotagent, although we will use it in the next steps):
 
 ```bash
-git remote add iotagent-json https://github.com/telefonicaid/iotagent-json.git
+git remote add sigfox-iotagent https://github.com/telefonicaid/sigfox-iotagent.git
 ```
 
 Before starting contributing, remember to synchronize the `master` branch in your forked repository with the `master`
-branch in the main iotagent-json repository, by following this steps
+branch in the main sigfox-iotagent repository, by following this steps
 
 1.  Change to your local `master` branch (in case you are not in it already):
 
@@ -98,13 +98,13 @@ git checkout master
 2.  Fetch the remote changes:
 
 ```bash
-git fetch iotagent-json
+git fetch sigfox-iotagent
 ```
 
 3.  Merge them:
 
 ```bash
-git rebase iotagent-json/master
+git rebase sigfox-iotagent/master
 ```
 
 Contributions following this guidelines will be added to the `master` branch, and released in the next version. The
