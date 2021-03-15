@@ -31,6 +31,7 @@ This project is part of [FIWARE](https://www.fiware.org/). For more information 
 -   [Install](#install)
 -   [Usage](#usage)
 -   [API](#api)
+-   [Contributing](#contributing)
 -   [Testing](#testing)
 -   [License](#license)
 
@@ -78,6 +79,13 @@ Information about how to use the IoT Agent can be found in the [User & Programme
 Apiary reference for the Configuration API can be found
 [here](https://telefonicaiotiotagents.docs.apiary.io/#reference/configuration-api) More information about IoT Agents and
 their APIs can be found in the IoT Agent Library [documentation](https://iotagent-node-lib.readthedocs.io/).
+
+## Contributing
+
+If you'd like to contribute, start by searching through the issues and pull requests to see whether someone else has 
+raised a similar idea or question.
+
+Before contributing, please check out [contribution guidelines](docs/contribution.md)
 
 ## Testing
 
