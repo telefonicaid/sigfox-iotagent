@@ -13,6 +13,7 @@ extra_css:
     "https://www.fiware.org/style/fiware_readthedocs.css",
     "https://www.fiware.org/style/fiware_readthedocs_iot.css",
   ]
+google_analytics: ['UA-83236805-2', 'iotagent-sigfox.readthedocs.io']
 pages:
   - Home: "index.md"
   - "User & Programmers Manual":
