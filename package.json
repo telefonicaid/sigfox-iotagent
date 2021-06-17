@@ -34,7 +34,7 @@
     "watch": "watch 'npm test && npm run lint' ./lib ./test"
   },
   "dependencies": {
-    "underscore": "1.8.3",
+    "underscore": "1.12.1",
     "command-node": "0.1.1",
     "request": "2.88.0",
     "async": "1.5.2",
