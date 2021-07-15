@@ -31,7 +31,8 @@ config.iota = {
     logLevel: 'FATAL',
     contextBroker: {
         host: 'localhost',
-        port: '10026'
+        port: '10026',
+        ngsiVersion: 'v2'
     },
     server: {
         port: 4041
@@ -40,7 +41,7 @@ config.iota = {
         type: 'memory'
     },
     types: {},
-    service: 'dumbMordor',
+    service: 'dumbmordor',
     subservice: '/deserts',
     providerUrl: 'http://localhost:4041',
     deviceRegistrationDuration: 'P1M',

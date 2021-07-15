@@ -54,7 +54,7 @@ describe('Device and configuration provisioning', function() {
             method: 'POST',
             json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningNoMapping.json'),
             headers: {
-                'fiware-service': 'dumbMordor',
+                'fiware-service': 'dumbmordor',
                 'fiware-servicepath': '/deserts'
             }
         };
@@ -74,7 +74,7 @@ describe('Device and configuration provisioning', function() {
             method: 'POST',
             json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningRightMapping.json'),
             headers: {
-                'fiware-service': 'dumbMordor',
+                'fiware-service': 'dumbmordor',
                 'fiware-servicepath': '/deserts'
             }
         };
@@ -92,18 +92,12 @@ describe('Device and configuration provisioning', function() {
         };
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .post(
-                '/v1/updateContext',
-                utils.readExampleFile('./test/examples/deviceProvisioning/expectedProvisioningRequest.json')
-            )
-            .reply(200, {});
+            .post('/v2/entities?options=upsert')
+            .reply(204);
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .post(
-                '/ngsi-ld/v1/entityOperations/upsert/',
-                utils.readExampleFile('./test/examples/deviceProvisioning/expectedDataUpdateRequest.json')
-            )
-            .reply(200, {});
+            .post('/v2/entities?options=upsert')
+            .reply(204);
 
         it('should use the provided provisioning', function(done) {
             request(provisioningOpts, function(error, response, body) {

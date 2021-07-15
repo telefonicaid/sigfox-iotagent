@@ -77,18 +77,15 @@ const sigfoxDevice = {
             type: 'Integer'
         }
     ],
-    service: 'dumbMordor',
+    service: 'dumbmordor',
     subservice: '/deserts'
 };
 
 describe('Context Broker communication', function() {
     beforeEach(function(done) {
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .post(
-                '/v1/updateContext',
-                utils.readExampleFile('./test/examples/ngsi-communication/expectedDeviceRegisterRequest.json')
-            )
-            .reply(200, {});
+            .post('/v2/entities?options=upsert')
+            .reply(204);
 
         iotAgent.start(config, function() {
             async.series(
@@ -128,11 +125,8 @@ describe('Context Broker communication', function() {
         };
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .post(
-                '/v1/updateContext',
-                utils.readExampleFile('./test/examples/ngsi-communication/expectedDeviceUpdateDataRequest.json')
-            )
-            .reply(200, {});
+            .post('/v2/entities?options=upsert')
+            .reply(204);
 
         it('should answer with a 200 OK', function(done) {
             request(options, function(error, response, body) {
