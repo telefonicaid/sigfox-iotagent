@@ -3,7 +3,7 @@
     {
       "device_id": "sigApp5",
       "protocol": "SIGFOX",
-      "service" : "dumbMordor",
+      "service" : "dumbmordor",
       "service_path": "/deserts",
       "entity_name": "TheLastLight",
       "entity_type": "SIGFOX",

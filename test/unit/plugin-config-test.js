@@ -54,7 +54,7 @@ describe('Plugin configuration test', function() {
             method: 'POST',
             json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningPluginMapping.json'),
             headers: {
-                'fiware-service': 'dumbMordor',
+                'fiware-service': 'dumbmordor',
                 'fiware-servicepath': '/deserts'
             }
         };
@@ -72,18 +72,12 @@ describe('Plugin configuration test', function() {
         };
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .post(
-                '/v1/updateContext',
-                utils.readExampleFile('./test/examples/deviceProvisioning/expectedProvisioningPluginRequest.json')
-            )
-            .reply(200, {});
+            .post('/v2/entities?options=upsert')
+            .reply(204);
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .post(
-                '/v1/updateContext',
-                utils.readExampleFile('./test/examples/deviceProvisioning/expectedDataUpdatePluginRequest.json')
-            )
-            .reply(200, {});
+            .post('/v2/entities?options=upsert')
+            .reply(204);
 
         it('should use the plugin to parse the device responses', function(done) {
             request(provisioningOpts, function(error, response, body) {
