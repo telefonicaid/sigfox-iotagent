@@ -124,16 +124,15 @@ describe('Context Broker communication', function () {
             }
         };
 
-        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .patch('/v2/entities?options=upsert')
-            .reply(204);
-
-        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .patch('/v2/entities/SIGFOX:sigApp1/attrs?type=SIGFOX')
-            .twice()
-            .reply(204);
-
         it('should answer with a 200 OK', function (done) {
+            nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+                .post('/v2/entities?options=upsert')
+                .reply(204);
+
+            nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+                .patch('/v2/entities/SIGFOX:sigApp1/attrs?type=SIGFOX')
+                .reply(204);
+
             request(options, function (error, response, body) {
                 should.not.exist(error);
                 response.statusCode.should.equal(200);
@@ -142,6 +141,14 @@ describe('Context Broker communication', function () {
         });
 
         it('should call the Context Broker with the appropriate attributes', function (done) {
+            nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+                .post('/v2/entities?options=upsert')
+                .reply(204);
+
+            nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+                .patch('/v2/entities/SIGFOX:sigApp1/attrs?type=SIGFOX')
+                .reply(204);
+
             request(options, function (error, response, body) {
                 should.not.exist(error);
                 response.statusCode.should.equal(200);

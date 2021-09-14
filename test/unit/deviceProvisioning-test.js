@@ -98,15 +98,7 @@ describe('Device and configuration provisioning', function () {
             .reply(204);
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .post('/v2/entities?options=upsert')
-            .reply(204);
-
-        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
             .patch('/v2/entities/sigApp2/attrs?type=SIGFOX')
-            .reply(204);
-
-        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .patch('/v2/entities/sigApp3/attrs?type=SIGFOX')
             .reply(204);
 
         it('should use the provided provisioning', function (done) {

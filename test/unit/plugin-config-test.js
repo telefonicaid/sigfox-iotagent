@@ -72,11 +72,11 @@ describe('Plugin configuration test', function () {
         };
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .patch('/v2/entities?options=upsert')
+            .post('/v2/entities?options=upsert')
             .reply(204);
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .patch('/v2/entities?options=upsert')
+            .patch('/v2/entities/sigApp3/attrs?type=SIGFOX')
             .reply(204);
 
         it('should use the plugin to parse the device responses', function (done) {
