@@ -7,7 +7,7 @@ name: CI
     branches:
       - master
   repository_dispatch:
-    types: [lib-updated]
+    types: [lib-update]
 jobs:
   lint-dockerfile:
     name: Lint Dockerfile
