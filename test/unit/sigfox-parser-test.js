@@ -25,10 +25,10 @@ const sigfoxParser = require('../../lib/sigfoxParser');
 const should = require('should');
 const key = 'counter::uint:32  param1::uint:32 param2::uint:8 tempDegreesCelsius::uint:8  voltage::uint:16';
 
-describe('Parsing modules', function() {
-    describe('A data payload "000000020000000000230c6f" is parsed with the given key', function() {
-        it('should extract all its values', function(done) {
-            sigfoxParser.createParser(key)('000000020000000000230c6f', function(error, data) {
+describe('Parsing modules', function () {
+    describe('A data payload "000000020000000000230c6f" is parsed with the given key', function () {
+        it('should extract all its values', function (done) {
+            sigfoxParser.createParser(key)('000000020000000000230c6f', function (error, data) {
                 should.not.exist(error);
                 should.exist(data);
                 data.counter.should.equal(2);

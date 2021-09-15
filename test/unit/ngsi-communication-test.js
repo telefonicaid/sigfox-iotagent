@@ -215,26 +215,25 @@ describe('Context Broker communication', function () {
         });
     });
 
-        describe('When a sigfox measure fails updating Context Broker', function () {
-            const options = {
-                url: 'http://localhost:' + config.sigfox.port + '/update',
-                method: 'GET',
-                qs: {
-                    id: 'sigApp1',
-                    time: 1430909015,
-                    statin: '0A5F',
-                    lng: -4,
-                    lat: 41,
-                    data: '000000020000000000230c6f'
-                }
-            };
-    
-            it('should raise a controlled error', function (done) {
-                request(options, function (error, response, body) {
-                    should.not.exist(error);
-                    response.statusCode.should.equal(200);
-                    done();
-                });
+    describe('When a sigfox measure fails updating Context Broker', function () {
+        const options = {
+            url: 'http://localhost:' + config.sigfox.port + '/update',
+            method: 'GET',
+            qs: {
+                id: 'sigApp1',
+                time: 1430909015,
+                statin: '0A5F',
+                lng: -4,
+                lat: 41,
+                data: '000000020000000000230c6f'
+            }
+        };
+
+        it('should raise a controlled error', function (done) {
+            request(options, function (error, response, body) {
+                should.not.exist(error);
+                response.statusCode.should.equal(200);
+                done();
             });
         });
     });
