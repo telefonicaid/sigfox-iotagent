@@ -53,7 +53,7 @@ function sendMeasure(commands) {
 
     dataOpts.qs.data = commands[0];
 
-    request(dataOpts, function(error, response, body) {
+    request(dataOpts, function (error, response, body) {
         if (error) {
             console.log('\nError sending data to the Sigfox IoT Agent: ' + error);
         } else {

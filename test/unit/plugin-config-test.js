@@ -35,26 +35,26 @@ const config = require('../testConfig');
 const should = require('should');
 const nock = require('nock');
 
-describe('Plugin configuration test', function() {
-    beforeEach(function(done) {
-        iotAgent.start(config, function() {
-            async.series([apply(mongoUtils.cleanDbs, config.iota.contextBroker.host), mappings.clean], function() {
+describe('Plugin configuration test', function () {
+    beforeEach(function (done) {
+        iotAgent.start(config, function () {
+            async.series([apply(mongoUtils.cleanDbs, config.iota.contextBroker.host), mappings.clean], function () {
                 done();
             });
         });
     });
 
-    afterEach(function(done) {
+    afterEach(function (done) {
         iotAgent.stop(done);
     });
 
-    describe('When an external plugin is configured for the mapping', function() {
+    describe('When an external plugin is configured for the mapping', function () {
         const provisioningOpts = {
             url: 'http://localhost:' + config.iota.server.port + '/iot/devices',
             method: 'POST',
             json: utils.readExampleFile('./test/examples/deviceProvisioning/deviceProvisioningPluginMapping.json'),
             headers: {
-                'fiware-service': 'dumbMordor',
+                'fiware-service': 'dumbmordor',
                 'fiware-servicepath': '/deserts'
             }
         };
@@ -72,24 +72,18 @@ describe('Plugin configuration test', function() {
         };
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .post(
-                '/v1/updateContext',
-                utils.readExampleFile('./test/examples/deviceProvisioning/expectedProvisioningPluginRequest.json')
-            )
-            .reply(200, {});
+            .post('/v2/entities?options=upsert')
+            .reply(204);
 
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .post(
-                '/v1/updateContext',
-                utils.readExampleFile('./test/examples/deviceProvisioning/expectedDataUpdatePluginRequest.json')
-            )
-            .reply(200, {});
+            .patch('/v2/entities/sigApp3/attrs?type=SIGFOX')
+            .reply(204);
 
-        it('should use the plugin to parse the device responses', function(done) {
-            request(provisioningOpts, function(error, response, body) {
+        it('should use the plugin to parse the device responses', function (done) {
+            request(provisioningOpts, function (error, response, body) {
                 should.not.exist(error);
 
-                request(dataOpts, function(error, response, body) {
+                request(dataOpts, function (error, response, body) {
                     should.not.exist(error);
                     response.statusCode.should.equal(200);
 

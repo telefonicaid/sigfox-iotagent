@@ -77,20 +77,17 @@ const sigfoxDevice = {
             type: 'Integer'
         }
     ],
-    service: 'dumbMordor',
+    service: 'dumbmordor',
     subservice: '/deserts'
 };
 
-describe('Context Broker communication', function() {
-    beforeEach(function(done) {
+describe('Context Broker communication', function () {
+    beforeEach(function (done) {
         nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .post(
-                '/v1/updateContext',
-                utils.readExampleFile('./test/examples/ngsi-communication/expectedDeviceRegisterRequest.json')
-            )
-            .reply(200, {});
+            .post('/v2/entities?options=upsert')
+            .reply(204);
 
-        iotAgent.start(config, function() {
+        iotAgent.start(config, function () {
             async.series(
                 [
                     apply(mongoUtils.cleanDbs, config.iota.contextBroker.host),
@@ -102,18 +99,18 @@ describe('Context Broker communication', function() {
                     ),
                     apply(iotAgentLib.register, sigfoxDevice)
                 ],
-                function() {
+                function () {
                     done();
                 }
             );
         });
     });
 
-    afterEach(function(done) {
+    afterEach(function (done) {
         iotAgent.stop(done);
     });
 
-    describe('When a new sigfox measure arrives to the IoT Agent', function() {
+    describe('When a new sigfox measure arrives to the IoT Agent', function () {
         const options = {
             url: 'http://localhost:' + config.sigfox.port + '/update',
             method: 'GET',
@@ -127,23 +124,32 @@ describe('Context Broker communication', function() {
             }
         };
 
-        nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
-            .post(
-                '/v1/updateContext',
-                utils.readExampleFile('./test/examples/ngsi-communication/expectedDeviceUpdateDataRequest.json')
-            )
-            .reply(200, {});
+        it('should answer with a 200 OK', function (done) {
+            nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+                .post('/v2/entities?options=upsert')
+                .reply(204);
 
-        it('should answer with a 200 OK', function(done) {
-            request(options, function(error, response, body) {
+            nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+                .patch('/v2/entities/SIGFOX:sigApp1/attrs?type=SIGFOX')
+                .reply(204);
+
+            request(options, function (error, response, body) {
                 should.not.exist(error);
                 response.statusCode.should.equal(200);
                 done();
             });
         });
 
-        it('should call the Context Broker with the appropriate attributes', function(done) {
-            request(options, function(error, response, body) {
+        it('should call the Context Broker with the appropriate attributes', function (done) {
+            nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+                .post('/v2/entities?options=upsert')
+                .reply(204);
+
+            nock('http://' + config.iota.contextBroker.host + ':' + config.iota.contextBroker.port)
+                .patch('/v2/entities/SIGFOX:sigApp1/attrs?type=SIGFOX')
+                .reply(204);
+
+            request(options, function (error, response, body) {
                 should.not.exist(error);
                 response.statusCode.should.equal(200);
                 done();
@@ -186,7 +192,7 @@ describe('Context Broker communication', function() {
         });
     });
 
-    describe('When a new piece of data arrives for a unexistent device', function() {
+    describe('When a new piece of data arrives for a unexistent device', function () {
         const options = {
             url: 'http://localhost:' + config.sigfox.port + '/update',
             method: 'GET',
@@ -200,10 +206,33 @@ describe('Context Broker communication', function() {
             }
         };
 
-        it('should raise a controlled error', function(done) {
-            request(options, function(error, response, body) {
+        it('should raise a controlled error', function (done) {
+            request(options, function (error, response, body) {
                 should.not.exist(error);
                 response.statusCode.should.equal(404);
+                done();
+            });
+        });
+    });
+
+    describe('When a sigfox measure fails updating Context Broker', function () {
+        const options = {
+            url: 'http://localhost:' + config.sigfox.port + '/update',
+            method: 'GET',
+            qs: {
+                id: 'sigApp1',
+                time: 1430909015,
+                statin: '0A5F',
+                lng: -4,
+                lat: 41,
+                data: '000000020000000000230c6f'
+            }
+        };
+
+        it('should raise a controlled error', function (done) {
+            request(options, function (error, response, body) {
+                should.not.exist(error);
+                response.statusCode.should.equal(200);
                 done();
             });
         });
