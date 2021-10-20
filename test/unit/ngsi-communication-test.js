@@ -25,7 +25,8 @@
 
 const iotAgent = require('../../lib/iotagentCore');
 const mappings = require('../../lib/mappings');
-const request = require('request');
+const utils = require('../tools/utils');
+const request = utils.request;
 const iotAgentLib = require('iotagent-node-lib');
 const mongoUtils = require('../tools/mongoDBUtils');
 const async = require('async');
@@ -33,7 +34,6 @@ const apply = async.apply;
 const config = require('../testConfig');
 const should = require('should');
 const nock = require('nock');
-const utils = require('../tools/utils');
 const sigfoxDevice = {
     id: 'sigApp1',
     type: 'SIGFOX',
