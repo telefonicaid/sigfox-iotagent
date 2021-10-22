@@ -1,0 +1,19 @@
+{
+    "enabler": "FIWARE IoT Agent for Sigfox",
+    "chapter": "iotagents",
+    "academy": "iot-agents/idas",
+    "readthedocs": "iotagent-sigfox",
+    "helpdesk": "",
+    "coveralls": "https://coveralls.io/github/telefonicaid/sigfox-iotagent",
+    "github": ["telefonicaid/sigfox-iotagent"],
+    "dockerregistry": ["hub.docker.com"],
+    "docker": ["telefonicaiot/sigfox-iotagent"],
+    "email": "iot_support@tid.es",
+    "status": "full",
+    "compose": "",
+    "exclude": [""],
+    "stackexchange": ["fiware+iot"],
+    "unit-test": "",
+    "smoke-test": "",
+    "dockerfile": "https://github.com/telefonicaid/sigfox-iotagent/blob/master/docker/Dockerfile"
+}
