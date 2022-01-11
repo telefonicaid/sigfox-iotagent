@@ -26,7 +26,7 @@
 /* eslint-disable no-console */
 
 const clUtils = require('command-node');
-const request = require('request');
+const request = require('iotagent-node-lib').request;
 const config = require('../config');
 const parameters = {
     id: '8405',
@@ -60,7 +60,7 @@ function sendMeasure(commands) {
             console.log('\nData successfully sent');
 
             // Now, we analyse the response obtained in the call
-            console.log('Response Code [%d]: [%s]', response.statusCode, JSON.parse(body).message);
+            console.log('Response Code [%d]: [%s]', response.statusCode, body.message);
         }
 
         clUtils.prompt();
