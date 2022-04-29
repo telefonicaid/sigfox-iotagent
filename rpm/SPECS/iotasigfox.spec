@@ -190,6 +190,15 @@ fi
 %{_install_dir}
 
 %changelog
+* Fri Apr 29 2022 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.6.0-1
+- Add: graceful shutdown listening to SIGINT (#115)
+- Fix: remove request obsolete library, using iotagent-node-lib.request instead (iotagent-node-lib#858)
+- Upgrade iotagent-node-lib dependency from 2.15.0 to 2.21.0
+- Upgrade underscore dep from 1.8.3 to 1.12.1
+- Upgrade logops dep from 2.1.0 to 2.1.2 due to colors dependency corruption
+- Upgrade NodeJS version from 10 to 14 in Dockerfile
+- Set Nodejs 12 as minimum version in packages.json (effectively removing Nodev10 from supported versions)
+
 * Tue Mar 02 2021 Fermin Galan <fermin.galanmarquez@telefonica.com> 1.5.0-1
 - Upgrade iotagent-node-lib dependency from 2.12.0 to 2.15.0
 - Update Docker security practices (Add HEALTHCHECK, Use Anonymous User, Use two-stage build)
