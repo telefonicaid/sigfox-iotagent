@@ -38,7 +38,7 @@
     "underscore": "1.12.1",
     "command-node": "0.1.1",
     "async": "1.5.2",
-    "iotagent-node-lib": "git://github.com/telefonicaid/iotagent-node-lib.git#master",
+    "iotagent-node-lib": "http://github.com/telefonicaid/iotagent-node-lib.git#master",
     "express": "4.16.4",
     "body-parser": "1.18.3",
     "logops": "2.1.2"
