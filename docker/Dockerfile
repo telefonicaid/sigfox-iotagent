@@ -57,11 +57,11 @@ SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 # COPY . /opt/iotasigfox/
 #
 
-# hadolint ignore=DL3008
+# hadolint ignore=DL3008,DL3005
 RUN \
-        # Install security updates
-        apt-get -y update && \
-        apt-get -y upgrade && \
+	# Install security updates
+	apt-get -y update && \
+	apt-get -y upgrade && \
 	# Ensure that unzip is installed prior to downloading
 	apt-get install -y --no-install-recommends unzip && \
 	if [ "${DOWNLOAD}" = "latest" ] ; \
