@@ -19,8 +19,8 @@
 # For those usages not covered by the GNU Affero General Public License
 # please contact with: [daniel.moranjimenez@telefonica.com]
 
-ARG NODE_VERSION=14
-ARG GITHUB_ACCOUNT=telefonicaid
+ARG NODE_VERSION=16
+6RG GITHUB_ACCOUNT=telefonicaid
 ARG GITHUB_REPOSITORY=sigfox-iotagent
 ARG DOWNLOAD=latest
 ARG SOURCE_BRANCH=master
