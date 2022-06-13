@@ -20,7 +20,7 @@
 # please contact with: [daniel.moranjimenez@telefonica.com]
 
 ARG NODE_VERSION=16
-6RG GITHUB_ACCOUNT=telefonicaid
+ARG GITHUB_ACCOUNT=telefonicaid
 ARG GITHUB_REPOSITORY=sigfox-iotagent
 ARG DOWNLOAD=latest
 ARG SOURCE_BRANCH=master
