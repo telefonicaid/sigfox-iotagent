@@ -16,8 +16,9 @@ A list of deprecated features and the version in which they were deprecated foll
 -   Support to Node.js v4 and v6 in sigfox-iotagent 1.0.0 (finally removed in 1.1.0)
 -   Support to Node.js v8 in sigfox-iotagent 1.4.0 (finally removed in 1.5.0)
 -   Support to Node.js v10 in sigfox-iotagent 1.5.0 (finally removed in 1.6.0)
+-   Support to NGSI-LD v1.3 in sigfox-iotagent 1.7.0
 
-The use of Node.js v12 is highly recommended.
+The use of Node.js v14 is highly recommended.
 
 ## Using old sigfox-iotagent versions
 
