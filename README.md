@@ -2,8 +2,10 @@
 
 [![FIWARE IoT Agents](https://nexus.lab.fiware.org/static/badges/chapters/iot-agents.svg)](https://www.fiware.org/developers/catalogue/)
 [![License: APGL](https://img.shields.io/github/license/telefonicaid/sigfox-iotagent.svg)](https://opensource.org/licenses/AGPL-3.0)
-[![Docker badge](https://img.shields.io/docker/pulls/fiware/sigfox-iotagent.svg)](https://hub.docker.com/r/fiware/sigfox-iotagent/)
-[![Support badge](https://nexus.lab.fiware.org/repository/raw/public/badges/stackoverflow/iot-agents.svg)](https://stackoverflow.com/questions/tagged/fiware+iot)
+[![Support badge](https://img.shields.io/badge/tag-fiware+iot-orange.svg?logo=stackoverflow)](https://stackoverflow.com/questions/tagged/fiware+iot)
+<br/>
+[![Quay badge](https://img.shields.io/badge/quay.io-fiware%2Fsigfox--iotagent-grey?logo=red%20hat&labelColor=EE0000)](https://quay.io/repository/fiware/sigfox-iotagent)
+[![Docker badge](https://img.shields.io/badge/docker-telefonicaiot%2Ffiware--sigfox--iotagent-blue?logo=docker)](https://quay.io/repository/telefonicaiot/sigfox-iotagent)
 <br/> [![Documentation badge](https://img.shields.io/readthedocs/iotagent-sigfox.svg)](https://iotagent-sigfox.readthedocs.io)
 [![CI](https://github.com/telefonicaid/sigfox-iotagent/workflows/CI/badge.svg)](https://github.com/telefonicaid/sigfox-iotagent/actions?query=workflow%3ACI)
 [![Coverage Status](https://coveralls.io/repos/github/telefonicaid/sigfox-iotagent/badge.svg?branch=master)](https://coveralls.io/github/telefonicaid/sigfox-iotagent?branch=master)
@@ -21,8 +23,8 @@ library's GitHub repository.
 This project is part of [FIWARE](https://www.fiware.org/). For more information check the FIWARE Catalogue entry for the
 [IoT Agents](https://github.com/Fiware/catalogue/tree/master/iot-agents).
 
-| :books: [Documentation](https://iotagent-sigfox.readthedocs.io) | :whale: [Docker Hub](https://hub.docker.com/r/fiware/sigfox-iotagent) | :dart: [Roadmap](https://github.com/telefonicaid/sigfox-iotagent/blob/master/docs/roadmap.md) |
-| -------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- |
+| :books: [Documentation](https://iotagent-sigfox.readthedocs.io) | <img style="height:1em" src="https://quay.io/static/img/quay_favicon.png"/> [quay.io](https://quay.io/repository/fiware/sigfox-iotagent)| :whale: [Docker Hub](https://hub.docker.com/r/telefonicaiot/sigfox-iotagent) | :dart: [Roadmap](https://github.com/telefonicaid/sigfox-iotagent/blob/master/docs/roadmap.md) |
+| -------------------------------------------------------- | --------------------------------------------------------------------- | -------------------------------------------------------------------------------------------- | --- |
 
 
 ## Contents
@@ -107,7 +109,10 @@ npm test
 
 The IoT Agent for Sigfox is licensed under [Affero General Public License (GPL) version 3](./LICENSE).
 
-© 2022 Telefonica Investigación y Desarrollo, S.A.U
+© 2023 Telefonica Investigación y Desarrollo, S.A.U
+
+<details>
+<summary><strong>Further information on the use of the AGPL open source license</strong></summary>
 
 ### Are there any legal issues with AGPL 3.0? Is it safe for me to use?
 
@@ -123,3 +128,5 @@ public statement as follows:
 > incorporate enhancements is considered a derivative work of the product. Software that merely uses or aggregates (i.e.
 > links to) an otherwise unmodified version of existing software is not considered a derivative work, and therefore it
 > does not need to be released as under the same license, or even released as open source.
+
+</details>
