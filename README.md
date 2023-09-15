@@ -2,9 +2,10 @@
 
 [![FIWARE IoT Agents](https://nexus.lab.fiware.org/static/badges/chapters/iot-agents.svg)](https://www.fiware.org/developers/catalogue/)
 [![License: APGL](https://img.shields.io/github/license/telefonicaid/sigfox-iotagent.svg)](https://opensource.org/licenses/AGPL-3.0)
-[![Quay badge](https://img.shields.io/badge/quay.io-fiware%2Fsigfox--iotagent-grey?logo=red%20hat&labelColor=EE0000)](https://quay.io/repository/fiware/sigfox-iotagent)
-[![Docker badge](https://img.shields.io/badge/docker-telefonicaiot%2Fsigfox-iotagent-blue?logo=docker)](https://quay.io/repository/telefonicaiot/sigfox-iotagent)
 [![Support badge](https://img.shields.io/badge/tag-fiware+iot-orange.svg?logo=stackoverflow)](https://stackoverflow.com/questions/tagged/fiware+iot)
+<br/>
+[![Quay badge](https://img.shields.io/badge/quay.io-fiware%2Fsigfox--iotagent-grey?logo=red%20hat&labelColor=EE0000)](https://quay.io/repository/fiware/sigfox-iotagent)
+[![Docker badge](https://img.shields.io/badge/docker-telefonicaiot%2Ffiware--sigfox--iotagent-blue?logo=docker)](https://quay.io/repository/telefonicaiot/sigfox-iotagent)
 <br/> [![Documentation badge](https://img.shields.io/readthedocs/iotagent-sigfox.svg)](https://iotagent-sigfox.readthedocs.io)
 [![CI](https://github.com/telefonicaid/sigfox-iotagent/workflows/CI/badge.svg)](https://github.com/telefonicaid/sigfox-iotagent/actions?query=workflow%3ACI)
 [![Coverage Status](https://coveralls.io/repos/github/telefonicaid/sigfox-iotagent/badge.svg?branch=master)](https://coveralls.io/github/telefonicaid/sigfox-iotagent?branch=master)
